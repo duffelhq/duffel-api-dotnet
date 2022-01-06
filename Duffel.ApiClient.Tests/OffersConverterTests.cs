@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Duffel.ApiClient.Converters;
-using Duffel.ApiClient.Models;
-using Duffel.ApiClient.Models.Requests;
-using Duffel.ApiClient.Models.Responses;
+using Duffel.ApiClient.Interfaces.Models;
+using Duffel.ApiClient.Interfaces.Models.Requests;
+using Duffel.ApiClient.Interfaces.Models.Responses;
 using NFluent;
 using NUnit.Framework;
-using Slice = Duffel.ApiClient.Models.Requests.Slice;
+using Slice = Duffel.ApiClient.Interfaces.Models.Requests.Slice;
 
 namespace Duffel.ApiClient.Tests
 {

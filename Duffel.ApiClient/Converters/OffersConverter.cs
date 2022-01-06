@@ -1,6 +1,5 @@
-using Duffel.ApiClient.Models;
-using Duffel.ApiClient.Models.Requests;
-using Duffel.ApiClient.Models.Responses;
+using Duffel.ApiClient.Interfaces.Models.Requests;
+using Duffel.ApiClient.Interfaces.Models.Responses;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
@@ -27,7 +26,7 @@ namespace Duffel.ApiClient.Converters
                     payload, 
                     new OffersResponseJsonConverter());
             
-            return unwrappedResponse.Data;            
+            return unwrappedResponse?.Data;            
         }
     }
 }

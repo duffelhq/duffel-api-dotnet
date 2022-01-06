@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace Duffel.ApiClient.Models.Responses
+namespace Duffel.ApiClient.Interfaces.Models.Responses
 {
     public class Slice
     {

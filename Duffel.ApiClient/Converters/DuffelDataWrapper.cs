@@ -1,4 +1,3 @@
-using Duffel.ApiClient.Models.Requests;
 using Newtonsoft.Json;
 
 namespace Duffel.ApiClient.Converters

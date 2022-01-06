@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace Duffel.ApiClient.Models.Requests
+namespace Duffel.ApiClient.Interfaces.Models.Requests
 {
     public class Slice
     {
