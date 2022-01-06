@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace Duffel.ApiClient.Models
+namespace Duffel.ApiClient.Interfaces.Models
 {
     public class Passenger
     {

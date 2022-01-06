@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Duffel.ApiClient.Models.Requests
+namespace Duffel.ApiClient.Interfaces.Models.Requests
 {
     public class OffersRequest
     {
@@ -9,7 +9,7 @@ namespace Duffel.ApiClient.Models.Requests
         public List<Passenger> Passengers { get; set; } = new List<Passenger>();
 
         [JsonProperty(PropertyName = "slices")]
-        public List<Requests.Slice> Slices { get; set; } = new List<Requests.Slice>();
+        public List<Slice> Slices { get; set; } = new List<Slice>();
 
         [JsonProperty(PropertyName = "requested_sources")]
         public List<string> RequestedSources { get; set; } = new List<string>();

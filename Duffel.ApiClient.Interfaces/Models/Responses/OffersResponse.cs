@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Duffel.ApiClient.Models.Responses
+namespace Duffel.ApiClient.Interfaces.Models.Responses
 {
     public class OffersResponse
     {
         [JsonProperty("slices")]
-        public IEnumerable<Responses.Slice> Slices { get; set; }
+        public IEnumerable<Slice> Slices { get; set; }
     }
 }
