@@ -1,0 +1,96 @@
+{
+  "data": {
+    "slices": [
+      {
+        "origin_type": "city",
+        "origin": {
+          "type": "city",
+          "time_zone": null,
+          "name": "Los Angeles",
+          "longitude": null,
+          "latitude": null,
+          "id": "cit_lax_us",
+          "icao_code": null,
+          "iata_country_code": "US",
+          "iata_code": "LAX",
+          "iata_city_code": "LAX",
+          "city_name": null,
+          "city": null,
+          "airports": [
+            {
+              "type": "airport",
+              "time_zone": "America/Los_Angeles",
+              "name": "Ontario International Airport",
+              "longitude": -117.599527,
+              "latitude": 34.055988,
+              "id": "arp_ont_us",
+              "icao_code": "KONT",
+              "iata_country_code": "US",
+              "iata_code": "ONT",
+              "iata_city_code": "LAX",
+              "city_name": "Ontario"
+            },
+            {
+              "type": "airport",
+              "time_zone": "America/Los_Angeles",
+              "name": "Van Nuys Airport",
+              "longitude": -118.489719,
+              "latitude": 34.208582,
+              "id": "arp_vny_us",
+              "icao_code": "KVNY",
+              "iata_country_code": "US",
+              "iata_code": "VNY",
+              "iata_city_code": "LAX",
+              "city_name": "Los Angeles"
+            },
+            {
+              "type": "airport",
+              "time_zone": "America/Los_Angeles",
+              "name": "Los Angeles International Airport",
+              "longitude": -118.408263,
+              "latitude": 33.942045,
+              "id": "arp_lax_us",
+              "icao_code": "KLAX",
+              "iata_country_code": "US",
+              "iata_code": "LAX",
+              "iata_city_code": "LAX",
+              "city_name": "Los Angeles"
+            },
+            {
+              "type": "airport",
+              "time_zone": "America/Los_Angeles",
+              "name": "Whiteman Airport",
+              "longitude": -118.412713,
+              "latitude": 34.25989,
+              "id": "arp_whp_us",
+              "icao_code": "KWHP",
+              "iata_country_code": "US",
+              "iata_code": "WHP",
+              "iata_city_code": "LAX",
+              "city_name": "Los Angeles"
+            }
+          ]
+        },
+        "destination_type": "airport",
+        "destination": {
+          "type": "airport",
+          "time_zone": "America/Los_Angeles",
+          "name": "San Francisco International Airport",
+          "longitude": -122.376977,
+          "latitude": 37.620156,
+          "id": "arp_sfo_us",
+          "icao_code": "KSFO",
+          "iata_country_code": "US",
+          "iata_code": "SFO",
+          "iata_city_code": "SFO",
+          "city_name": "San Francisco",
+          "city": null,
+          "airports": null
+        },
+        "departure_date": "2021-06-15",
+        "created_at": "2021-04-23T16:09:01.397298Z"
+      }
+    ]
+  }
+}
+  

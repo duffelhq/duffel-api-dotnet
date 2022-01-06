@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Duffel.ApiClient", "Duffel.ApiClient\Duffel.ApiClient.csproj", "{CB5D138E-7038-4AAE-ADD6-0D376B43EBAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Duffel.ApiClient.Tests", "Duffel.ApiClient.Tests\Duffel.ApiClient.Tests.csproj", "{8C600E33-8E67-4B36-878C-1D075CDEA3F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{5332EA06-5AE9-46AC-9987-0F97E468E8D7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CB5D138E-7038-4AAE-ADD6-0D376B43EBAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB5D138E-7038-4AAE-ADD6-0D376B43EBAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB5D138E-7038-4AAE-ADD6-0D376B43EBAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB5D138E-7038-4AAE-ADD6-0D376B43EBAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C600E33-8E67-4B36-878C-1D075CDEA3F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C600E33-8E67-4B36-878C-1D075CDEA3F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C600E33-8E67-4B36-878C-1D075CDEA3F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C600E33-8E67-4B36-878C-1D075CDEA3F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5332EA06-5AE9-46AC-9987-0F97E468E8D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5332EA06-5AE9-46AC-9987-0F97E468E8D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5332EA06-5AE9-46AC-9987-0F97E468E8D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5332EA06-5AE9-46AC-9987-0F97E468E8D7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
