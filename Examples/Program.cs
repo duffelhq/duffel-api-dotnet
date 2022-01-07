@@ -22,8 +22,9 @@ namespace Examples
                 {
                     new Slice
                     {
-                        Origin = "SFO",
-                        Destination = "JFK",
+                        // We use a nonsensical route to make sure we get speedy, reliable Duffel Airways
+                        Origin = "LHR",
+                        Destination = "STN",
                         DepartureDate = DateTime.Now.AddDays(30).ToString("yyyy-MM-dd")
                     }
                 }

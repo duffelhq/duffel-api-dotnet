@@ -6,7 +6,6 @@ using Duffel.ApiClient.Interfaces.Models.Requests;
 using Duffel.ApiClient.Interfaces.Models.Responses;
 using NFluent;
 using NUnit.Framework;
-using Slice = Duffel.ApiClient.Interfaces.Models.Requests.Slice;
 
 namespace Duffel.ApiClient.Tests
 {
@@ -23,9 +22,9 @@ namespace Duffel.ApiClient.Tests
                     new Passenger {PassengerType = PassengerType.Child}
                 },
                 RequestedSources = new List<string> { "united" },
-                Slices = new List<Slice>
+                Slices = new List<Interfaces.Models.Requests.Slice>
                 {
-                    new Slice
+                    new Interfaces.Models.Requests.Slice
                     {
                         Origin = "SFO",
                         Destination = "LAX",
@@ -41,19 +40,46 @@ namespace Duffel.ApiClient.Tests
         [Test]
         public void CanDeserializeOffersResponse()
         {
-            var offersResponse = OffersConverter.Deserialize(JsonFixture.Load("offers_response_ow_lax_sfo.json"));
-     
+            var offersResponse = OffersConverter.Deserialize(JsonFixture.Load("offers_response_full_ow_sfo_jfk.json"));
             Check.That(offersResponse).IsNotNull().And.IsInstanceOf<OffersResponse>();
-            Check.That(offersResponse.Slices).HasSize(1);
             
-            var origin = offersResponse.Slices.First().Origin;
-            var destination = offersResponse.Slices.First().Destination;
+            AssertSlicesDataCorrect(offersResponse.Slices!.ToList());
+            AssertOffersDataCorrect(offersResponse.Offers!.ToList());
+        }
 
-            Check.That(origin).IsInstanceOf<City>();
+        private static void AssertOffersDataCorrect(List<Offer> offers)
+        {
+            Check.That(offers).HasSize(4);
+            var offer = offers.First();
+            
+            Check.That(offer.Id).IsEqualTo("off_0000AFANuyPmZYc2j0aMj7");
+            Check.That(offer.LiveMode).IsFalse();
+            Check.That(offer.BaseCurrency).Equals("GBP");
+            Check.That(offer.BaseAmount).Equals("431.66");
+            
+            Check.That(offer.Slices).HasSize(1);
+            var slice = offer.Slices.First();
+            
+            Check.That(slice.FareBrandName).IsEqualTo("Refundable Main Cabin");
+            Check.That(slice.Duration).IsEqualTo("PT9H26M");
+            Check.That(slice.Id).IsEqualTo("sli_0000AFANuyQ8YEtck6keHI");
+            Check.That(slice.Origin).IsInstanceOf<Airport>().And.IsNotNull();
+            Check.That(slice.Destination).IsInstanceOf<Airport>().And.IsNotNull();
+            
+            // TODO: add segments
+        }
+
+        private static void AssertSlicesDataCorrect(List<Interfaces.Models.Responses.Slice> slices)
+        {
+            Check.That(slices).HasSize(1);
+
+            var origin = slices.First().Origin;
+            var destination = slices.First().Destination;
+
+            Check.That(origin).IsInstanceOf<Airport>();
             Check.That(destination).IsInstanceOf<Airport>();
-            Check.That((origin as City)?.Airports).HasSize(4);
-
-            Check.That(offersResponse.Slices.First().DepartureDate).IsEqualTo("2021-06-15");
+            
+            Check.That(slices.First().DepartureDate).IsEqualTo("2022-02-05");
         }
     }
 }

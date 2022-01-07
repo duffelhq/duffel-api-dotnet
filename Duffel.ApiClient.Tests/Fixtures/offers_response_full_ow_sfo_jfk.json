@@ -1,0 +1,1061 @@
+{
+  "data": {
+    "slices": [
+      {
+        "origin_type": "airport",
+        "origin": {
+          "type": "airport",
+          "time_zone": "America/Los_Angeles",
+          "name": "San Francisco International Airport",
+          "longitude": -122.376977,
+          "latitude": 37.620156,
+          "id": "arp_sfo_us",
+          "icao_code": "KSFO",
+          "iata_country_code": "US",
+          "iata_code": "SFO",
+          "iata_city_code": "SFO",
+          "city_name": "San Francisco",
+          "city": null,
+          "airports": null
+        },
+        "destination_type": "airport",
+        "destination": {
+          "type": "airport",
+          "time_zone": "America/New_York",
+          "name": "John F. Kennedy International Airport",
+          "longitude": -73.778519,
+          "latitude": 40.640556,
+          "id": "arp_jfk_us",
+          "icao_code": "KJFK",
+          "iata_country_code": "US",
+          "iata_code": "JFK",
+          "iata_city_code": "NYC",
+          "city_name": "New York",
+          "city": {
+            "type": "city",
+            "time_zone": null,
+            "name": "New York",
+            "longitude": null,
+            "latitude": null,
+            "id": "cit_nyc_us",
+            "icao_code": null,
+            "iata_country_code": "US",
+            "iata_code": "NYC",
+            "iata_city_code": "NYC",
+            "city_name": null
+          },
+          "airports": null
+        },
+        "departure_date": "2022-02-05",
+        "created_at": "2022-01-06T14:39:20.099028Z"
+      }
+    ],
+    "passengers": [
+      {
+        "type": "adult",
+        "loyalty_programme_accounts": [],
+        "id": "pas_0000AFANuVr4l0DI9G8Fk2",
+        "given_name": null,
+        "family_name": null,
+        "age": null
+      }
+    ],
+    "offers": [
+      {
+        "updated_at": "2022-01-06T14:39:25.090088Z",
+        "total_emissions_kg": "228",
+        "total_currency": "GBP",
+        "total_amount": "481.17",
+        "tax_currency": "GBP",
+        "tax_amount": "49.51",
+        "slices": [
+          {
+            "segments": [
+              {
+                "passengers": [
+                  {
+                    "passenger_id": "pas_0000AFANuVr4l0DI9G8Fk2",
+                    "fare_basis_code": "KAVZA0M6",
+                    "cabin_class_marketing_name": "Economy",
+                    "cabin_class": "economy",
+                    "baggages": []
+                  }
+                ],
+                "origin_terminal": null,
+                "origin": {
+                  "type": "airport",
+                  "time_zone": "America/Los_Angeles",
+                  "name": "San Francisco International Airport",
+                  "longitude": -122.376977,
+                  "latitude": 37.620156,
+                  "id": "arp_sfo_us",
+                  "icao_code": "KSFO",
+                  "iata_country_code": "US",
+                  "iata_code": "SFO",
+                  "iata_city_code": "SFO",
+                  "city_name": "San Francisco",
+                  "city": null,
+                  "airports": null
+                },
+                "operating_carrier_flight_number": "2282",
+                "operating_carrier": {
+                  "name": "Delta Air Lines",
+                  "id": "arl_00009VME7DBgd2sGtBN3HF",
+                  "iata_code": "DL"
+                },
+                "marketing_carrier_flight_number": "2282",
+                "marketing_carrier": {
+                  "name": "Delta Air Lines",
+                  "id": "arl_00009VME7DBgd2sGtBN3HF",
+                  "iata_code": "DL"
+                },
+                "id": "seg_0000AFANuyQ8YEtck6keHJ",
+                "duration": "PT4H33M",
+                "distance": null,
+                "destination_terminal": null,
+                "destination": {
+                  "type": "airport",
+                  "time_zone": "America/Detroit",
+                  "name": "Detroit Metro Airport",
+                  "longitude": -83.354393,
+                  "latitude": 42.214285,
+                  "id": "arp_dtw_us",
+                  "icao_code": "KDTW",
+                  "iata_country_code": "US",
+                  "iata_code": "DTW",
+                  "iata_city_code": "DTT",
+                  "city_name": "Detroit",
+                  "city": {
+                    "type": "city",
+                    "time_zone": null,
+                    "name": "Detroit",
+                    "longitude": null,
+                    "latitude": null,
+                    "id": "cit_dtt_us",
+                    "icao_code": null,
+                    "iata_country_code": "US",
+                    "iata_code": "DTT",
+                    "iata_city_code": "DTT",
+                    "city_name": null
+                  },
+                  "airports": null
+                },
+                "departing_at": "2022-02-05T05:42:00",
+                "arriving_at": "2022-02-05T13:15:00",
+                "aircraft": null
+              },
+              {
+                "passengers": [
+                  {
+                    "passenger_id": "pas_0000AFANuVr4l0DI9G8Fk2",
+                    "fare_basis_code": "KAUZA0M2",
+                    "cabin_class_marketing_name": "Economy",
+                    "cabin_class": "economy",
+                    "baggages": []
+                  }
+                ],
+                "origin_terminal": null,
+                "origin": {
+                  "type": "airport",
+                  "time_zone": "America/Detroit",
+                  "name": "Detroit Metro Airport",
+                  "longitude": -83.354393,
+                  "latitude": 42.214285,
+                  "id": "arp_dtw_us",
+                  "icao_code": "KDTW",
+                  "iata_country_code": "US",
+                  "iata_code": "DTW",
+                  "iata_city_code": "DTT",
+                  "city_name": "Detroit",
+                  "city": {
+                    "type": "city",
+                    "time_zone": null,
+                    "name": "Detroit",
+                    "longitude": null,
+                    "latitude": null,
+                    "id": "cit_dtt_us",
+                    "icao_code": null,
+                    "iata_country_code": "US",
+                    "iata_code": "DTT",
+                    "iata_city_code": "DTT",
+                    "city_name": null
+                  },
+                  "airports": null
+                },
+                "operating_carrier_flight_number": "5073",
+                "operating_carrier": {
+                  "name": "Delta Air Lines",
+                  "id": "arl_00009VME7DBgd2sGtBN3HF",
+                  "iata_code": "DL"
+                },
+                "marketing_carrier_flight_number": "5073",
+                "marketing_carrier": {
+                  "name": "Delta Air Lines",
+                  "id": "arl_00009VME7DBgd2sGtBN3HF",
+                  "iata_code": "DL"
+                },
+                "id": "seg_0000AFANuyQ8YEtck6keHK",
+                "duration": "PT1H53M",
+                "distance": null,
+                "destination_terminal": null,
+                "destination": {
+                  "type": "airport",
+                  "time_zone": "America/New_York",
+                  "name": "John F. Kennedy International Airport",
+                  "longitude": -73.778519,
+                  "latitude": 40.640556,
+                  "id": "arp_jfk_us",
+                  "icao_code": "KJFK",
+                  "iata_country_code": "US",
+                  "iata_code": "JFK",
+                  "iata_city_code": "NYC",
+                  "city_name": "New York",
+                  "city": {
+                    "type": "city",
+                    "time_zone": null,
+                    "name": "New York",
+                    "longitude": null,
+                    "latitude": null,
+                    "id": "cit_nyc_us",
+                    "icao_code": null,
+                    "iata_country_code": "US",
+                    "iata_code": "NYC",
+                    "iata_city_code": "NYC",
+                    "city_name": null
+                  },
+                  "airports": null
+                },
+                "departing_at": "2022-02-05T16:15:00",
+                "arriving_at": "2022-02-05T18:08:00",
+                "aircraft": null
+              }
+            ],
+            "origin_type": "airport",
+            "origin": {
+              "type": "airport",
+              "time_zone": "America/Los_Angeles",
+              "name": "San Francisco International Airport",
+              "longitude": -122.376977,
+              "latitude": 37.620156,
+              "id": "arp_sfo_us",
+              "icao_code": "KSFO",
+              "iata_country_code": "US",
+              "iata_code": "SFO",
+              "iata_city_code": "SFO",
+              "city_name": "San Francisco",
+              "city": null,
+              "airports": null
+            },
+            "id": "sli_0000AFANuyQ8YEtck6keHI",
+            "fare_brand_name": "Refundable Main Cabin",
+            "duration": "PT9H26M",
+            "destination_type": "airport",
+            "destination": {
+              "type": "airport",
+              "time_zone": "America/New_York",
+              "name": "John F. Kennedy International Airport",
+              "longitude": -73.778519,
+              "latitude": 40.640556,
+              "id": "arp_jfk_us",
+              "icao_code": "KJFK",
+              "iata_country_code": "US",
+              "iata_code": "JFK",
+              "iata_city_code": "NYC",
+              "city_name": "New York",
+              "city": {
+                "type": "city",
+                "time_zone": null,
+                "name": "New York",
+                "longitude": null,
+                "latitude": null,
+                "id": "cit_nyc_us",
+                "icao_code": null,
+                "iata_country_code": "US",
+                "iata_code": "NYC",
+                "iata_city_code": "NYC",
+                "city_name": null
+              },
+              "airports": null
+            },
+            "conditions": {
+              "change_before_departure": null
+            }
+          }
+        ],
+        "payment_requirements": {
+          "requires_instant_payment": true,
+          "price_guarantee_expires_at": null,
+          "payment_required_by": null
+        },
+        "passengers": [
+          {
+            "type": "adult",
+            "loyalty_programme_accounts": [],
+            "id": "pas_0000AFANuVr4l0DI9G8Fk2",
+            "given_name": null,
+            "family_name": null,
+            "age": null
+          }
+        ],
+        "passenger_identity_documents_required": false,
+        "owner": {
+          "name": "Delta Air Lines",
+          "id": "arl_00009VME7DBgd2sGtBN3HF",
+          "iata_code": "DL"
+        },
+        "live_mode": false,
+        "id": "off_0000AFANuyPmZYc2j0aMj7",
+        "expires_at": "2022-01-06T14:54:24.925576Z",
+        "created_at": "2022-01-06T14:39:25.090088Z",
+        "conditions": {
+          "refund_before_departure": null,
+          "change_before_departure": null
+        },
+        "base_currency": "GBP",
+        "base_amount": "431.66",
+        "allowed_passenger_identity_document_types": []
+      },
+      {
+        "updated_at": "2022-01-06T14:39:25.090088Z",
+        "total_emissions_kg": "228",
+        "total_currency": "GBP",
+        "total_amount": "481.17",
+        "tax_currency": "GBP",
+        "tax_amount": "49.51",
+        "slices": [
+          {
+            "segments": [
+              {
+                "passengers": [
+                  {
+                    "passenger_id": "pas_0000AFANuVr4l0DI9G8Fk2",
+                    "fare_basis_code": "KAVZA0M6",
+                    "cabin_class_marketing_name": "Economy",
+                    "cabin_class": "economy",
+                    "baggages": []
+                  }
+                ],
+                "origin_terminal": null,
+                "origin": {
+                  "type": "airport",
+                  "time_zone": "America/Los_Angeles",
+                  "name": "San Francisco International Airport",
+                  "longitude": -122.376977,
+                  "latitude": 37.620156,
+                  "id": "arp_sfo_us",
+                  "icao_code": "KSFO",
+                  "iata_country_code": "US",
+                  "iata_code": "SFO",
+                  "iata_city_code": "SFO",
+                  "city_name": "San Francisco",
+                  "city": null,
+                  "airports": null
+                },
+                "operating_carrier_flight_number": "1446",
+                "operating_carrier": {
+                  "name": "Delta Air Lines",
+                  "id": "arl_00009VME7DBgd2sGtBN3HF",
+                  "iata_code": "DL"
+                },
+                "marketing_carrier_flight_number": "1446",
+                "marketing_carrier": {
+                  "name": "Delta Air Lines",
+                  "id": "arl_00009VME7DBgd2sGtBN3HF",
+                  "iata_code": "DL"
+                },
+                "id": "seg_0000AFANuyPmZYc2j0aMjA",
+                "duration": "PT4H33M",
+                "distance": null,
+                "destination_terminal": null,
+                "destination": {
+                  "type": "airport",
+                  "time_zone": "America/Detroit",
+                  "name": "Detroit Metro Airport",
+                  "longitude": -83.354393,
+                  "latitude": 42.214285,
+                  "id": "arp_dtw_us",
+                  "icao_code": "KDTW",
+                  "iata_country_code": "US",
+                  "iata_code": "DTW",
+                  "iata_city_code": "DTT",
+                  "city_name": "Detroit",
+                  "city": {
+                    "type": "city",
+                    "time_zone": null,
+                    "name": "Detroit",
+                    "longitude": null,
+                    "latitude": null,
+                    "id": "cit_dtt_us",
+                    "icao_code": null,
+                    "iata_country_code": "US",
+                    "iata_code": "DTT",
+                    "iata_city_code": "DTT",
+                    "city_name": null
+                  },
+                  "airports": null
+                },
+                "departing_at": "2022-02-05T12:47:00",
+                "arriving_at": "2022-02-05T20:20:00",
+                "aircraft": null
+              },
+              {
+                "passengers": [
+                  {
+                    "passenger_id": "pas_0000AFANuVr4l0DI9G8Fk2",
+                    "fare_basis_code": "KAUZA0M2",
+                    "cabin_class_marketing_name": "Economy",
+                    "cabin_class": "economy",
+                    "baggages": []
+                  }
+                ],
+                "origin_terminal": null,
+                "origin": {
+                  "type": "airport",
+                  "time_zone": "America/Detroit",
+                  "name": "Detroit Metro Airport",
+                  "longitude": -83.354393,
+                  "latitude": 42.214285,
+                  "id": "arp_dtw_us",
+                  "icao_code": "KDTW",
+                  "iata_country_code": "US",
+                  "iata_code": "DTW",
+                  "iata_city_code": "DTT",
+                  "city_name": "Detroit",
+                  "city": {
+                    "type": "city",
+                    "time_zone": null,
+                    "name": "Detroit",
+                    "longitude": null,
+                    "latitude": null,
+                    "id": "cit_dtt_us",
+                    "icao_code": null,
+                    "iata_country_code": "US",
+                    "iata_code": "DTT",
+                    "iata_city_code": "DTT",
+                    "city_name": null
+                  },
+                  "airports": null
+                },
+                "operating_carrier_flight_number": "5391",
+                "operating_carrier": {
+                  "name": "Delta Air Lines",
+                  "id": "arl_00009VME7DBgd2sGtBN3HF",
+                  "iata_code": "DL"
+                },
+                "marketing_carrier_flight_number": "5391",
+                "marketing_carrier": {
+                  "name": "Delta Air Lines",
+                  "id": "arl_00009VME7DBgd2sGtBN3HF",
+                  "iata_code": "DL"
+                },
+                "id": "seg_0000AFANuyPmZYc2j0aMjC",
+                "duration": "PT1H59M",
+                "distance": null,
+                "destination_terminal": null,
+                "destination": {
+                  "type": "airport",
+                  "time_zone": "America/New_York",
+                  "name": "John F. Kennedy International Airport",
+                  "longitude": -73.778519,
+                  "latitude": 40.640556,
+                  "id": "arp_jfk_us",
+                  "icao_code": "KJFK",
+                  "iata_country_code": "US",
+                  "iata_code": "JFK",
+                  "iata_city_code": "NYC",
+                  "city_name": "New York",
+                  "city": {
+                    "type": "city",
+                    "time_zone": null,
+                    "name": "New York",
+                    "longitude": null,
+                    "latitude": null,
+                    "id": "cit_nyc_us",
+                    "icao_code": null,
+                    "iata_country_code": "US",
+                    "iata_code": "NYC",
+                    "iata_city_code": "NYC",
+                    "city_name": null
+                  },
+                  "airports": null
+                },
+                "departing_at": "2022-02-05T21:00:00",
+                "arriving_at": "2022-02-05T22:59:00",
+                "aircraft": null
+              }
+            ],
+            "origin_type": "airport",
+            "origin": {
+              "type": "airport",
+              "time_zone": "America/Los_Angeles",
+              "name": "San Francisco International Airport",
+              "longitude": -122.376977,
+              "latitude": 37.620156,
+              "id": "arp_sfo_us",
+              "icao_code": "KSFO",
+              "iata_country_code": "US",
+              "iata_code": "SFO",
+              "iata_city_code": "SFO",
+              "city_name": "San Francisco",
+              "city": null,
+              "airports": null
+            },
+            "id": "sli_0000AFANuyPmZYc2j0aMj8",
+            "fare_brand_name": "Refundable Main Cabin",
+            "duration": "PT7H12M",
+            "destination_type": "airport",
+            "destination": {
+              "type": "airport",
+              "time_zone": "America/New_York",
+              "name": "John F. Kennedy International Airport",
+              "longitude": -73.778519,
+              "latitude": 40.640556,
+              "id": "arp_jfk_us",
+              "icao_code": "KJFK",
+              "iata_country_code": "US",
+              "iata_code": "JFK",
+              "iata_city_code": "NYC",
+              "city_name": "New York",
+              "city": {
+                "type": "city",
+                "time_zone": null,
+                "name": "New York",
+                "longitude": null,
+                "latitude": null,
+                "id": "cit_nyc_us",
+                "icao_code": null,
+                "iata_country_code": "US",
+                "iata_code": "NYC",
+                "iata_city_code": "NYC",
+                "city_name": null
+              },
+              "airports": null
+            },
+            "conditions": {
+              "change_before_departure": null
+            }
+          }
+        ],
+        "payment_requirements": {
+          "requires_instant_payment": true,
+          "price_guarantee_expires_at": null,
+          "payment_required_by": null
+        },
+        "passengers": [
+          {
+            "type": "adult",
+            "loyalty_programme_accounts": [],
+            "id": "pas_0000AFANuVr4l0DI9G8Fk2",
+            "given_name": null,
+            "family_name": null,
+            "age": null
+          }
+        ],
+        "passenger_identity_documents_required": false,
+        "owner": {
+          "name": "Delta Air Lines",
+          "id": "arl_00009VME7DBgd2sGtBN3HF",
+          "iata_code": "DL"
+        },
+        "live_mode": false,
+        "id": "off_0000AFANuyPmZYc2j0aMj3",
+        "expires_at": "2022-01-06T14:54:24.924406Z",
+        "created_at": "2022-01-06T14:39:25.090088Z",
+        "conditions": {
+          "refund_before_departure": null,
+          "change_before_departure": null
+        },
+        "base_currency": "GBP",
+        "base_amount": "431.66",
+        "allowed_passenger_identity_document_types": []
+      },
+      {
+        "updated_at": "2022-01-06T14:39:25.090088Z",
+        "total_emissions_kg": "223",
+        "total_currency": "GBP",
+        "total_amount": "444.23",
+        "tax_currency": "GBP",
+        "tax_amount": "46.94",
+        "slices": [
+          {
+            "segments": [
+              {
+                "passengers": [
+                  {
+                    "passenger_id": "pas_0000AFANuVr4l0DI9G8Fk2",
+                    "fare_basis_code": "KAVZA0M6",
+                    "cabin_class_marketing_name": "Economy",
+                    "cabin_class": "economy",
+                    "baggages": []
+                  }
+                ],
+                "origin_terminal": null,
+                "origin": {
+                  "type": "airport",
+                  "time_zone": "America/Los_Angeles",
+                  "name": "San Francisco International Airport",
+                  "longitude": -122.376977,
+                  "latitude": 37.620156,
+                  "id": "arp_sfo_us",
+                  "icao_code": "KSFO",
+                  "iata_country_code": "US",
+                  "iata_code": "SFO",
+                  "iata_city_code": "SFO",
+                  "city_name": "San Francisco",
+                  "city": null,
+                  "airports": null
+                },
+                "operating_carrier_flight_number": "1211",
+                "operating_carrier": {
+                  "name": "Delta Air Lines",
+                  "id": "arl_00009VME7DBgd2sGtBN3HF",
+                  "iata_code": "DL"
+                },
+                "marketing_carrier_flight_number": "1211",
+                "marketing_carrier": {
+                  "name": "Delta Air Lines",
+                  "id": "arl_00009VME7DBgd2sGtBN3HF",
+                  "iata_code": "DL"
+                },
+                "id": "seg_0000AFANuyPmZYc2j0aMj9",
+                "duration": "PT1H55M",
+                "distance": null,
+                "destination_terminal": null,
+                "destination": {
+                  "type": "airport",
+                  "time_zone": "America/Denver",
+                  "name": "Salt Lake City International Airport",
+                  "longitude": -111.978533,
+                  "latitude": 40.789169,
+                  "id": "arp_slc_us",
+                  "icao_code": "KSLC",
+                  "iata_country_code": "US",
+                  "iata_code": "SLC",
+                  "iata_city_code": "SLC",
+                  "city_name": "Salt Lake City",
+                  "city": null,
+                  "airports": null
+                },
+                "departing_at": "2022-02-05T06:00:00",
+                "arriving_at": "2022-02-05T08:55:00",
+                "aircraft": null
+              },
+              {
+                "passengers": [
+                  {
+                    "passenger_id": "pas_0000AFANuVr4l0DI9G8Fk2",
+                    "fare_basis_code": "HAUZA0M2",
+                    "cabin_class_marketing_name": "Economy",
+                    "cabin_class": "economy",
+                    "baggages": []
+                  }
+                ],
+                "origin_terminal": null,
+                "origin": {
+                  "type": "airport",
+                  "time_zone": "America/Denver",
+                  "name": "Salt Lake City International Airport",
+                  "longitude": -111.978533,
+                  "latitude": 40.789169,
+                  "id": "arp_slc_us",
+                  "icao_code": "KSLC",
+                  "iata_country_code": "US",
+                  "iata_code": "SLC",
+                  "iata_city_code": "SLC",
+                  "city_name": "Salt Lake City",
+                  "city": null,
+                  "airports": null
+                },
+                "operating_carrier_flight_number": "524",
+                "operating_carrier": {
+                  "name": "Delta Air Lines",
+                  "id": "arl_00009VME7DBgd2sGtBN3HF",
+                  "iata_code": "DL"
+                },
+                "marketing_carrier_flight_number": "524",
+                "marketing_carrier": {
+                  "name": "Delta Air Lines",
+                  "id": "arl_00009VME7DBgd2sGtBN3HF",
+                  "iata_code": "DL"
+                },
+                "id": "seg_0000AFANuyPmZYc2j0aMjB",
+                "duration": "PT4H28M",
+                "distance": null,
+                "destination_terminal": null,
+                "destination": {
+                  "type": "airport",
+                  "time_zone": "America/New_York",
+                  "name": "John F. Kennedy International Airport",
+                  "longitude": -73.778519,
+                  "latitude": 40.640556,
+                  "id": "arp_jfk_us",
+                  "icao_code": "KJFK",
+                  "iata_country_code": "US",
+                  "iata_code": "JFK",
+                  "iata_city_code": "NYC",
+                  "city_name": "New York",
+                  "city": {
+                    "type": "city",
+                    "time_zone": null,
+                    "name": "New York",
+                    "longitude": null,
+                    "latitude": null,
+                    "id": "cit_nyc_us",
+                    "icao_code": null,
+                    "iata_country_code": "US",
+                    "iata_code": "NYC",
+                    "iata_city_code": "NYC",
+                    "city_name": null
+                  },
+                  "airports": null
+                },
+                "departing_at": "2022-02-05T09:30:00",
+                "arriving_at": "2022-02-05T15:58:00",
+                "aircraft": null
+              }
+            ],
+            "origin_type": "airport",
+            "origin": {
+              "type": "airport",
+              "time_zone": "America/Los_Angeles",
+              "name": "San Francisco International Airport",
+              "longitude": -122.376977,
+              "latitude": 37.620156,
+              "id": "arp_sfo_us",
+              "icao_code": "KSFO",
+              "iata_country_code": "US",
+              "iata_code": "SFO",
+              "iata_city_code": "SFO",
+              "city_name": "San Francisco",
+              "city": null,
+              "airports": null
+            },
+            "id": "sli_0000AFANuyPmZYc2j0aMj6",
+            "fare_brand_name": "Refundable Main Cabin",
+            "duration": "PT6H58M",
+            "destination_type": "airport",
+            "destination": {
+              "type": "airport",
+              "time_zone": "America/New_York",
+              "name": "John F. Kennedy International Airport",
+              "longitude": -73.778519,
+              "latitude": 40.640556,
+              "id": "arp_jfk_us",
+              "icao_code": "KJFK",
+              "iata_country_code": "US",
+              "iata_code": "JFK",
+              "iata_city_code": "NYC",
+              "city_name": "New York",
+              "city": {
+                "type": "city",
+                "time_zone": null,
+                "name": "New York",
+                "longitude": null,
+                "latitude": null,
+                "id": "cit_nyc_us",
+                "icao_code": null,
+                "iata_country_code": "US",
+                "iata_code": "NYC",
+                "iata_city_code": "NYC",
+                "city_name": null
+              },
+              "airports": null
+            },
+            "conditions": {
+              "change_before_departure": null
+            }
+          }
+        ],
+        "payment_requirements": {
+          "requires_instant_payment": true,
+          "price_guarantee_expires_at": null,
+          "payment_required_by": null
+        },
+        "passengers": [
+          {
+            "type": "adult",
+            "loyalty_programme_accounts": [],
+            "id": "pas_0000AFANuVr4l0DI9G8Fk2",
+            "given_name": null,
+            "family_name": null,
+            "age": null
+          }
+        ],
+        "passenger_identity_documents_required": false,
+        "owner": {
+          "name": "Delta Air Lines",
+          "id": "arl_00009VME7DBgd2sGtBN3HF",
+          "iata_code": "DL"
+        },
+        "live_mode": false,
+        "id": "off_0000AFANuyPmZYc2j0aMj2",
+        "expires_at": "2022-01-06T14:54:24.923264Z",
+        "created_at": "2022-01-06T14:39:25.090088Z",
+        "conditions": {
+          "refund_before_departure": null,
+          "change_before_departure": null
+        },
+        "base_currency": "GBP",
+        "base_amount": "397.29",
+        "allowed_passenger_identity_document_types": []
+      },
+      {
+        "updated_at": "2022-01-06T14:39:25.090088Z",
+        "total_emissions_kg": "238",
+        "total_currency": "GBP",
+        "total_amount": "413.94",
+        "tax_currency": "GBP",
+        "tax_amount": "44.83",
+        "slices": [
+          {
+            "segments": [
+              {
+                "passengers": [
+                  {
+                    "passenger_id": "pas_0000AFANuVr4l0DI9G8Fk2",
+                    "fare_basis_code": "KAVZA0M6",
+                    "cabin_class_marketing_name": "Economy",
+                    "cabin_class": "economy",
+                    "baggages": []
+                  }
+                ],
+                "origin_terminal": null,
+                "origin": {
+                  "type": "airport",
+                  "time_zone": "America/Los_Angeles",
+                  "name": "San Francisco International Airport",
+                  "longitude": -122.376977,
+                  "latitude": 37.620156,
+                  "id": "arp_sfo_us",
+                  "icao_code": "KSFO",
+                  "iata_country_code": "US",
+                  "iata_code": "SFO",
+                  "iata_city_code": "SFO",
+                  "city_name": "San Francisco",
+                  "city": null,
+                  "airports": null
+                },
+                "operating_carrier_flight_number": "555",
+                "operating_carrier": {
+                  "name": "Delta Air Lines",
+                  "id": "arl_00009VME7DBgd2sGtBN3HF",
+                  "iata_code": "DL"
+                },
+                "marketing_carrier_flight_number": "555",
+                "marketing_carrier": {
+                  "name": "Delta Air Lines",
+                  "id": "arl_00009VME7DBgd2sGtBN3HF",
+                  "iata_code": "DL"
+                },
+                "id": "seg_0000AFANuyP4cC2sgoFncf",
+                "duration": "PT4H29M",
+                "distance": null,
+                "destination_terminal": null,
+                "destination": {
+                  "type": "airport",
+                  "time_zone": "America/New_York",
+                  "name": "Hartsfield-Jackson Atlanta International Airport",
+                  "longitude": -84.4279,
+                  "latitude": 33.638714,
+                  "id": "arp_atl_us",
+                  "icao_code": "KATL",
+                  "iata_country_code": "US",
+                  "iata_code": "ATL",
+                  "iata_city_code": "ATL",
+                  "city_name": "Atlanta",
+                  "city": {
+                    "type": "city",
+                    "time_zone": null,
+                    "name": "Atlanta",
+                    "longitude": null,
+                    "latitude": null,
+                    "id": "cit_atl_us",
+                    "icao_code": null,
+                    "iata_country_code": "US",
+                    "iata_code": "ATL",
+                    "iata_city_code": "ATL",
+                    "city_name": null
+                  },
+                  "airports": null
+                },
+                "departing_at": "2022-02-05T11:58:00",
+                "arriving_at": "2022-02-05T19:27:00",
+                "aircraft": null
+              },
+              {
+                "passengers": [
+                  {
+                    "passenger_id": "pas_0000AFANuVr4l0DI9G8Fk2",
+                    "fare_basis_code": "KAURA0M2",
+                    "cabin_class_marketing_name": "Economy",
+                    "cabin_class": "economy",
+                    "baggages": []
+                  }
+                ],
+                "origin_terminal": null,
+                "origin": {
+                  "type": "airport",
+                  "time_zone": "America/New_York",
+                  "name": "Hartsfield-Jackson Atlanta International Airport",
+                  "longitude": -84.4279,
+                  "latitude": 33.638714,
+                  "id": "arp_atl_us",
+                  "icao_code": "KATL",
+                  "iata_country_code": "US",
+                  "iata_code": "ATL",
+                  "iata_city_code": "ATL",
+                  "city_name": "Atlanta",
+                  "city": {
+                    "type": "city",
+                    "time_zone": null,
+                    "name": "Atlanta",
+                    "longitude": null,
+                    "latitude": null,
+                    "id": "cit_atl_us",
+                    "icao_code": null,
+                    "iata_country_code": "US",
+                    "iata_code": "ATL",
+                    "iata_city_code": "ATL",
+                    "city_name": null
+                  },
+                  "airports": null
+                },
+                "operating_carrier_flight_number": "517",
+                "operating_carrier": {
+                  "name": "Delta Air Lines",
+                  "id": "arl_00009VME7DBgd2sGtBN3HF",
+                  "iata_code": "DL"
+                },
+                "marketing_carrier_flight_number": "517",
+                "marketing_carrier": {
+                  "name": "Delta Air Lines",
+                  "id": "arl_00009VME7DBgd2sGtBN3HF",
+                  "iata_code": "DL"
+                },
+                "id": "seg_0000AFANuyP4cC2sgoFnch",
+                "duration": "PT2H13M",
+                "distance": null,
+                "destination_terminal": null,
+                "destination": {
+                  "type": "airport",
+                  "time_zone": "America/New_York",
+                  "name": "John F. Kennedy International Airport",
+                  "longitude": -73.778519,
+                  "latitude": 40.640556,
+                  "id": "arp_jfk_us",
+                  "icao_code": "KJFK",
+                  "iata_country_code": "US",
+                  "iata_code": "JFK",
+                  "iata_city_code": "NYC",
+                  "city_name": "New York",
+                  "city": {
+                    "type": "city",
+                    "time_zone": null,
+                    "name": "New York",
+                    "longitude": null,
+                    "latitude": null,
+                    "id": "cit_nyc_us",
+                    "icao_code": null,
+                    "iata_country_code": "US",
+                    "iata_code": "NYC",
+                    "iata_city_code": "NYC",
+                    "city_name": null
+                  },
+                  "airports": null
+                },
+                "departing_at": "2022-02-05T21:18:00",
+                "arriving_at": "2022-02-05T23:31:00",
+                "aircraft": null
+              }
+            ],
+            "origin_type": "airport",
+            "origin": {
+              "type": "airport",
+              "time_zone": "America/Los_Angeles",
+              "name": "San Francisco International Airport",
+              "longitude": -122.376977,
+              "latitude": 37.620156,
+              "id": "arp_sfo_us",
+              "icao_code": "KSFO",
+              "iata_country_code": "US",
+              "iata_code": "SFO",
+              "iata_city_code": "SFO",
+              "city_name": "San Francisco",
+              "city": null,
+              "airports": null
+            },
+            "id": "sli_0000AFANuyP4cC2sgoFnce",
+            "fare_brand_name": "Refundable Main Cabin",
+            "duration": "PT8H33M",
+            "destination_type": "airport",
+            "destination": {
+              "type": "airport",
+              "time_zone": "America/New_York",
+              "name": "John F. Kennedy International Airport",
+              "longitude": -73.778519,
+              "latitude": 40.640556,
+              "id": "arp_jfk_us",
+              "icao_code": "KJFK",
+              "iata_country_code": "US",
+              "iata_code": "JFK",
+              "iata_city_code": "NYC",
+              "city_name": "New York",
+              "city": {
+                "type": "city",
+                "time_zone": null,
+                "name": "New York",
+                "longitude": null,
+                "latitude": null,
+                "id": "cit_nyc_us",
+                "icao_code": null,
+                "iata_country_code": "US",
+                "iata_code": "NYC",
+                "iata_city_code": "NYC",
+                "city_name": null
+              },
+              "airports": null
+            },
+            "conditions": {
+              "change_before_departure": null
+            }
+          }
+        ],
+        "payment_requirements": {
+          "requires_instant_payment": true,
+          "price_guarantee_expires_at": null,
+          "payment_required_by": null
+        },
+        "passengers": [
+          {
+            "type": "adult",
+            "loyalty_programme_accounts": [],
+            "id": "pas_0000AFANuVr4l0DI9G8Fk2",
+            "given_name": null,
+            "family_name": null,
+            "age": null
+          }
+        ],
+        "passenger_identity_documents_required": false,
+        "owner": {
+          "name": "Delta Air Lines",
+          "id": "arl_00009VME7DBgd2sGtBN3HF",
+          "iata_code": "DL"
+        },
+        "live_mode": false,
+        "id": "off_0000AFANuyP4cC2sgoFncY",
+        "expires_at": "2022-01-06T14:54:24.921936Z",
+        "created_at": "2022-01-06T14:39:25.090088Z",
+        "conditions": {
+          "refund_before_departure": null,
+          "change_before_departure": null
+        },
+        "base_currency": "GBP",
+        "base_amount": "369.11",
+        "allowed_passenger_identity_document_types": []
+      }],
+    "live_mode": false,
+    "id": "orq_0000AFANuVr4l0DI9G8Fk0",
+    "created_at": "2022-01-06T14:39:20.094701Z",
+    "cabin_class": null
+  }
+}

@@ -15,7 +15,7 @@ namespace Duffel.ApiClient.Converters
         public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
         {
             JObject jo = JObject.Load(reader);
-            var placeType = (string)jo["type"];
+            var placeType = (string)jo["type"]!;
             Place result;
             
             switch(placeType?.ToLower())

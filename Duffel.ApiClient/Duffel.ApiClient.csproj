@@ -3,6 +3,10 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Authors>Duffel Technology Ltd.</Authors>
+        <Copyright>Duffel Technology Ltd.</Copyright>
+        <Company>Duffel Technology Ltd.</Company>
     </PropertyGroup>
 
     <ItemGroup>

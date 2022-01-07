@@ -8,7 +8,7 @@ namespace Duffel.ApiClient.Tests
         [Test]
         public void CanAccessAndLoadFixtureFile()
         {
-            var content = JsonFixture.Load("offers_response_ow_lax_sfo.json");
+            var content = JsonFixture.Load("offers_response_full_ow_sfo_jfk.json");
             Check.That(content).IsNotNull();
         }
     }
