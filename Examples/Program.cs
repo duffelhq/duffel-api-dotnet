@@ -30,7 +30,7 @@ namespace Examples
                 }
             });
 
-            offers.Slices.ToList()
+            offers.Slices?.ToList()
                 .ForEach(slice => Console.WriteLine($"Slice: {slice.Origin.Id} -> {slice.Destination.Id}"));
         }
 

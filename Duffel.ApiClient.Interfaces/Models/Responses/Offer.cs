@@ -45,11 +45,16 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses
 
         // TODO: payment_requiements
         // TODO: passengers[]
+        // TODO: available services
         
         [JsonProperty("passenger_identity_documents_required")]
         public bool PassengerIdentityDocumentsRequired { get; set; }
         
-        // TODO: owner
+        /// <summary>
+        /// The airline which provided the offer
+        /// </summary>
+        [JsonProperty("owner")]
+        public Owner Owner { get; set; }
         
         /// <summary>
         /// Whether the offer request was created in live mode.
