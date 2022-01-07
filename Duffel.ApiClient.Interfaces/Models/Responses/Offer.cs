@@ -44,9 +44,18 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses
         public IEnumerable<Duffel.ApiClient.Interfaces.Models.Responses.Offers.Slice> Slices { get; set; }
 
         // TODO: payment_requiements
-        // TODO: passengers[]
         // TODO: available services
         
+        /// <summary>
+        /// The passengers included in the offer
+        /// </summary>
+        [JsonProperty("passengers")]
+        public IEnumerable<Passenger> Passengers { get; set; }
+
+        /// <summary>
+        /// Whether identity documents must be provided for each of the passengers when creating an order based on this offer.
+        /// If this is true, you must provide an identity document for every passenger.
+        /// </summary>
         [JsonProperty("passenger_identity_documents_required")]
         public bool PassengerIdentityDocumentsRequired { get; set; }
         
