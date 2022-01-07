@@ -18,13 +18,13 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="Fixtures\offers_response_ow_lax_sfo.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
+      <ProjectReference Include="..\Duffel.ApiClient\Duffel.ApiClient.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Duffel.ApiClient\Duffel.ApiClient.csproj" />
+      <None Update="Fixtures\offers_response_full_ow_sfo_jfk.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

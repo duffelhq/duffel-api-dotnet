@@ -1,3 +1,4 @@
+using System;
 using Duffel.ApiClient.Interfaces.Models.Requests;
 using Duffel.ApiClient.Interfaces.Models.Responses;
 using Newtonsoft.Json;
@@ -26,7 +27,7 @@ namespace Duffel.ApiClient.Converters
                     payload, 
                     new OffersResponseJsonConverter());
             
-            return unwrappedResponse?.Data;            
+            return (unwrappedResponse?.Data ?? null) ?? throw new InvalidOperationException();            
         }
     }
 }
