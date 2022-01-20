@@ -29,11 +29,11 @@ namespace Duffel.ApiClient
         public async Task<OffersResponse> CreateOffersRequest(OffersRequest request)
         {
             // Note: temp code. This will be refactored to use streams, injectable http client, etc.
-            var payload = OffersConverter.Serialize(request);
+            var payload = OffersResponseConverter.Serialize(request);
             var result = await _httpClient.PostAsync("air/offer_requests", 
                 new StringContent(payload,  Encoding.UTF8, "application/json"));
             var content = await result.Content.ReadAsStringAsync();
-            return OffersConverter.Deserialize(content);
+            return OffersResponseConverter.Deserialize(content);
         }
     }
 }

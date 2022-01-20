@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Duffel.ApiClient.Converters;
@@ -19,7 +20,8 @@ namespace Duffel.ApiClient.Tests
                 Passengers = new List<Interfaces.Models.Requests.Passenger>
                 {
                     new() { PassengerType = PassengerType.Adult },
-                    new() { PassengerType = PassengerType.Child }
+                    new() { PassengerType = PassengerType.Child },
+                    new() { PassengerType = PassengerType.Infant }
                 },
                 RequestedSources = new List<string> { "united" },
                 Slices = new List<Interfaces.Models.Requests.Slice>
@@ -33,18 +35,32 @@ namespace Duffel.ApiClient.Tests
                 }
             };
 
-            var result = OffersConverter.Serialize(request);
-            Check.That(result).Equals("{\"data\":{\"passengers\":[{\"type\":\"adult\"},{\"type\":\"child\"}],\"slices\":[{\"origin\":\"SFO\",\"destination\":\"LAX\",\"departure_date\":\"2020-01-01\"}],\"requested_sources\":[\"united\"]}}");
+            var result = OffersResponseConverter.Serialize(request);
+            Check.That(result).Equals("{\"data\":{\"passengers\":[{\"type\":\"adult\"},{\"type\":\"child\"},{\"type\":\"infant_without_seat\"}],\"slices\":[{\"origin\":\"SFO\",\"destination\":\"LAX\",\"departure_date\":\"2020-01-01\"}],\"requested_sources\":[\"united\"]}}");
         }
         
         [Test]
         public void CanDeserializeOffersResponse()
         {
-            var offersResponse = OffersConverter.Deserialize(JsonFixture.Load("offers_response_full_ow_sfo_jfk.json"));
+            var offersResponse = OffersResponseConverter.Deserialize(JsonFixture.Load("offers_response_full_ow_sfo_jfk.json"));
             Check.That(offersResponse).IsNotNull().And.IsInstanceOf<OffersResponse>();
             
             AssertSlicesDataCorrect(offersResponse.Slices!.ToList());
             AssertOffersDataCorrect(offersResponse.Offers!.ToList());
+        }
+
+        [Test]
+        public void CanDeserializeSingleOfferResponse()
+        {
+            var offerResponse = SingleOfferResponseConverter.Deserialize(JsonFixture.Load("offer_response_ow_3pass_ber_lhr.json"));
+            Check.That(offerResponse).IsNotNull().And.IsInstanceOf<Offer>();
+
+            Check.That(offerResponse.PaymentRequirements).IsNotNull();
+            Check.That(offerResponse.PaymentRequirements.RequiresInstantPayment).IsFalse();
+            Check.That(offerResponse.PaymentRequirements.PriceGuaranteeExpiresAt).IsNull();
+            Check.That(offerResponse.PaymentRequirements.PaymentRequiredBy).Equals(new DateTime(2022, 5, 23, 22, 45, 0, DateTimeKind.Utc));
+            
+            // TODO: add more checks for full offer
         }
 
         private static void AssertOffersDataCorrect(List<Offer> offers)

@@ -25,6 +25,9 @@
       <None Update="Fixtures\offers_response_full_ow_sfo_jfk.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
+      <None Update="Fixtures\offer_response_ow_3pass_ber_lhr.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

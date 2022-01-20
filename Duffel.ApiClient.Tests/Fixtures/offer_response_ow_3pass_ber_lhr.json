@@ -1,0 +1,357 @@
+{
+  "data": {
+    "updated_at": "2022-01-20T14:58:05.199536Z",
+    "total_emissions_kg": "2799",
+    "total_currency": "GBP",
+    "total_amount": "4724.10",
+    "tax_currency": "GBP",
+    "tax_amount": "452.10",
+    "slices": [
+      {
+        "segments": [
+          {
+            "passengers": [
+              {
+                "passenger_id": "pas_0000AFdQiariDCQjxn0yCw",
+                "fare_basis_code": "JFFDWTH",
+                "cabin_class_marketing_name": "BUSINESS",
+                "cabin_class": "business",
+                "baggages": [
+                  {
+                    "type": "carry_on",
+                    "quantity": 2
+                  },
+                  {
+                    "type": "checked",
+                    "quantity": 2
+                  }
+                ]
+              },
+              {
+                "passenger_id": "pas_0000AFdQias4BsiJytBFlA",
+                "fare_basis_code": "JFFDWTH",
+                "cabin_class_marketing_name": "BUSINESS",
+                "cabin_class": "business",
+                "baggages": [
+                  {
+                    "type": "checked",
+                    "quantity": 1
+                  }
+                ]
+              },
+              {
+                "passenger_id": "pas_0000AFdQiariDCQjxn0yCx",
+                "fare_basis_code": "JFFDWTH",
+                "cabin_class_marketing_name": "BUSINESS",
+                "cabin_class": "business",
+                "baggages": [
+                  {
+                    "type": "carry_on",
+                    "quantity": 2
+                  },
+                  {
+                    "type": "checked",
+                    "quantity": 2
+                  }
+                ]
+              }
+            ],
+            "origin_terminal": null,
+            "origin": {
+              "type": "airport",
+              "time_zone": "Asia/Bangkok",
+              "name": "Suvarnabhumi Airport",
+              "longitude": 100.748128,
+              "latitude": 13.691187,
+              "id": "arp_bkk_th",
+              "icao_code": "VTBS",
+              "iata_country_code": "TH",
+              "iata_code": "BKK",
+              "iata_city_code": "BKK",
+              "city_name": "Bangkok",
+              "city": {
+                "type": "city",
+                "time_zone": null,
+                "name": "Bangkok",
+                "longitude": null,
+                "latitude": null,
+                "id": "cit_bkk_th",
+                "icao_code": null,
+                "iata_country_code": "TH",
+                "iata_code": "BKK",
+                "iata_city_code": "BKK",
+                "city_name": null
+              },
+              "airports": null
+            },
+            "operating_carrier_flight_number": "26",
+            "operating_carrier": {
+              "name": "Austrian",
+              "id": "arl_00009VME7DAch01WpssCcW",
+              "iata_code": "OS"
+            },
+            "marketing_carrier_flight_number": "26",
+            "marketing_carrier": {
+              "name": "Austrian",
+              "id": "arl_00009VME7DAch01WpssCcW",
+              "iata_code": "OS"
+            },
+            "id": "seg_0000AFdQjIUA27jfFUKmbl",
+            "duration": "PT10H50M",
+            "distance": "8450.64434",
+            "destination_terminal": "3",
+            "destination": {
+              "type": "airport",
+              "time_zone": "Europe/Vienna",
+              "name": "Vienna International Airport",
+              "longitude": 16.568137,
+              "latitude": 48.113065,
+              "id": "arp_vie_at",
+              "icao_code": "LOWW",
+              "iata_country_code": "AT",
+              "iata_code": "VIE",
+              "iata_city_code": "VIE",
+              "city_name": "Vienna",
+              "city": null,
+              "airports": null
+            },
+            "departing_at": "2022-05-23T23:45:00",
+            "arriving_at": "2022-05-24T05:35:00",
+            "aircraft": {
+              "name": "Boeing 777-200/200ER",
+              "id": "arc_00009VMF8AhXSSRnQDI6HD",
+              "iata_code": "772"
+            }
+          },
+          {
+            "passengers": [
+              {
+                "passenger_id": "pas_0000AFdQiariDCQjxn0yCw",
+                "fare_basis_code": "JFFDWTH",
+                "cabin_class_marketing_name": "BUSINESS",
+                "cabin_class": "business",
+                "baggages": [
+                  {
+                    "type": "carry_on",
+                    "quantity": 2
+                  },
+                  {
+                    "type": "checked",
+                    "quantity": 2
+                  }
+                ]
+              },
+              {
+                "passenger_id": "pas_0000AFdQias4BsiJytBFlA",
+                "fare_basis_code": "JFFDWTH",
+                "cabin_class_marketing_name": "BUSINESS",
+                "cabin_class": "business",
+                "baggages": [
+                  {
+                    "type": "checked",
+                    "quantity": 1
+                  }
+                ]
+              },
+              {
+                "passenger_id": "pas_0000AFdQiariDCQjxn0yCx",
+                "fare_basis_code": "JFFDWTH",
+                "cabin_class_marketing_name": "BUSINESS",
+                "cabin_class": "business",
+                "baggages": [
+                  {
+                    "type": "carry_on",
+                    "quantity": 2
+                  },
+                  {
+                    "type": "checked",
+                    "quantity": 2
+                  }
+                ]
+              }
+            ],
+            "origin_terminal": "3",
+            "origin": {
+              "type": "airport",
+              "time_zone": "Europe/Vienna",
+              "name": "Vienna International Airport",
+              "longitude": 16.568137,
+              "latitude": 48.113065,
+              "id": "arp_vie_at",
+              "icao_code": "LOWW",
+              "iata_country_code": "AT",
+              "iata_code": "VIE",
+              "iata_city_code": "VIE",
+              "city_name": "Vienna",
+              "city": null,
+              "airports": null
+            },
+            "operating_carrier_flight_number": "451",
+            "operating_carrier": {
+              "name": "Austrian",
+              "id": "arl_00009VME7DAch01WpssCcW",
+              "iata_code": "OS"
+            },
+            "marketing_carrier_flight_number": "451",
+            "marketing_carrier": {
+              "name": "Austrian",
+              "id": "arl_00009VME7DAch01WpssCcW",
+              "iata_code": "OS"
+            },
+            "id": "seg_0000AFdQjIUA27jfFUKmbn",
+            "duration": "PT02H30M",
+            "distance": "1274.59728",
+            "destination_terminal": "2",
+            "destination": {
+              "type": "airport",
+              "time_zone": "Europe/London",
+              "name": "Heathrow Airport",
+              "longitude": -0.458118,
+              "latitude": 51.470311,
+              "id": "arp_lhr_gb",
+              "icao_code": "EGLL",
+              "iata_country_code": "GB",
+              "iata_code": "LHR",
+              "iata_city_code": "LON",
+              "city_name": "London",
+              "city": {
+                "type": "city",
+                "time_zone": null,
+                "name": "London",
+                "longitude": null,
+                "latitude": null,
+                "id": "cit_lon_gb",
+                "icao_code": null,
+                "iata_country_code": "GB",
+                "iata_code": "LON",
+                "iata_city_code": "LON",
+                "city_name": null
+              },
+              "airports": null
+            },
+            "departing_at": "2022-05-24T06:50:00",
+            "arriving_at": "2022-05-24T08:20:00",
+            "aircraft": {
+              "name": "Airbus A320",
+              "id": "arc_00009VMF8AgpV5sdO0xXAr",
+              "iata_code": "320"
+            }
+          }
+        ],
+        "origin_type": "airport",
+        "origin": {
+          "type": "airport",
+          "time_zone": "Asia/Bangkok",
+          "name": "Suvarnabhumi Airport",
+          "longitude": 100.748128,
+          "latitude": 13.691187,
+          "id": "arp_bkk_th",
+          "icao_code": "VTBS",
+          "iata_country_code": "TH",
+          "iata_code": "BKK",
+          "iata_city_code": "BKK",
+          "city_name": "Bangkok",
+          "city": {
+            "type": "city",
+            "time_zone": null,
+            "name": "Bangkok",
+            "longitude": null,
+            "latitude": null,
+            "id": "cit_bkk_th",
+            "icao_code": null,
+            "iata_country_code": "TH",
+            "iata_code": "BKK",
+            "iata_city_code": "BKK",
+            "city_name": null
+          },
+          "airports": null
+        },
+        "id": "sli_0000AFdQjIUA27jfFUKmbk",
+        "fare_brand_name": "Business Unrestricted",
+        "duration": "PT14H35M",
+        "destination_type": "airport",
+        "destination": {
+          "type": "airport",
+          "time_zone": "Europe/London",
+          "name": "Heathrow Airport",
+          "longitude": -0.458118,
+          "latitude": 51.470311,
+          "id": "arp_lhr_gb",
+          "icao_code": "EGLL",
+          "iata_country_code": "GB",
+          "iata_code": "LHR",
+          "iata_city_code": "LON",
+          "city_name": "London",
+          "city": {
+            "type": "city",
+            "time_zone": null,
+            "name": "London",
+            "longitude": null,
+            "latitude": null,
+            "id": "cit_lon_gb",
+            "icao_code": null,
+            "iata_country_code": "GB",
+            "iata_code": "LON",
+            "iata_city_code": "LON",
+            "city_name": null
+          },
+          "airports": null
+        },
+        "conditions": {
+          "change_before_departure": null
+        }
+      }
+    ],
+    "payment_requirements": {
+      "requires_instant_payment": false,
+      "price_guarantee_expires_at": null,
+      "payment_required_by": "2022-05-23T22:45:00Z"
+    },
+    "passengers": [
+      {
+        "type": "adult",
+        "loyalty_programme_accounts": [],
+        "id": "pas_0000AFdQiariDCQjxn0yCw",
+        "given_name": null,
+        "family_name": null,
+        "age": null
+      },
+      {
+        "type": "infant_without_seat",
+        "loyalty_programme_accounts": [],
+        "id": "pas_0000AFdQias4BsiJytBFlA",
+        "given_name": null,
+        "family_name": null,
+        "age": null
+      },
+      {
+        "type": "child",
+        "loyalty_programme_accounts": [],
+        "id": "pas_0000AFdQiariDCQjxn0yCx",
+        "given_name": null,
+        "family_name": null,
+        "age": null
+      }
+    ],
+    "passenger_identity_documents_required": false,
+    "owner": {
+      "name": "Austrian",
+      "id": "arl_00009VME7DAch01WpssCcW",
+      "iata_code": "OS"
+    },
+    "live_mode": false,
+    "id": "off_0000AFdQjITo3RS5EOAV3T",
+    "expires_at": "2022-01-20T15:28:03.000000Z",
+    "created_at": "2022-01-20T14:57:33.062514Z",
+    "conditions": {
+      "refund_before_departure": null,
+      "change_before_departure": null
+    },
+    "base_currency": "GBP",
+    "base_amount": "4272.00",
+    "available_services": [],
+    "allowed_passenger_identity_document_types": [
+      "passport"
+    ]
+  }
+}

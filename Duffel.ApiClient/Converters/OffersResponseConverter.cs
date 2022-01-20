@@ -7,7 +7,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace Duffel.ApiClient.Converters
 {
-    public static class OffersConverter
+    public static class OffersResponseConverter
     {
         /// <summary>
         /// Serializes <see cref="OffersRequest"/> into a JSON string that can be consumed by
@@ -22,12 +22,33 @@ namespace Duffel.ApiClient.Converters
         
         public static OffersResponse Deserialize(string payload)
         {
-            var unwrappedResponse = 
+            var wrappedResponse = 
                 JsonConvert.DeserializeObject<DuffelDataWrapper<OffersResponse>>(
                     payload, 
                     new OffersResponseJsonConverter());
             
-            return (unwrappedResponse?.Data ?? null) ?? throw new InvalidOperationException();            
+            return (wrappedResponse?.Data ?? null) ?? throw new ApiDeserializationException(null ,payload);            
         }
+    }
+
+    public static class SingleOfferResponseConverter
+    {
+        public static Offer Deserialize(string payload)
+        {
+            var wrappedResponse = JsonConvert.DeserializeObject<DuffelDataWrapper<Offer>>(payload);
+            return (wrappedResponse?.Data ?? null) ?? throw new ApiDeserializationException(null, payload);
+            
+        }
+    }
+
+    public class ApiDeserializationException : Exception
+    {
+        public ApiDeserializationException(Exception? innerException, string payload = null!) 
+            : base(innerException?.Message ?? "", innerException)
+        {
+            Payload = payload;
+        }
+        
+        private string Payload { get; }
     }
 }
