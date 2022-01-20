@@ -60,6 +60,11 @@ namespace Duffel.ApiClient.Tests
             AssertOwnerPresentAndCorrect(offer);
             AssertPassengerDataCorrect(offer);
 
+            Check.That(offer.PaymentRequirements).IsNotNull();
+            Check.That(offer.PaymentRequirements.RequiresInstantPayment).IsFalse();
+            Check.That(offer.PaymentRequirements.PaymentRequiredBy).IsNull();
+            Check.That(offer.PaymentRequirements.PriceGuaranteeExpiresAt).IsNull();
+
             Check.That(offer.Slices).HasSize(1);
             var slice = offer.Slices.First();
             

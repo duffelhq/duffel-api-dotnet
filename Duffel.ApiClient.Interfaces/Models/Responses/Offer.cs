@@ -43,7 +43,13 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses
         [JsonProperty("slices")]
         public IEnumerable<Duffel.ApiClient.Interfaces.Models.Responses.Offers.Slice> Slices { get; set; }
 
-        // TODO: payment_requiements
+
+        /// <summary>
+        /// The payment requirements for this offer
+        /// </summary>
+        [JsonProperty("payment_requirements")]
+        public PaymentRequirements PaymentRequirements { get; set; }
+        
         // TODO: available services
         
         /// <summary>
