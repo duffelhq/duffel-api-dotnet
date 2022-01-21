@@ -50,15 +50,6 @@ namespace Duffel.ApiClient.Tests
             AssertOfferLevelPassengerDataCorrect(offersResponse);
         }
 
-        private static void AssertOfferLevelPassengerDataCorrect(OffersResponse? offersResponse)
-        {
-            var passengers = offersResponse.Passengers!.ToList();
-            Check.That(passengers).HasSize(1);
-            var passenger = passengers.FirstOrDefault();
-            Check.That(passenger.PassengerType).Equals(PassengerType.Adult);
-            Check.That(passenger.Id).Equals("pas_0000AFANuVr4l0DI9G8Fk2");
-        }
-
         [Test]
         public void CanDeserializeSingleOfferResponse()
         {
@@ -71,6 +62,15 @@ namespace Duffel.ApiClient.Tests
             Check.That(offerResponse.PaymentRequirements.PaymentRequiredBy).Equals(new DateTime(2022, 5, 23, 22, 45, 0, DateTimeKind.Utc));
             
             // TODO: add more checks for full offer
+        }
+        
+        private static void AssertOfferLevelPassengerDataCorrect(OffersResponse? offersResponse)
+        {
+            var passengers = offersResponse.Passengers!.ToList();
+            Check.That(passengers).HasSize(1);
+            var passenger = passengers.FirstOrDefault();
+            Check.That(passenger.PassengerType).Equals(PassengerType.Adult);
+            Check.That(passenger.Id).Equals("pas_0000AFANuVr4l0DI9G8Fk2");
         }
 
         private static void AssertOffersDataCorrect(List<Offer> offers)
@@ -127,7 +127,7 @@ namespace Duffel.ApiClient.Tests
             var owner = offer.Owner;
             Check.That(owner).IsNotNull();
             Check.That(owner.Id).IsEqualTo("arl_00009VME7DBgd2sGtBN3HF");
-            Check.That(owner.Name).IsEqualTo("Delta Air Lines");
+            Check.That(owner.AirlineName).IsEqualTo("Delta Air Lines");
             Check.That(owner.IataCode).IsEqualTo("DL");
         }
 
