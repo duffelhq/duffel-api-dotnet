@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Duffel.ApiClient.Converters;
 using Newtonsoft.Json;
 
@@ -55,7 +56,11 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses.Offers
         [JsonProperty("id")]
         public string Id { get; set; }
         
-        // TODO: Segments
-        
+        /// <summary>
+        /// The segments - that is, specific flights - that the airline is offering to get the passengers from the origin to the destination
+        /// </summary>
+        [JsonProperty("segments")]
+        public IEnumerable<Segment> Segments { get; set; }
+
     }
 }
