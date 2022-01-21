@@ -17,6 +17,9 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses
         [JsonProperty("offers")]
         public IEnumerable<Offer>? Offers { get; set; }
         
-        // TODO: passengers, live_mode
+        [JsonProperty("passengers")]
+        public IEnumerable<Passenger>? Passengers { get; set; }
+        
+        // TODO: live_mode
     }
 }

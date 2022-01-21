@@ -47,6 +47,16 @@ namespace Duffel.ApiClient.Tests
             
             AssertSlicesDataCorrect(offersResponse.Slices!.ToList());
             AssertOffersDataCorrect(offersResponse.Offers!.ToList());
+            AssertOfferLevelPassengerDataCorrect(offersResponse);
+        }
+
+        private static void AssertOfferLevelPassengerDataCorrect(OffersResponse? offersResponse)
+        {
+            var passengers = offersResponse.Passengers!.ToList();
+            Check.That(passengers).HasSize(1);
+            var passenger = passengers.FirstOrDefault();
+            Check.That(passenger.PassengerType).Equals(PassengerType.Adult);
+            Check.That(passenger.Id).Equals("pas_0000AFANuVr4l0DI9G8Fk2");
         }
 
         [Test]
@@ -85,7 +95,7 @@ namespace Duffel.ApiClient.Tests
             var slice = offer.Slices.First();
             
             Check.That(slice.FareBrandName).IsEqualTo("Refundable Main Cabin");
-            Check.That(slice.Duration).IsEqualTo("PT9H26M");
+            Check.That(slice.Duration).IsEqualTo(TimeSpan.Parse("09:26:00"));
             Check.That(slice.Id).IsEqualTo("sli_0000AFANuyQ8YEtck6keHI");
             Check.That(slice.Origin).IsInstanceOf<Airport>().And.IsNotNull();
             Check.That(slice.Destination).IsInstanceOf<Airport>().And.IsNotNull();

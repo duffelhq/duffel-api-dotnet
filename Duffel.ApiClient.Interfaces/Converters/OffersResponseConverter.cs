@@ -24,8 +24,8 @@ namespace Duffel.ApiClient.Converters
         {
             var wrappedResponse = 
                 JsonConvert.DeserializeObject<DuffelDataWrapper<OffersResponse>>(
-                    payload, 
-                    new OffersResponseJsonConverter());
+                    payload); 
+                    //new OffersResponseJsonConverter());
             
             return (wrappedResponse?.Data ?? null) ?? throw new ApiDeserializationException(null ,payload);            
         }
