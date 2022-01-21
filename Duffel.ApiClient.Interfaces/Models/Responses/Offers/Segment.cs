@@ -6,8 +6,7 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses.Offers
 {
     public class Segment
     {
-        // passengers: id with fare basic, cabin class and baggages - need name
-        // origin_terminal
+        // TODO: passengers: id with fare basic, cabin class and baggages - need name
         
         /// <summary>
         /// The terminal at the origin airport from which the segment is scheduled to depart

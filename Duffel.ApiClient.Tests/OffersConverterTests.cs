@@ -100,7 +100,16 @@ namespace Duffel.ApiClient.Tests
             Check.That(slice.Origin).IsInstanceOf<Airport>().And.IsNotNull();
             Check.That(slice.Destination).IsInstanceOf<Airport>().And.IsNotNull();
             
-            // TODO: add segments
+            Check.That(slice.Segments).HasSize(2);
+            var segment = slice.Segments.First();
+            Check.That(segment.Destination.IataCode).Equals("DTW");
+            Check.That(segment.Duration).Equals(TimeSpan.Parse("04:33"));
+            Check.That(segment.MarketingCarrier.AirlineName).Equals("Delta Air Lines");
+            Check.That(segment.MarketingCarrier.IataCode).Equals("DL");
+            Check.That(segment.MarketingCarrierFlightNumber).Equals("2282");
+            Check.That(segment.OperatingCarrier.AirlineName).Equals("Delta Air Lines");
+            Check.That(segment.OperatingCarrier.IataCode).Equals("DL");
+            Check.That(segment.OperatingCarrierFlightNumber).Equals("2282");
         }
 
         private static void AssertPassengerDataCorrect(Offer? offer)
