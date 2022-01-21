@@ -5,11 +5,11 @@ using Newtonsoft.Json.Linq;
 
 namespace Duffel.ApiClient.Converters
 {
-    public class OffersResponseJsonConverter : JsonConverter
+    public class PlaceJsonConverter : JsonConverter
     {
         public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException("OffersResponseJsonConverter is a read-only converter");
         }
 
         public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)

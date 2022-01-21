@@ -1,4 +1,5 @@
 using System;
+using Duffel.ApiClient.Converters;
 using Newtonsoft.Json;
 
 namespace Duffel.ApiClient.Interfaces.Models.Responses
@@ -9,12 +10,14 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses
         /// The <see cref="City"/> or <see cref="Airport"/> the passengers want to depart from
         /// </summary>
         [JsonProperty("origin")]
+        [JsonConverter(typeof(PlaceJsonConverter))]
         public Place Origin { get; set; }
         
         /// <summary>
         /// The <see cref="City"/> or <see cref="Airport"/> the passengers want to travel to
         /// </summary>
         [JsonProperty("destination")]
+        [JsonConverter(typeof(PlaceJsonConverter))]
         public Place Destination { get; set; }
         
         /// <summary>

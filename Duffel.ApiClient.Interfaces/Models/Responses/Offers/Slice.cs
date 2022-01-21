@@ -1,4 +1,5 @@
 using System;
+using Duffel.ApiClient.Converters;
 using Newtonsoft.Json;
 
 namespace Duffel.ApiClient.Interfaces.Models.Responses.Offers
@@ -18,19 +19,22 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses.Offers
         /// The <see cref="City"/> or <see cref="Airport"/> where this slice begins.
         /// </summary>
         [JsonProperty("origin")]
+        [JsonConverter(typeof(PlaceJsonConverter))]
         public Place Origin { get; set; }
         
         /// <summary>
         /// The <see cref="City"/> or <see cref="Airport"/> where this slice ends.
         /// </summary>
         [JsonProperty("destination")]
+        [JsonConverter(typeof(PlaceJsonConverter))]
         public Place Destination { get; set; }
         
         /// <summary>
         /// The duration of the slice, represented as a ISO 8601 duration
         /// </summary>
         [JsonProperty("duration")]
-        public string Duration { get; set; }
+        [JsonConverter(typeof(StringDurationToTimeStampJsonConverter))]
+        public TimeSpan Duration { get; set; }
         
         /// <summary>
         /// The name of the fare brand associated with this slice.
@@ -50,5 +54,8 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses.Offers
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; }
+        
+        // TODO: Segments
+        
     }
 }

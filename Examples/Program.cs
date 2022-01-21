@@ -14,7 +14,7 @@ namespace Examples
         public static async Task Main(string[] args)
         {
             var client = new DuffelApiClient(args[0]);
-            var offers = await client.CreateOffersRequest(new OffersRequest
+            var offersRequest = new OffersRequest
             {
                 Passengers = new List<Passenger> { new Passenger { PassengerType = PassengerType.Adult } },
                 RequestedSources = new List<string> { "duffel_airways" },
@@ -28,10 +28,17 @@ namespace Examples
                         DepartureDate = DateTime.Now.AddDays(30).ToString("yyyy-MM-dd")
                     }
                 }
-            });
-
-            offers.Slices?.ToList()
-                .ForEach(slice => Console.WriteLine($"Slice: {slice.Origin.Id} -> {slice.Destination.Id}"));
+            };
+                
+            var offersResponse = await client.CreateOffersRequest(offersRequest);
+            var offerToRender = offersResponse.Offers!
+                .OrderBy(offer => offer.TotalEmissionsKg)
+                .Select(offer => new
+                {
+                    Id = offer.Id,
+                    Airline = offer.Owner,
+                    Price = $"{offer.TotalAmount} [{offer.TotalCurrency}]",
+                });
         }
 
     }
