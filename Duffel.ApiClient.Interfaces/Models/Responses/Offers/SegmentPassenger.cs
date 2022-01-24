@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Duffel.ApiClient.Interfaces.Models.Responses.Offers
@@ -32,6 +33,12 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses.Offers
         [JsonProperty("cabin_class")]
         public string CabinClass { get; set; } // TODO: should this be an enum?
         
-        // TODO: baggages
+        /// <summary>
+        /// The baggage allowances for the passenger on this segment included in the offer.
+        /// Some airlines may allow additional baggage to be booked as a service - see the offer's available_services.
+        /// </summary>
+        /// <remarks>This property is returned by the API as "baggages"</remarks>
+        [JsonProperty("baggages")]
+        public IEnumerable<BaggageAllowance> BaggageAllowances { get; set; }
     }
 }
