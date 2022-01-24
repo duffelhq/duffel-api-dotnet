@@ -1,3 +1,4 @@
+using Duffel.ApiClient.Converters;
 using Newtonsoft.Json;
 
 namespace Duffel.ApiClient.Interfaces.Models.Responses.Offers
@@ -30,7 +31,8 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses.Offers
         /// Possible values: "first", "business", "premium_economy", or "economy"
         /// </summary>
         [JsonProperty("cabin_class")]
-        public string CabinClass { get; set; } // TODO: should this be an enum?
+        [JsonConverter(typeof(CabinClassJsonConverter))]
+        public CabinClass CabinClass { get; set; }
         
         // TODO: baggages
     }
