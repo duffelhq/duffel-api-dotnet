@@ -5,6 +5,7 @@ using Duffel.ApiClient.Converters;
 using Duffel.ApiClient.Interfaces.Models;
 using Duffel.ApiClient.Interfaces.Models.Requests;
 using Duffel.ApiClient.Interfaces.Models.Responses;
+using Duffel.ApiClient.Interfaces.Models.Responses.Offers;
 using NFluent;
 using NUnit.Framework;
 
@@ -50,15 +51,6 @@ namespace Duffel.ApiClient.Tests
             AssertOfferLevelPassengerDataCorrect(offersResponse);
         }
 
-        private static void AssertOfferLevelPassengerDataCorrect(OffersResponse? offersResponse)
-        {
-            var passengers = offersResponse.Passengers!.ToList();
-            Check.That(passengers).HasSize(1);
-            var passenger = passengers.FirstOrDefault();
-            Check.That(passenger.PassengerType).Equals(PassengerType.Adult);
-            Check.That(passenger.Id).Equals("pas_0000AFANuVr4l0DI9G8Fk2");
-        }
-
         [Test]
         public void CanDeserializeSingleOfferResponse()
         {
@@ -71,6 +63,15 @@ namespace Duffel.ApiClient.Tests
             Check.That(offerResponse.PaymentRequirements.PaymentRequiredBy).Equals(new DateTime(2022, 5, 23, 22, 45, 0, DateTimeKind.Utc));
             
             // TODO: add more checks for full offer
+        }
+        
+        private static void AssertOfferLevelPassengerDataCorrect(OffersResponse? offersResponse)
+        {
+            var passengers = offersResponse.Passengers!.ToList();
+            Check.That(passengers).HasSize(1);
+            var passenger = passengers.FirstOrDefault();
+            Check.That(passenger.PassengerType).Equals(PassengerType.Adult);
+            Check.That(passenger.Id).Equals("pas_0000AFANuVr4l0DI9G8Fk2");
         }
 
         private static void AssertOffersDataCorrect(List<Offer> offers)
@@ -91,15 +92,20 @@ namespace Duffel.ApiClient.Tests
             Check.That(offer.PaymentRequirements.PaymentRequiredBy).IsNull();
             Check.That(offer.PaymentRequirements.PriceGuaranteeExpiresAt).IsNull();
 
+            AssertSliceDataOnOfferCorrect(offer);
+        }
+        
+        private static void AssertSliceDataOnOfferCorrect(Offer? offer)
+        {
             Check.That(offer.Slices).HasSize(1);
             var slice = offer.Slices.First();
-            
+
             Check.That(slice.FareBrandName).IsEqualTo("Refundable Main Cabin");
             Check.That(slice.Duration).IsEqualTo(TimeSpan.Parse("09:26:00"));
             Check.That(slice.Id).IsEqualTo("sli_0000AFANuyQ8YEtck6keHI");
             Check.That(slice.Origin).IsInstanceOf<Airport>().And.IsNotNull();
             Check.That(slice.Destination).IsInstanceOf<Airport>().And.IsNotNull();
-            
+
             Check.That(slice.Segments).HasSize(2);
             var segment = slice.Segments.First();
             Check.That(segment.Destination.IataCode).Equals("DTW");
@@ -110,6 +116,18 @@ namespace Duffel.ApiClient.Tests
             Check.That(segment.OperatingCarrier.AirlineName).Equals("Delta Air Lines");
             Check.That(segment.OperatingCarrier.IataCode).Equals("DL");
             Check.That(segment.OperatingCarrierFlightNumber).Equals("2282");
+
+            AssertPassengerDataOnSegmentValid(segment);
+        }
+
+        private static void AssertPassengerDataOnSegmentValid(Segment? segment)
+        {
+            Check.That(segment.Passengers).HasSize(1);
+            var passengerData = segment.Passengers.First();
+            Check.That(passengerData.FareBasisCode).Equals("KAVZA0M6");
+            Check.That(passengerData.CabinClass).Equals("economy");
+            Check.That(passengerData.CabinClassMarketingName).Equals("Economy");
+            Check.That(passengerData.PassengerId).Equals("pas_0000AFANuVr4l0DI9G8Fk2");
         }
 
         private static void AssertPassengerDataCorrect(Offer? offer)
@@ -127,7 +145,7 @@ namespace Duffel.ApiClient.Tests
             var owner = offer.Owner;
             Check.That(owner).IsNotNull();
             Check.That(owner.Id).IsEqualTo("arl_00009VME7DBgd2sGtBN3HF");
-            Check.That(owner.Name).IsEqualTo("Delta Air Lines");
+            Check.That(owner.AirlineName).IsEqualTo("Delta Air Lines");
             Check.That(owner.IataCode).IsEqualTo("DL");
         }
 

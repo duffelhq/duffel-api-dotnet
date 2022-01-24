@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Duffel.ApiClient.Converters;
 using Newtonsoft.Json;
 
@@ -6,8 +7,12 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses.Offers
 {
     public class Segment
     {
-        // TODO: passengers: id with fare basic, cabin class and baggages - need name
-        
+        /// <summary>
+        /// Additional segment-specific information about the passengers included in the offer (e.g. their baggage allowance and the cabin class they will be travelling in)
+        /// </summary>
+        [JsonProperty("passengers")]
+        public IEnumerable<SegmentPassenger> Passengers { get; set; }
+
         /// <summary>
         /// The terminal at the origin airport from which the segment is scheduled to depart
         /// Nullable
@@ -19,7 +24,7 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses.Offers
         /// The airport from which the flight is scheduled to depart
         /// </summary>
         [JsonProperty("origin")]
-        public Airport Origin { get; set; } // TODO: Can this be a City?
+        public Airport Origin { get; set; } // TODO: Can this be a City as well?
         
         /// <summary>
         /// The flight number assigned by the <see cref="OperatingCarrier"/>.

@@ -69,7 +69,7 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses
         /// The airline which provided the offer
         /// </summary>
         [JsonProperty("owner")]
-        public Owner Owner { get; set; }
+        public Airline Owner { get; set; }
         
         /// <summary>
         /// Whether the offer request was created in live mode.
