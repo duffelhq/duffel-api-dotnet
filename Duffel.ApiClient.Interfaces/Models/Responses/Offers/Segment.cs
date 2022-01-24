@@ -11,7 +11,7 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses.Offers
         /// Additional segment-specific information about the passengers included in the offer (e.g. their baggage allowance and the cabin class they will be travelling in)
         /// </summary>
         [JsonProperty("passengers")]
-        public IEnumerable<PassengerSegmentData> Passengers { get; set; }
+        public IEnumerable<SegmentPassenger> Passengers { get; set; }
 
         /// <summary>
         /// The terminal at the origin airport from which the segment is scheduled to depart

@@ -2,11 +2,7 @@ using Newtonsoft.Json;
 
 namespace Duffel.ApiClient.Interfaces.Models.Responses.Offers
 {
-
-    // Note this is returned as 'passengers' under a segment,
-    // but this is not really a fully fledged passenger payload
-    // Using this name till better alternative is found
-    public class PassengerSegmentData
+    public class SegmentPassenger
     {
         /// <summary>
         /// The identifier for the passenger.
