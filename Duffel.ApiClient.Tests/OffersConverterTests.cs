@@ -45,6 +45,10 @@ namespace Duffel.ApiClient.Tests
         {
             var offersResponse = OffersResponseConverter.Deserialize(JsonFixture.Load("offers_response_full_ow_sfo_jfk.json"));
             Check.That(offersResponse).IsNotNull().And.IsInstanceOf<OffersResponse>();
+
+            Check.That(offersResponse.Id).Equals("orq_0000AFANuVr4l0DI9G8Fk0");
+            Check.That(offersResponse.IsLiveMode).IsFalse();
+            Check.That(offersResponse.CreatedAt).Equals(DateTime.Parse("2022-01-06T14:39:20.094701Z"));
             
             AssertSlicesDataCorrect(offersResponse.Slices!.ToList());
             AssertOffersDataCorrect(offersResponse.Offers!.ToList());
