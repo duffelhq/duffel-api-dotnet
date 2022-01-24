@@ -7,5 +7,6 @@ namespace Duffel.ApiClient.Interfaces
     public interface IDuffelApiClient
     {
         Task<OffersResponse> CreateOffersRequest(OffersRequest request);
+        Task<Offer> GetOffer(string offerId);
     }
 }

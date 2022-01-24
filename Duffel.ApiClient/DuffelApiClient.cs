@@ -35,5 +35,12 @@ namespace Duffel.ApiClient
             var content = await result.Content.ReadAsStringAsync();
             return OffersResponseConverter.Deserialize(content);
         }
+
+        public async Task<Offer> GetOffer(string offerId)
+        {
+            var result = await _httpClient.GetAsync($"air/offers/{offerId}");
+            var content = await result.Content.ReadAsStringAsync();
+            return SingleOfferResponseConverter.Deserialize(content);
+        }
     }
 }
