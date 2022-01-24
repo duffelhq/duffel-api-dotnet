@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
@@ -17,9 +18,31 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses
         [JsonProperty("offers")]
         public IEnumerable<Offer>? Offers { get; set; }
         
+        /// <summary>
+        /// The passengers who want to travel
+        /// </summary>
         [JsonProperty("passengers")]
         public IEnumerable<Passenger>? Passengers { get; set; }
         
-        // TODO: live_mode
+        /// <summary>
+        /// Whether the offer request was created in live mode.
+        /// This field will be set to true if the offer request was created in live mode, or false if it was created in test mode
+        /// </summary>
+        [JsonProperty("live_mode")]
+        public bool IsLiveMode { get; set; }
+        
+        /// <summary>
+        /// Duffel's unique identifier for the offer request
+        /// </summary>
+        [JsonProperty("id")]
+        public string Id { get; set; }
+        
+        /// <summary>
+        /// The datetime at which the offer request was created
+        /// </summary>
+        [JsonProperty("created_at")]
+        public DateTime CreatedAt { get; set; }
+        
+        // TODO: include cabin class. Note when the cabin_class is null, that means the request for was ANY cabin class type
     }
 }
