@@ -48,6 +48,9 @@ namespace Duffel.ApiClient.Converters
             Payload = payload;
         }
         
+        /// <summary>
+        /// Payload retrieved from the API that caused an issue
+        /// </summary>
         public string Payload { get; }
     }
 }
