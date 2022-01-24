@@ -1,0 +1,25 @@
+using System;
+using Duffel.ApiClient.Interfaces.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace Duffel.ApiClient.Converters
+{
+    public class CabinClassJsonConverter : StringEnumConverter
+    {
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+        {
+            switch (value)
+            {
+                case CabinClass.Any:
+                    // API expects to skip the property for ANY cabin class
+                    break;
+                
+                default:
+                    // default behaviour 
+                    base.WriteJson(writer, value, serializer);
+                    break;
+            }
+        }
+    }
+}
