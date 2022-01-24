@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Duffel.ApiClient.Converters;
 using Newtonsoft.Json;
 
 namespace Duffel.ApiClient.Interfaces.Models.Responses
@@ -43,6 +44,8 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; }
         
-        // TODO: include cabin class. Note when the cabin_class is null, that means the request for was ANY cabin class type
+        [JsonProperty("cabin_class")]
+        [JsonConverter(typeof(CabinClassJsonConverter))]
+        public CabinClass CabinClass { get; set; }
     }
 }

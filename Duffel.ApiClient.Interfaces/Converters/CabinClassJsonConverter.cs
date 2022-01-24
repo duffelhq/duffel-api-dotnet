@@ -21,5 +21,10 @@ namespace Duffel.ApiClient.Converters
                     break;
             }
         }
+
+        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
+        {
+            return reader.Value == null ? CabinClass.Any : base.ReadJson(reader, objectType, existingValue, serializer);
+        }
     }
 }
