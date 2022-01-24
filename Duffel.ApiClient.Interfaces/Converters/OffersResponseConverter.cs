@@ -48,6 +48,6 @@ namespace Duffel.ApiClient.Converters
             Payload = payload;
         }
         
-        private string Payload { get; }
+        public string Payload { get; }
     }
 }
