@@ -105,9 +105,28 @@ namespace Duffel.ApiClient
         {
             return await RetrievePaginatedContent<Airport>($"air/airports?limit={limit}&{pageId}");
         }
-        
-        
-        
+
+        public async Task<DuffelResponsePage<IEnumerable<Airline>>> ListAirlines()
+        {
+            return await RetrievePaginatedContent<Airline>("air/airlines");
+        }
+
+        public async Task<DuffelResponsePage<IEnumerable<Airline>>> ListAirlines(string pageId)
+        {
+            return await RetrievePaginatedContent<Airline>($"air/airlines?{pageId}");
+        }
+
+        public async Task<DuffelResponsePage<IEnumerable<Airline>>> ListAirlines(int limit)
+        {
+            return await RetrievePaginatedContent<Airline>($"air/airlines?limit={limit}");
+        }
+
+        public async Task<DuffelResponsePage<IEnumerable<Airline>>> ListAirlines(string pageId, int limit)
+        {
+            return await RetrievePaginatedContent<Airline>($"air/airlines?limit={limit}&{pageId}");
+        }
+
+
         private async Task<DuffelResponsePage<IEnumerable<T>>> RetrievePaginatedContent<T>(string? url)
         {
             var result = await _httpClient.GetAsync(url);

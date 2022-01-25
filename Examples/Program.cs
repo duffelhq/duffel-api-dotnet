@@ -15,6 +15,7 @@ namespace Examples
         public static async Task Main(string[] args)
         {
             var client = new DuffelApiClient(args[0]);
+            
             var offersRequest = new OffersRequest
             {
                 Passengers = new List<Passenger> { new Passenger { PassengerType = PassengerType.Adult } },
@@ -51,6 +52,14 @@ namespace Examples
                     Console.WriteLine(
                         $"Owner: {offer.Owner.AirlineName}, Total:{offer.TotalCurrency} {offer.TotalAmount}, emission: {offer.TotalEmissionsKg} kg");
                 }
+                
+                var pageOfAirlines = await client.ListAirlines(limit: 1);
+                Console.WriteLine($"Retrieved airline {pageOfAirlines.Data.First().AirlineName} via ListOffers");
+                while (!string.IsNullOrEmpty(pageOfAirlines.NextPage))
+                {
+                    pageOfAirlines = await client.ListAirlines(pageOfAirlines.NextPage, pageOfAirlines.Limit);
+                    Console.WriteLine($"Retrieved airline {pageOfAirlines.Data.First().AirlineName} via ListOffers");
+                }
 
                 var pageOfAirports = await client.ListAirports(limit:1);
                 Console.WriteLine($"Retrieved airport {pageOfAirports.Data.First().PlaceName} via ListOffers");
@@ -59,6 +68,8 @@ namespace Examples
                     pageOfAirports = await client.ListAirports(pageOfAirports.NextPage, pageOfAirports.Limit);
                     Console.WriteLine($"Retrieved airport {pageOfAirports.Data.First().PlaceName} via ListOffers");
                 }
+
+
             }
             catch (ApiDeserializationException ade)
             {

@@ -21,5 +21,10 @@ namespace Duffel.ApiClient.Interfaces
         Task<DuffelResponsePage<IEnumerable<Airport>>> ListAirports(string pageId);
         Task<DuffelResponsePage<IEnumerable<Airport>>> ListAirports(int limit);
         Task<DuffelResponsePage<IEnumerable<Airport>>> ListAirports(string pageId, int limit);
+        
+        Task<DuffelResponsePage<IEnumerable<Airline>>> ListAirlines();
+        Task<DuffelResponsePage<IEnumerable<Airline>>> ListAirlines(string pageId);
+        Task<DuffelResponsePage<IEnumerable<Airline>>> ListAirlines(int limit);
+        Task<DuffelResponsePage<IEnumerable<Airline>>> ListAirlines(string pageId, int limit);
     }
 }
