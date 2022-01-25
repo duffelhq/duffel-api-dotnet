@@ -14,7 +14,7 @@ namespace Duffel.ApiClient.Tests
     public class OffersConverterTests
     {
         [Test]
-        public void CanSerializeOffersRequest()
+        public void CanSerializeOffersRequestWithNoCabinClass()
         {
             var request = new OffersRequest
             {
@@ -40,11 +40,48 @@ namespace Duffel.ApiClient.Tests
             Check.That(result).Equals("{\"data\":{\"passengers\":[{\"type\":\"adult\"},{\"type\":\"child\"},{\"type\":\"infant_without_seat\"}],\"slices\":[{\"origin\":\"SFO\",\"destination\":\"LAX\",\"departure_date\":\"2020-01-01\"}],\"requested_sources\":[\"united\"]}}");
         }
         
+        [TestCase(CabinClass.Any, "")]
+        [TestCase(CabinClass.PremiumEconomy, ",\"cabin_class\":\"premium_economy\"")]
+        public void CanSerializeOffersRequestWithSetCabinClass(CabinClass cabinClass, string cabinClassPayload)
+        {
+            var request = new OffersRequest
+            {
+                Passengers = new List<Interfaces.Models.Requests.Passenger>
+                {
+                    new() { PassengerType = PassengerType.Adult },
+                    new() { PassengerType = PassengerType.Child },
+                    new() { PassengerType = PassengerType.Infant }
+                },
+                RequestedSources = new List<string> { "united" },
+                Slices = new List<Interfaces.Models.Requests.Slice>
+                {
+                    new()
+                    {
+                        Origin = "SFO",
+                        Destination = "LAX",
+                        DepartureDate = "2020-01-01"
+                    }
+                },
+                CabinClass = cabinClass
+            };
+
+            
+            var result = OffersResponseConverter.Serialize(request);
+
+            var expectedPayload = "{\"data\":{\"passengers\":[{\"type\":\"adult\"},{\"type\":\"child\"},{\"type\":\"infant_without_seat\"}],\"slices\":[{\"origin\":\"SFO\",\"destination\":\"LAX\",\"departure_date\":\"2020-01-01\"}],\"requested_sources\":[\"united\"]" + cabinClassPayload + "}}";
+            Check.That(result).Equals(expectedPayload);
+        }
+
+        
         [Test]
         public void CanDeserializeOffersResponse()
         {
             var offersResponse = OffersResponseConverter.Deserialize(JsonFixture.Load("offers_response_full_ow_sfo_jfk.json"));
             Check.That(offersResponse).IsNotNull().And.IsInstanceOf<OffersResponse>();
+
+            Check.That(offersResponse.Id).Equals("orq_0000AFANuVr4l0DI9G8Fk0");
+            Check.That(offersResponse.IsLiveMode).IsFalse();
+            Check.That(offersResponse.CreatedAt).Equals(DateTime.Parse("2022-01-06T14:39:20.094701Z"));
             
             AssertSlicesDataCorrect(offersResponse.Slices!.ToList());
             AssertOffersDataCorrect(offersResponse.Offers!.ToList());
@@ -138,7 +175,7 @@ namespace Duffel.ApiClient.Tests
             Check.That(segment.Passengers).HasSize(1);
             var passengerData = segment.Passengers.First();
             Check.That(passengerData.FareBasisCode).Equals("KAVZA0M6");
-            Check.That(passengerData.CabinClass).Equals("economy");
+            Check.That(passengerData.CabinClass).Equals(CabinClass.Economy);
             Check.That(passengerData.CabinClassMarketingName).Equals("Economy");
             Check.That(passengerData.PassengerId).Equals("pas_0000AFANuVr4l0DI9G8Fk2");
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Duffel.ApiClient;
+using Duffel.ApiClient.Converters;
 using Duffel.ApiClient.Interfaces.Models;
 using Duffel.ApiClient.Interfaces.Models.Requests;
 
@@ -29,16 +30,40 @@ namespace Examples
                     }
                 }
             };
-                
-            var offersResponse = await client.CreateOffersRequest(offersRequest);
-            var offerToRender = offersResponse.Offers!
-                .OrderBy(offer => offer.TotalEmissionsKg)
-                .Select(offer => new
+
+            try
+            {
+                var offersResponse = await client.CreateOffersRequest(offersRequest);
+                Console.WriteLine($"Retrieved {offersResponse.Offers.Count()} offers, Duffel offers request id: {offersResponse.Id}.");
+
+                var pageOfOffers = await client.ListOffers(offersResponse.Id, 1);
+                Console.WriteLine($"Retrieved offer {pageOfOffers.Data.First().Id} via ListOffers");
+                while (!string.IsNullOrEmpty(pageOfOffers.NextPage))
                 {
-                    Id = offer.Id,
-                    Airline = offer.Owner,
-                    Price = $"{offer.TotalAmount} [{offer.TotalCurrency}]",
-                });
+                    pageOfOffers = await client.ListOffers(offersResponse.Id, pageOfOffers.NextPage, pageOfOffers.Limit);
+                    Console.WriteLine($"Retrieved offer {pageOfOffers.Data.First().Id} via ListOffers");
+                }
+
+                foreach (var offerInList in offersResponse.Offers.OrderBy(o => int.Parse(o.TotalEmissionsKg)))
+                {
+                    var offer = await client.GetSingleOffer(offerInList.Id);
+                    Console.WriteLine($"Retrieved a single offer, ID: {offer.Id}");
+                    Console.WriteLine(
+                        $"Owner: {offer.Owner.AirlineName}, Total:{offer.TotalCurrency} {offer.TotalAmount}, emission: {offer.TotalEmissionsKg} kg");
+                }
+
+                var pageOfAirports = await client.ListAirports(limit:1);
+                Console.WriteLine($"Retrieved airport {pageOfAirports.Data.First().PlaceName} via ListOffers");
+                while (!string.IsNullOrEmpty(pageOfAirports.NextPage))
+                {
+                    pageOfAirports = await client.ListAirports(pageOfAirports.NextPage, pageOfAirports.Limit);
+                    Console.WriteLine($"Retrieved airport {pageOfAirports.Data.First().PlaceName} via ListOffers");
+                }
+            }
+            catch (ApiDeserializationException ade)
+            {
+                Console.WriteLine(ade.Payload);
+            }
         }
 
     }
