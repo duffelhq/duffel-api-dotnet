@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Duffel.ApiClient.Converters
 {
-    public class StringDurationToTimeStampJsonConverter : JsonConverter
+    internal class StringDurationToTimeStampJsonConverter : JsonConverter
     {
         public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {

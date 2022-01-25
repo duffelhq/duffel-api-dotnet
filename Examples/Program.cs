@@ -34,12 +34,19 @@ namespace Examples
             try
             {
                 var offersResponse = await client.CreateOffersRequest(offersRequest);
-                Console.WriteLine(
-                    $"Retrieved {offersResponse.Offers.Count()} offers, Duffel offers request id: {offersResponse.Id}.");
+                Console.WriteLine($"Retrieved {offersResponse.Offers.Count()} offers, Duffel offers request id: {offersResponse.Id}.");
+
+                var pageOfOffers = await client.ListOffers(offersResponse.Id, 1);
+                Console.WriteLine($"Retrieved offer {pageOfOffers.Data.First().Id} via ListOffers");
+                while (!string.IsNullOrEmpty(pageOfOffers.NextPage))
+                {
+                    pageOfOffers = await client.ListOffers(offersResponse.Id, pageOfOffers.NextPage, pageOfOffers.Limit);
+                    Console.WriteLine($"Retrieved offer {pageOfOffers.Data.First().Id} via ListOffers");
+                }
 
                 foreach (var offerInList in offersResponse.Offers.OrderBy(o => int.Parse(o.TotalEmissionsKg)))
                 {
-                    var offer = await client.GetOffer(offerInList.Id);
+                    var offer = await client.GetSingleOffer(offerInList.Id);
                     Console.WriteLine($"Retrieved a single offer, ID: {offer.Id}");
                     Console.WriteLine(
                         $"Owner: {offer.Owner.AirlineName}, Total:{offer.TotalCurrency} {offer.TotalAmount}, emission: {offer.TotalEmissionsKg} kg");
