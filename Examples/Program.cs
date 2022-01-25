@@ -51,6 +51,14 @@ namespace Examples
                     Console.WriteLine(
                         $"Owner: {offer.Owner.AirlineName}, Total:{offer.TotalCurrency} {offer.TotalAmount}, emission: {offer.TotalEmissionsKg} kg");
                 }
+
+                var pageOfAirports = await client.ListAirports(limit:1);
+                Console.WriteLine($"Retrieved airport {pageOfAirports.Data.First().PlaceName} via ListOffers");
+                while (!string.IsNullOrEmpty(pageOfAirports.NextPage))
+                {
+                    pageOfAirports = await client.ListAirports(pageOfAirports.NextPage, pageOfAirports.Limit);
+                    Console.WriteLine($"Retrieved airport {pageOfAirports.Data.First().PlaceName} via ListOffers");
+                }
             }
             catch (ApiDeserializationException ade)
             {

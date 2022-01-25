@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Duffel.ApiClient.Converters;
 using Duffel.ApiClient.Interfaces;
+using Duffel.ApiClient.Interfaces.Models;
 using Duffel.ApiClient.Interfaces.Models.Requests;
 using Duffel.ApiClient.Interfaces.Models.Responses;
 
@@ -61,35 +62,58 @@ namespace Duffel.ApiClient
         /// <returns></returns>
         public async Task<DuffelResponsePage<IEnumerable<Offer>>> ListOffers(string offersRequestId)
         {
-            var result = await _httpClient.GetAsync($"air/offers/?offer_request_id={offersRequestId}");
-            var content = await result.Content.ReadAsStringAsync();
-            return PagedOffersResponseConverter.Deserialize(content);
+            var url = $"air/offers/?offer_request_id={offersRequestId}";
+            return await RetrievePaginatedContent<Offer>(url);
         }
         
-        public async Task<DuffelResponsePage<IEnumerable<Offer>>> ListOffers(string offersRequestId, string pageId = null)
+        public async Task<DuffelResponsePage<IEnumerable<Offer>>> ListOffers(string offersRequestId, string pageId)
         {
             pageId = string.IsNullOrEmpty(pageId.Trim()) ? "" : $"&{pageId}";
-            
-            var result = await _httpClient.GetAsync($"air/offers/?offer_request_id={offersRequestId}{pageId}");
-            var content = await result.Content.ReadAsStringAsync();
-            return PagedOffersResponseConverter.Deserialize(content);
+            var url = $"air/offers/?offer_request_id={offersRequestId}{pageId}";
+            return await RetrievePaginatedContent<Offer>(url);        
         }
         
         public async Task<DuffelResponsePage<IEnumerable<Offer>>> ListOffers(string offersRequestId, int limit = 50)
         {
-            var result = await _httpClient.GetAsync($"air/offers/?offer_request_id={offersRequestId}&limit={limit}");
-            var content = await result.Content.ReadAsStringAsync();
-            return PagedOffersResponseConverter.Deserialize(content);
+            var url = $"air/offers/?offer_request_id={offersRequestId}&limit={limit}";
+            return await RetrievePaginatedContent<Offer>(url);
         }
         
-        public async Task<DuffelResponsePage<IEnumerable<Offer>>> ListOffers(string offersRequestId, string pageId = null, int limit = 50)
+        public async Task<DuffelResponsePage<IEnumerable<Offer>>> ListOffers(string offersRequestId, string pageId, int limit = 50)
         {
             pageId = string.IsNullOrEmpty(pageId.Trim()) ? "" : $"&{pageId}";
-            
-            var result = await _httpClient.GetAsync(
-                $"air/offers/?offer_request_id={offersRequestId}&limit={limit}{pageId}");
-            var content = await result.Content.ReadAsStringAsync();
-            return PagedOffersResponseConverter.Deserialize(content);
+            var url = $"air/offers/?offer_request_id={offersRequestId}&limit={limit}{pageId}";
+            return await RetrievePaginatedContent<Offer>(url);
         }
+
+        public async Task<DuffelResponsePage<IEnumerable<Airport>>> ListAirports()
+        {
+            return await RetrievePaginatedContent<Airport>("air/airports");
+        }
+
+        public async Task<DuffelResponsePage<IEnumerable<Airport>>> ListAirports(string pageId)
+        {
+            return await RetrievePaginatedContent<Airport>($"air/airports?{pageId}");
+        }
+
+        public async Task<DuffelResponsePage<IEnumerable<Airport>>> ListAirports(int limit)
+        {
+            return await RetrievePaginatedContent<Airport>($"air/airports?limit={limit}");
+        }
+
+        public async Task<DuffelResponsePage<IEnumerable<Airport>>> ListAirports(string pageId, int limit)
+        {
+            return await RetrievePaginatedContent<Airport>($"air/airports?limit={limit}&{pageId}");
+        }
+        
+        
+        
+        private async Task<DuffelResponsePage<IEnumerable<T>>> RetrievePaginatedContent<T>(string? url)
+        {
+            var result = await _httpClient.GetAsync(url);
+            var content = await result.Content.ReadAsStringAsync();
+            return PagedResponseConverter.Deserialize<T>(content);
+        }
+
     }
 }
