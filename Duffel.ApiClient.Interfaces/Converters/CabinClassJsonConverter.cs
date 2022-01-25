@@ -5,7 +5,7 @@ using Newtonsoft.Json.Converters;
 
 namespace Duffel.ApiClient.Converters
 {
-    public class CabinClassJsonConverter : StringEnumConverter
+    internal class CabinClassJsonConverter : StringEnumConverter
     {
         public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {
