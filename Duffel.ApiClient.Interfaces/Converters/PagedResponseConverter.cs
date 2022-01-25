@@ -5,12 +5,12 @@ using Newtonsoft.Json;
 
 namespace Duffel.ApiClient.Converters
 {
-    public static class PagedOffersResponseConverter
+    public static class PagedResponseConverter
     {
-        public static DuffelResponsePage<IEnumerable<Offer>> Deserialize(string payload)
+        public static DuffelResponsePage<IEnumerable<T>> Deserialize<T>(string payload)
         {
-            var wrappedResponse = JsonConvert.DeserializeObject<DuffelResponseWrapper<IEnumerable<Offer>>>(payload);
-            return new DuffelResponsePage<IEnumerable<Offer>>(
+            var wrappedResponse = JsonConvert.DeserializeObject<DuffelResponseWrapper<IEnumerable<T>>>(payload);
+            return new DuffelResponsePage<IEnumerable<T>>(
                 wrappedResponse.Data,
                 wrappedResponse.Metadata.Before,
                 wrappedResponse.Metadata.After,
