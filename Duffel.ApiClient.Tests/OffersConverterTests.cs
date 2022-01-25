@@ -98,7 +98,20 @@ namespace Duffel.ApiClient.Tests
             Check.That(offerResponse.PaymentRequirements.RequiresInstantPayment).IsFalse();
             Check.That(offerResponse.PaymentRequirements.PriceGuaranteeExpiresAt).IsNull();
             Check.That(offerResponse.PaymentRequirements.PaymentRequiredBy).Equals(new DateTime(2022, 5, 23, 22, 45, 0, DateTimeKind.Utc));
-            
+
+            var baggageAllowances = offerResponse
+                .Slices.FirstOrDefault()!
+                .Segments.FirstOrDefault()!
+                .Passengers.FirstOrDefault()!
+                .BaggageAllowances.OrderBy(allowance => allowance.BaggageType);
+
+            Check.That(baggageAllowances).HasSize(2);
+            Check.That(baggageAllowances.First().BaggageType).Equals(BaggageType.Checked);
+            Check.That(baggageAllowances.First().Quantity).Equals(2);
+            Check.That(baggageAllowances.Last().BaggageType).Equals(BaggageType.CarryOn);
+            Check.That(baggageAllowances.Last().Quantity).Equals(2);
+
+
             // TODO: add more checks for full offer
         }
         
