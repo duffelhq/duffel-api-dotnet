@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Duffel.ApiClient.Converters;
 using Duffel.ApiClient.Interfaces;
-using Duffel.ApiClient.Interfaces.Models;
-using Duffel.ApiClient.Interfaces.Models.Requests;
 using Duffel.ApiClient.Interfaces.Models.Responses;
+using Duffel.ApiClient.Interfaces.Resources;
 
 namespace Duffel.ApiClient
 {
@@ -15,9 +13,16 @@ namespace Duffel.ApiClient
     {
         private readonly HttpClient _httpClient = new HttpClient();
         
+        public Airlines Airlines { get; }
+        public Airports Airports { get; }
+        public Aircrafts Aircrafts { get; }
+        
+        public OfferRequests OfferRequests { get; }
+        
+        public Offers Offers { get; }
+        
         public DuffelApiClient(string accessToken)
         {
-            
             _httpClient.BaseAddress = new Uri("https://api.duffel.com");
             
             _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {accessToken}");
@@ -25,18 +30,15 @@ namespace Duffel.ApiClient
             _httpClient.DefaultRequestHeaders.Add("Duffel-Version", "beta");
             
             //httpClient.DefaultRequestHeaders.Add("Accept-Encoding", "gzip");
-            
-        }
 
-        public async Task<OffersResponse> CreateOffersRequest(OffersRequest request)
-        {
-            // Note: temp code. This will be refactored to use streams, injectable http client, etc.
-            var payload = OffersResponseConverter.Serialize(request);
-            var result = await _httpClient.PostAsync("air/offer_requests", 
-                new StringContent(payload,  Encoding.UTF8, "application/json"));
-            var content = await result.Content.ReadAsStringAsync();
-            return OffersResponseConverter.Deserialize(content);
+            Airlines = new Airlines(_httpClient);
+            Airports = new Airports(_httpClient);
+            Aircrafts = new Aircrafts(_httpClient);
+            OfferRequests = new OfferRequests(_httpClient);
+            Offers = new Offers(_httpClient);
         }
+        
+        /*
 
         /// <summary>
         /// You should use this API to get the complete, up-to-date information about an offer. This endpoint does not guarantee that the offer will be available at the time of booking.
@@ -46,17 +48,17 @@ namespace Duffel.ApiClient
         /// </summary>
         /// <param name="offerId">Duffel's unique identifier for the offer</param>
         /// <returns></returns>
-        public async Task<Offer> GetSingleOffer(string offerId)
+        public async Task<Offer> GetOffer(string offerId)
         {
             var result = await _httpClient.GetAsync($"air/offers/{offerId}");
             var content = await result.Content.ReadAsStringAsync();
-            return SingleOfferResponseConverter.Deserialize(content);
+            return SingleItemResponseConverter.Deserialize<Offer>(content);
         }
 
         /// <summary>
         /// Retrieves a list of offers for a given offer request specified by its ID. Unless you specify a sort parameter, the results may be returned in any order.
         /// This endpoint does not return the complete, up-to-date information on each offer.
-        /// The <see cref="GetSingleOffer"/> endpoint should be called for a given offer in order to get complete and up-to-date information.
+        /// The <see cref="GetOffer"/> endpoint should be called for a given offer in order to get complete and up-to-date information.
         /// </summary>
         /// <param name="offersRequestId"></param>
         /// <returns></returns>
@@ -85,54 +87,6 @@ namespace Duffel.ApiClient
             var url = $"air/offers/?offer_request_id={offersRequestId}&limit={limit}{pageId}";
             return await RetrievePaginatedContent<Offer>(url);
         }
-
-        public async Task<DuffelResponsePage<IEnumerable<Airport>>> ListAirports()
-        {
-            return await RetrievePaginatedContent<Airport>("air/airports");
-        }
-
-        public async Task<DuffelResponsePage<IEnumerable<Airport>>> ListAirports(string pageId)
-        {
-            return await RetrievePaginatedContent<Airport>($"air/airports?{pageId}");
-        }
-
-        public async Task<DuffelResponsePage<IEnumerable<Airport>>> ListAirports(int limit)
-        {
-            return await RetrievePaginatedContent<Airport>($"air/airports?limit={limit}");
-        }
-
-        public async Task<DuffelResponsePage<IEnumerable<Airport>>> ListAirports(string pageId, int limit)
-        {
-            return await RetrievePaginatedContent<Airport>($"air/airports?limit={limit}&{pageId}");
-        }
-
-        public async Task<DuffelResponsePage<IEnumerable<Airline>>> ListAirlines()
-        {
-            return await RetrievePaginatedContent<Airline>("air/airlines");
-        }
-
-        public async Task<DuffelResponsePage<IEnumerable<Airline>>> ListAirlines(string pageId)
-        {
-            return await RetrievePaginatedContent<Airline>($"air/airlines?{pageId}");
-        }
-
-        public async Task<DuffelResponsePage<IEnumerable<Airline>>> ListAirlines(int limit)
-        {
-            return await RetrievePaginatedContent<Airline>($"air/airlines?limit={limit}");
-        }
-
-        public async Task<DuffelResponsePage<IEnumerable<Airline>>> ListAirlines(string pageId, int limit)
-        {
-            return await RetrievePaginatedContent<Airline>($"air/airlines?limit={limit}&{pageId}");
-        }
-
-
-        private async Task<DuffelResponsePage<IEnumerable<T>>> RetrievePaginatedContent<T>(string? url)
-        {
-            var result = await _httpClient.GetAsync(url);
-            var content = await result.Content.ReadAsStringAsync();
-            return PagedResponseConverter.Deserialize<T>(content);
-        }
-
+        */
     }
 }

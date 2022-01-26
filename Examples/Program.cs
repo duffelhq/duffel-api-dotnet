@@ -6,6 +6,10 @@ using Duffel.ApiClient;
 using Duffel.ApiClient.Converters;
 using Duffel.ApiClient.Interfaces.Models;
 using Duffel.ApiClient.Interfaces.Models.Requests;
+using Duffel.ApiClient.Interfaces.Models.Responses;
+using Newtonsoft.Json;
+using Passenger = Duffel.ApiClient.Interfaces.Models.Requests.Passenger;
+using Slice = Duffel.ApiClient.Interfaces.Models.Requests.Slice;
 
 namespace Examples
 {
@@ -31,7 +35,76 @@ namespace Examples
                     }
                 }
             };
+            
+            Console.WriteLine("Create a new offers request (search)...");
+            var offersResponse = await client.OfferRequests.Create(offersRequest);
+            Console.WriteLine($"Created a new offers request, with ID: {offersResponse.Id}");
+            
+            //Console.WriteLine("Total offer requests:");
+            //var res = await client.OfferRequests.GetAll();
+            //Console.WriteLine($"\t{res.Count()}");
+            
+            Console.WriteLine($"Retrieving data for offer request {offersResponse.Id}...");
+            var result = await client.OfferRequests.Get(offersResponse.Id);
+            Console.WriteLine($"Offers on that request: {result.Offers.Count()}");
+            
+            Console.WriteLine("Retrieving all offers one by one...");
+            foreach (var offer in result.Offers)
+            {
+                try
+                {
+                    var o = await client.Offers.Get(offer.Id, true);
+                    Console.WriteLine($"Retrieved offer with id: {offer.Id}");
+                }
+                catch (ApiDeserializationException e)
+                {
+                    Console.WriteLine(e.Payload);
+                    throw;
+                }
+            }
 
+            Console.WriteLine("Retrieving all offers via offer request id...");
+            var allOffersInOfferRequest = await client.Offers.Get(offerRequestId: result.Id);
+            
+            
+            var offerForUpdate = await client.Offers.Get(result.Offers.First().Id, true);
+            var passengerForUpdate = offerForUpdate.Passengers.First();
+            
+            Console.WriteLine($"Updating passenger details to name, age & include loyalty programme account...");
+            
+            passengerForUpdate.FamilyName = "Doe";
+            passengerForUpdate.GivenName = "Joe";
+            passengerForUpdate.Age = 99;
+            
+            passengerForUpdate.LoyaltyProgrammeAccounts = new List<LoyaltyProgrammeAccount>
+            {
+                new LoyaltyProgrammeAccount
+                {
+                    AccountNumber = "accno_001",
+                    AirlineIataCode = "aircode_567"
+                }
+            };
+
+            var updatedPassenger =
+                await client.Offers.UpdatePassenger(allOffersInOfferRequest.Data.First().Id, passengerForUpdate);
+            
+            Console.WriteLine($"Data after update: {JsonConvert.SerializeObject(updatedPassenger.LoyaltyProgrammeAccounts)}");
+            
+            Console.Write("Getting airports: ");
+            var airports = await client.Airports.GetAll();
+            Console.WriteLine($" {airports.Count()} in total");
+            
+            Console.Write("Getting airlines: ");
+            var airlines = await client.Airlines.GetAll();
+            Console.WriteLine($" {airlines.Count()} in total");
+            
+            Console.Write("Getting aircrafts: ");
+            var aircrafts = await client.Aircrafts.GetAll();
+            Console.WriteLine($" {aircrafts.Count()} in total");
+
+            
+
+            /*
             try
             {
                 var offersResponse = await client.CreateOffersRequest(offersRequest);
@@ -47,7 +120,7 @@ namespace Examples
 
                 foreach (var offerInList in offersResponse.Offers.OrderBy(o => int.Parse(o.TotalEmissionsKg)))
                 {
-                    var offer = await client.GetSingleOffer(offerInList.Id);
+                    var offer = await client.GetOffer(offerInList.Id);
                     Console.WriteLine($"Retrieved a single offer, ID: {offer.Id}");
                     Console.WriteLine(
                         $"Owner: {offer.Owner.AirlineName}, Total:{offer.TotalCurrency} {offer.TotalAmount}, emission: {offer.TotalEmissionsKg} kg");
@@ -75,6 +148,7 @@ namespace Examples
             {
                 Console.WriteLine(ade.Payload);
             }
+            */
         }
 
     }
