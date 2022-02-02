@@ -9,5 +9,6 @@ namespace Duffel.ApiClient.Interfaces
          Airports Airports { get; }
          Offers Offers { get; }
          OfferRequests OfferRequests { get; }
+         Orders Orders { get; }
     }
 }

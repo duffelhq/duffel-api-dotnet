@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Duffel.ApiClient;
 using Duffel.ApiClient.Converters;
 using Duffel.ApiClient.Interfaces.Models;
+using Duffel.ApiClient.Interfaces.Models.IdentityDocuments;
+using Duffel.ApiClient.Interfaces.Models.Payments;
 using Duffel.ApiClient.Interfaces.Models.Requests;
 using Duffel.ApiClient.Interfaces.Models.Responses;
 using Newtonsoft.Json;
@@ -87,6 +89,49 @@ namespace Examples
 
             var updatedPassenger =
                 await client.Offers.UpdatePassenger(allOffersInOfferRequest.Data.First().Id, passengerForUpdate);
+            
+            var orderCreateRequest = new OrderRequest
+            {
+                OrderType = OrderType.Instant,
+                Passengers = new List<OrderPassenger>
+                {
+                    new OrderPassenger
+                    {
+                        BornOn = "2000-01-01",
+                        Email = "test@test.com",
+                        FamilyName = updatedPassenger.GivenName,
+                        Gender = Gender.Male,
+                        GivenName = updatedPassenger.GivenName,
+                        Id = updatedPassenger.Id,
+                        IdentityDocuments = new List<IdentityDocument>
+                        {
+                            new Passport
+                            {
+                                ExpiresOn = "2033-03-03",
+                                IssuingCountryCode = "GB",
+                                UniqueIdentifier = "12345 678"
+                            }
+                        },
+                        PassengerType = PassengerType.Adult,
+                        PhoneNumber = "+44 7654544321",
+                        InfantPassengerId = null,
+                        Title = "Mr"
+                    }
+                },
+                Payments = new List<Payment>
+                {
+                    new Balance
+                    {
+                        Amount = allOffersInOfferRequest.Data.First().TotalAmount,
+                        Currency = allOffersInOfferRequest.Data.First().TotalCurrency
+                    }
+                },
+                SelectedOffers = new List<string> { allOffersInOfferRequest.Data.First().Id },
+            };
+
+            Console.WriteLine("Attempting to create an order");
+            var createdOrder = await client.Orders.Create(orderCreateRequest);
+            Console.WriteLine($"Created order has ID: {createdOrder.Id}");
             
             Console.WriteLine($"Data after update: {JsonConvert.SerializeObject(updatedPassenger.LoyaltyProgrammeAccounts)}");
             

@@ -17,6 +17,9 @@ namespace Duffel.ApiClient
         
         public Offers Offers { get; }
         
+        public Orders Orders { get; }
+        
+        
         public DuffelApiClient(string accessToken)
         {
             _httpClient.BaseAddress = new Uri("https://api.duffel.com");
@@ -32,6 +35,7 @@ namespace Duffel.ApiClient
             Aircrafts = new Aircrafts(_httpClient);
             OfferRequests = new OfferRequests(_httpClient);
             Offers = new Offers(_httpClient);
+            Orders = new Orders(_httpClient);
         }
         
         /*
