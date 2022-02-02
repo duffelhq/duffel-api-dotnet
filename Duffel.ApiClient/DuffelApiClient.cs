@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Threading.Tasks;
-using Duffel.ApiClient.Converters;
 using Duffel.ApiClient.Interfaces;
-using Duffel.ApiClient.Interfaces.Models.Responses;
 using Duffel.ApiClient.Interfaces.Resources;
 
 namespace Duffel.ApiClient
