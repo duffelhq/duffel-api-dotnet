@@ -1,3 +1,5 @@
+using System.Linq;
+using Duffel.ApiClient.Interfaces.Exceptions;
 using Duffel.ApiClient.Interfaces.Models.Requests;
 using Duffel.ApiClient.Interfaces.Models.Responses;
 using Newtonsoft.Json;
@@ -22,8 +24,13 @@ namespace Duffel.ApiClient.Converters
         public static OffersResponse Deserialize(string payload)
         {
             var wrappedResponse = 
-                JsonConvert.DeserializeObject<DuffelDataWrapper<OffersResponse>>(
+                JsonConvert.DeserializeObject<DuffelResponseWrapper<OffersResponse>>(
                     payload);
+
+            if (wrappedResponse != null && wrappedResponse.Errors != null && wrappedResponse.Errors.Any())
+            {
+                throw new ApiException(wrappedResponse.Metadata, wrappedResponse.Errors);
+            }
 
             return (wrappedResponse?.Data ?? null) ?? throw new ApiDeserializationException(null ,payload);            
         }

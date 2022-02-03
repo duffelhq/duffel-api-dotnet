@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Duffel.ApiClient.Converters
@@ -9,6 +10,9 @@ namespace Duffel.ApiClient.Converters
         }
         
         [JsonProperty("meta")]
-        public Metadata Metadata { get; set; }
+        public Metadata? Metadata { get; set; }
+        
+        [JsonProperty("errors")]
+        public IEnumerable<Error>? Errors { get; set; }
     }
 }

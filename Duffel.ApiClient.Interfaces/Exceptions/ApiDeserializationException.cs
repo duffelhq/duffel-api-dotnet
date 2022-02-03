@@ -1,6 +1,6 @@
 using System;
 
-namespace Duffel.ApiClient.Converters
+namespace Duffel.ApiClient.Interfaces.Exceptions
 {
     public class ApiDeserializationException : Exception
     {

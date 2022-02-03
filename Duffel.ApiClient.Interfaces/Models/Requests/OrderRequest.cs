@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Duffel.ApiClient.Interfaces.Converters;
 using Duffel.ApiClient.Interfaces.Models.Payments;
 using Newtonsoft.Json;
@@ -14,12 +15,12 @@ namespace Duffel.ApiClient.Interfaces.Models.Requests
         /// </summary>
         [JsonProperty("type")]
         public OrderType OrderType { get; set; }
-     
-         /// <summary>
-         /// The services you want to book along with the first selected offer. This key should be omitted when the order’s type is hold, as we do not support services for hold orders yet.
-         /// </summary>
-         [JsonProperty("services")]
-         public IEnumerable<Service> Services { get; set; }
+
+        /// <summary>
+        /// The services you want to book along with the first selected offer. This key should be omitted when the order’s type is hold, as we do not support services for hold orders yet.
+        /// </summary>
+        [JsonProperty("services")]
+        public IEnumerable<Service> Services { get; set; } = new List<Service>().AsEnumerable();
 
          /// <summary>
          /// The ids of the offers you want to book. You must specify an array containing exactly one selected offer.
