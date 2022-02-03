@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Duffel.ApiClient.Converters;
 using Duffel.ApiClient.Interfaces.Converters;
+using Duffel.ApiClient.Interfaces.Exceptions;
 using Duffel.ApiClient.Interfaces.Models.Responses;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -41,7 +43,12 @@ namespace Duffel.ApiClient.Interfaces.Resources
             var payload = JsonConvert.SerializeObject(new DuffelDataWrapper<Passenger>(passengerData), Formatting.None, new StringEnumConverter());
             var result = await HttpClient.PatchAsync($"air/offers/{offerId}/passengers/{passengerData.Id}", new StringContent(payload, Encoding.UTF8, "application/json"));
             var content = await result.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<DuffelDataWrapper<Passenger>>(content).Data;
+            var response = JsonConvert.DeserializeObject<DuffelResponseWrapper<Passenger>>(content);
+            if (response != null && response.Errors != null && response.Errors.Any())
+            {
+                throw new ApiException(response.Metadata, response.Errors);
+            }
+            return response!.Data;
         }
     }
 }

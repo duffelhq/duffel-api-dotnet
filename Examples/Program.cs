@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Duffel.ApiClient;
 using Duffel.ApiClient.Converters;
+using Duffel.ApiClient.Interfaces.Exceptions;
 using Duffel.ApiClient.Interfaces.Models;
 using Duffel.ApiClient.Interfaces.Models.IdentityDocuments;
 using Duffel.ApiClient.Interfaces.Models.Payments;
@@ -128,12 +129,19 @@ namespace Examples
                 },
                 SelectedOffers = new List<string> { allOffersInOfferRequest.Data.First().Id },
             };
-
-            Console.WriteLine("Attempting to create an order");
-            var createdOrder = await client.Orders.Create(orderCreateRequest);
-            Console.WriteLine($"Created order has ID: {createdOrder.Id}");
             
             Console.WriteLine($"Data after update: {JsonConvert.SerializeObject(updatedPassenger.LoyaltyProgrammeAccounts)}");
+            
+            try
+            {
+                Console.WriteLine("Attempting to create an order");
+                var createdOrder = await client.Orders.Create(orderCreateRequest);
+                Console.WriteLine($"Created order has ID: {createdOrder.Id}");
+            }
+            catch (ApiException e)
+            {
+                Console.WriteLine(JsonConvert.SerializeObject(e, Formatting.Indented));
+            }
             
             Console.Write("Getting airports: ");
             var airports = await client.Airports.GetAll();

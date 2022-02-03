@@ -1,4 +1,5 @@
 using Duffel.ApiClient.Converters;
+using Duffel.ApiClient.Interfaces.Exceptions;
 using Newtonsoft.Json;
 
 namespace Duffel.ApiClient.Interfaces.Converters
