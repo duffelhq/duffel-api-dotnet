@@ -25,7 +25,7 @@ namespace Duffel.ApiClient.Converters
             var wrapped = new DuffelDataWrapper<OrderMetadata>(metadata);
             return JsonConvert.SerializeObject(wrapped, Formatting.None, settings);
         }
-
+        
         public static Order Deserialize(string payload)
         {
             var wrappedResponse =
