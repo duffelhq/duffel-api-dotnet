@@ -139,6 +139,16 @@ namespace Examples
                 Console.WriteLine("Attempting to create an order");
                 var createdOrder = await client.Orders.Create(orderCreateRequest);
                 Console.WriteLine($"Created order has ID: {createdOrder.Id}");
+
+                var retrievedOrder = await client.Orders.Get(createdOrder.Id);
+
+                var updatedOrder = await client.Orders.Update(retrievedOrder.Id, new OrderMetadata
+                {
+                    Metadata = new Dictionary<string, string>
+                    {
+                        { "customer_prefs", "window seat" }
+                    }
+                });
             }
             catch (ApiException e)
             {

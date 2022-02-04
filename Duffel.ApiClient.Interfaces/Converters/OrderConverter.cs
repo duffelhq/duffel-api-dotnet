@@ -18,6 +18,14 @@ namespace Duffel.ApiClient.Converters
             return JsonConvert.SerializeObject(wrapped, Formatting.None, settings);
         }
 
+        public static string SerializeMetadata(OrderMetadata metadata)
+        {
+            var settings = new JsonSerializerSettings();
+            settings.Converters.Add(new StringEnumConverter {NamingStrategy = new SnakeCaseNamingStrategy()});
+            var wrapped = new DuffelDataWrapper<OrderMetadata>(metadata);
+            return JsonConvert.SerializeObject(wrapped, Formatting.None, settings);
+        }
+
         public static Order Deserialize(string payload)
         {
             var wrappedResponse =
