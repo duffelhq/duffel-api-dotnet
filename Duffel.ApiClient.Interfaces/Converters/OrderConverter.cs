@@ -20,14 +20,14 @@ namespace Duffel.ApiClient.Converters
 
         public static Order Deserialize(string payload)
         {
-            var wrapperResponse =
+            var wrappedResponse =
                 JsonConvert.DeserializeObject<DuffelResponseWrapper<Order>>(payload);
-            if (wrapperResponse != null && wrapperResponse.Errors != null && wrapperResponse.Errors.Any())
+            if (wrappedResponse != null && wrappedResponse.Errors != null && wrappedResponse.Errors.Any())
             {
-                throw new ApiException(wrapperResponse.Metadata, wrapperResponse.Errors);
+                throw new ApiException(wrappedResponse.Metadata, wrappedResponse.Errors);
             }
 
-            return (wrapperResponse?.Data ?? null) ?? throw new ApiDeserializationException(null, payload);
+            return (wrappedResponse?.Data ?? null) ?? throw new ApiDeserializationException(null, payload);
         }
     }
 }
