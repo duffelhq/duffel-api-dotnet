@@ -138,7 +138,7 @@ namespace Examples
             {
                 Console.WriteLine("Attempting to create an order");
                 var createdOrder = await client.Orders.Create(orderCreateRequest);
-                Console.WriteLine($"Created order has ID: {createdOrder.Id}");
+                Console.WriteLine($"Created order has ID: {createdOrder.Id} and booking reference: {createdOrder.BookingReference}");
 
                 var retrievedOrder = await client.Orders.Get(createdOrder.Id);
 
@@ -149,6 +149,22 @@ namespace Examples
                         { "customer_prefs", "window seat" }
                     }
                 });
+
+                Console.WriteLine("Creating order cancellation request...");
+                var cancellationRequest = await client.Orders.CreateOrderCancellation(updatedOrder.Id);
+                Console.WriteLine($"Refund amount: {cancellationRequest.RefundCurrency} {cancellationRequest.RefundAmount}");
+                
+                Console.WriteLine($"Retrieving cancellation order...");
+                var getCancellationRequest = await client.Orders.GetOrderCancellation(cancellationRequest.Id);
+                Console.WriteLine($"OK.");
+                
+                Console.WriteLine($"Listing order cancellation requests...");
+                var cancellationRequests = await client.Orders.GetOrderCancellations();
+                Console.WriteLine($"Found: {cancellationRequests.Data.Count()} [just one page request]");
+                
+                Console.WriteLine($"Confirming order cancellation request with id: {cancellationRequest.Id}...");
+                var cancelled = await client.Orders.ConfirmOrderCancellation(cancellationRequest.Id);
+                Console.WriteLine($"Confirmed at: {cancelled.ConfirmedAt}");
             }
             catch (ApiException e)
             {

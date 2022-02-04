@@ -1,10 +1,10 @@
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Duffel.ApiClient.Converters;
 using Duffel.ApiClient.Interfaces.Models.Requests;
 using Duffel.ApiClient.Interfaces.Models.Responses;
-using Newtonsoft.Json;
 
 namespace Duffel.ApiClient.Interfaces.Resources
 {
@@ -44,6 +44,60 @@ namespace Duffel.ApiClient.Interfaces.Resources
                 new StringContent(payload, Encoding.UTF8, "application/json"));
             var content = await result.Content.ReadAsStringAsync();
             return OrderConverter.Deserialize(content);
+        }
+
+        /// <summary>
+        /// To cancel an order, you'll need to create an order cancellation, check the refund_amount returned, and, if you're happy to go ahead and cancel the order.
+        /// The refund specified by refund_amount, if any, will be returned to your original payment method (i.e. your Duffel balance). You'll then need to refund your customer (e.g. back to their credit/debit card).
+        /// </summary>
+        public async Task<OrderCancellation> CreateOrderCancellation(string orderId)
+        {
+            var payload = OrderCancellationConverter.Serialize(new OrderCancellationRequest
+            {
+                OrderId = orderId
+            });
+            
+            var result = await HttpClient.PostAsync($"air/order_cancellations",
+                new StringContent(payload, Encoding.UTF8, "application/json"));
+            var content = await result.Content.ReadAsStringAsync(); 
+            
+            return OrderCancellationConverter.Deserialize(content);
+        }
+
+        /// <summary>
+        /// Once you've created a pending order cancellation, you'll know the refund_amount you're due to get back.
+        /// To actually cancel the order, you'll need to confirm the cancellation. The booking with the airline will be cancelled, and the refund_amount will be returned to the original payment method (i.e. your Duffel balance). You'll then need to refund your customer (e.g. back to their credit/debit card).
+        /// </summary>
+        public async Task<OrderCancellation> ConfirmOrderCancellation(string cancellationRequestId)
+        {
+            var result = await HttpClient.PostAsync($"air/order_cancellations/{cancellationRequestId}/actions/confirm",
+                new StringContent("", Encoding.UTF8, "application/json"));
+            var content = await result.Content.ReadAsStringAsync();
+            
+            return OrderCancellationConverter.Deserialize(content);
+        }
+
+        /// <summary>
+        /// Retrieves an order cancellation by its ID.
+        /// </summary>
+        public async Task<OrderCancellation> GetOrderCancellation(string cancellationRequestId)
+        {
+            var result = await HttpClient.GetAsync($"air/order_cancellations/{cancellationRequestId}");
+            var content = await result.Content.ReadAsStringAsync();
+            return OrderCancellationConverter.Deserialize(content);
+        }
+
+        public async Task<DuffelResponsePage<IEnumerable<OrderCancellation>>> GetOrderCancellations(string before = "", string after = "", int limit = 50, string order_id = "")
+        {
+            var url = $"air/order_cancellations?limit={limit}";
+
+            if (!string.IsNullOrEmpty(before)) url += $"&{before}";
+            if (!string.IsNullOrEmpty(after)) url += $"&{after}";
+            if (!string.IsNullOrEmpty(order_id)) url += $"&order_id={order_id}";
+            
+            var result = await HttpClient.GetAsync(url);
+            var content = await result.Content.ReadAsStringAsync();
+            return PagedResponseConverter.Deserialize<OrderCancellation>(content);
         }
     }
 }
