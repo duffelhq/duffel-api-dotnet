@@ -4,6 +4,8 @@ using Duffel.ApiClient.Interfaces.Models;
 using Duffel.ApiClient.Interfaces.Models.IdentityDocuments;
 using Duffel.ApiClient.Interfaces.Models.Payments;
 using Duffel.ApiClient.Interfaces.Models.Requests;
+using Duffel.ApiClient.Interfaces.Models.Responses;
+using Newtonsoft.Json;
 using NFluent;
 using NUnit.Framework;
 
@@ -54,6 +56,16 @@ namespace Duffel.ApiClient.Tests
 
             var result = OrderConverter.Serialize(request);
             Check.That(result).Equals(JsonFixture.Load("order_request.json"));
+        }
+
+        [TestCase("order_create_response_lhg.json")]
+        public void CanDeserializeOrderResponse(string fixtureName)
+        {
+            var payload = JsonFixture.Load(fixtureName);
+            var order = JsonConvert.DeserializeObject<Order>(payload);
+
+            Check.That(order).IsNotNull();
+
         }
     }
 }

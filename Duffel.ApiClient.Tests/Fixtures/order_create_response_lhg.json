@@ -1,0 +1,216 @@
+{
+    "data": {
+        "total_currency": "GBP",
+        "total_amount": "140.07",
+        "tax_currency": "GBP",
+        "tax_amount": "60.07",
+        "synced_at": "2022-02-04T10:15:18Z",
+        "slices": [
+            {
+                "segments": [
+                    {
+                        "passengers": [
+                            {
+                                "passenger_id": "pas_0000AG87DQEwLRyslZvsCw",
+                                "cabin_class_marketing_name": "Economy",
+                                "cabin_class": "economy",
+                                "baggages": [
+                                    {
+                                        "type": "checked",
+                                        "quantity": 0
+                                    },
+                                    {
+                                        "type": "carry_on",
+                                        "quantity": 1
+                                    }
+                                ]
+                            }
+                        ],
+                        "origin_terminal": "2",
+                        "origin": {
+                            "type": "airport",
+                            "time_zone": "Europe/London",
+                            "name": "Heathrow Airport",
+                            "longitude": -0.458118,
+                            "latitude": 51.470311,
+                            "id": "arp_lhr_gb",
+                            "icao_code": "EGLL",
+                            "iata_country_code": "GB",
+                            "iata_code": "LHR",
+                            "iata_city_code": "LON",
+                            "city_name": "London",
+                            "city": {
+                                "type": "city",
+                                "time_zone": null,
+                                "name": "London",
+                                "longitude": null,
+                                "latitude": null,
+                                "id": "cit_lon_gb",
+                                "icao_code": null,
+                                "iata_country_code": "GB",
+                                "iata_code": "LON",
+                                "iata_city_code": "LON",
+                                "city_name": null
+                            }
+                        },
+                        "operating_carrier_flight_number": "921",
+                        "operating_carrier": {
+                            "name": "Lufthansa",
+                            "id": "arl_00009VME7DCkZ5j0wTrtvG",
+                            "iata_code": "LH"
+                        },
+                        "marketing_carrier_flight_number": "921",
+                        "marketing_carrier": {
+                            "name": "Lufthansa",
+                            "id": "arl_00009VME7DCkZ5j0wTrtvG",
+                            "iata_code": "LH"
+                        },
+                        "id": "seg_0000AG87FQKfWStMuUgRbF",
+                        "duration": "PT1H35M",
+                        "distance": "653.39204",
+                        "destination_terminal": "1",
+                        "destination": {
+                            "type": "airport",
+                            "time_zone": "Europe/Berlin",
+                            "name": "Frankfurt am Main Airport",
+                            "longitude": 8.567755,
+                            "latitude": 50.034866,
+                            "id": "arp_fra_de",
+                            "icao_code": "EDDF",
+                            "iata_country_code": "DE",
+                            "iata_code": "FRA",
+                            "iata_city_code": "FRA",
+                            "city_name": "Frankfurt",
+                            "city": {
+                                "type": "city",
+                                "time_zone": null,
+                                "name": "Frankfurt",
+                                "longitude": null,
+                                "latitude": null,
+                                "id": "cit_fra_de",
+                                "icao_code": null,
+                                "iata_country_code": "DE",
+                                "iata_code": "FRA",
+                                "iata_city_code": "FRA",
+                                "city_name": null
+                            }
+                        },
+                        "departure_terminal": "2",
+                        "departure_datetime": "2022-03-06T06:30:00",
+                        "departing_at": "2022-03-06T06:30:00",
+                        "arriving_at": "2022-03-06T09:05:00",
+                        "arrival_terminal": "1",
+                        "arrival_datetime": "2022-03-06T09:05:00",
+                        "aircraft": {
+                            "name": "Airbus A320neo",
+                            "id": "arc_00009lcSPZuSbgKG1u4Pkn",
+                            "iata_code": "32N"
+                        }
+                    }
+                ],
+                "origin_type": "airport",
+                "origin": {
+                    "type": "airport",
+                    "time_zone": "Europe/London",
+                    "name": "Heathrow Airport",
+                    "longitude": -0.458118,
+                    "latitude": 51.470311,
+                    "id": "arp_lhr_gb",
+                    "icao_code": "EGLL",
+                    "iata_country_code": "GB",
+                    "iata_code": "LHR",
+                    "iata_city_code": "LON",
+                    "city_name": "London",
+                    "city": {
+                        "type": "city",
+                        "time_zone": null,
+                        "name": "London",
+                        "longitude": null,
+                        "latitude": null,
+                        "id": "cit_lon_gb",
+                        "icao_code": null,
+                        "iata_country_code": "GB",
+                        "iata_code": "LON",
+                        "iata_city_code": "LON",
+                        "city_name": null
+                    }
+                },
+                "id": "sli_0000AG87FQQLBNQfC5KyRM",
+                "duration": "PT1H35M",
+                "destination_type": "airport",
+                "destination": {
+                    "type": "airport",
+                    "time_zone": "Europe/Berlin",
+                    "name": "Frankfurt am Main Airport",
+                    "longitude": 8.567755,
+                    "latitude": 50.034866,
+                    "id": "arp_fra_de",
+                    "icao_code": "EDDF",
+                    "iata_country_code": "DE",
+                    "iata_code": "FRA",
+                    "iata_city_code": "FRA",
+                    "city_name": "Frankfurt",
+                    "city": {
+                        "type": "city",
+                        "time_zone": null,
+                        "name": "Frankfurt",
+                        "longitude": null,
+                        "latitude": null,
+                        "id": "cit_fra_de",
+                        "icao_code": null,
+                        "iata_country_code": "DE",
+                        "iata_code": "FRA",
+                        "iata_city_code": "FRA",
+                        "city_name": null
+                    }
+                },
+                "conditions": {
+                    "change_before_departure": null
+                },
+                "changeable": null
+            }
+        ],
+        "services": [],
+        "payment_status": {
+            "price_guarantee_expires_at": null,
+            "payment_required_by": null,
+            "awaiting_payment": false
+        },
+        "passengers": [
+            {
+                "type": "adult",
+                "title": "mr",
+                "loyalty_programme_accounts": [],
+                "infant_passenger_id": null,
+                "id": "pas_0000AG87DQEwLRyslZvsCw",
+                "given_name": "DOE",
+                "gender": "m",
+                "family_name": "JOHN",
+                "born_on": "2000-01-01"
+            }
+        ],
+        "owner": {
+            "name": "Lufthansa",
+            "id": "arl_00009VME7DCkZ5j0wTrtvG",
+            "iata_code": "LH"
+        },
+        "metadata": null,
+        "live_mode": false,
+        "id": "ord_0000AG87FQKfWStMuUgRbE",
+        "documents": [
+            {
+                "unique_identifier": "22057414583223",
+                "type": "electronic_ticket"
+            }
+        ],
+        "created_at": "2022-02-04T10:15:18.455878Z",
+        "conditions": {
+            "refund_before_departure": null,
+            "change_before_departure": null
+        },
+        "cancelled_at": null,
+        "booking_reference": "VP7ZA6",
+        "base_currency": "GBP",
+        "base_amount": "80.00"
+    }
+}

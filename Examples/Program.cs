@@ -26,14 +26,13 @@ namespace Examples
             var offersRequest = new OffersRequest
             {
                 Passengers = new List<Passenger> { new Passenger { PassengerType = PassengerType.Adult } },
-                RequestedSources = new List<string> { "duffel_airways" },
+                RequestedSources = new List<string> { "lufthansa_group" },
                 Slices = new List<Slice>
                 {
                     new Slice
                     {
-                        // We use a nonsensical route to make sure we get speedy, reliable Duffel Airways
                         Origin = "LHR",
-                        Destination = "STN",
+                        Destination = "FRA",
                         DepartureDate = DateTime.Now.AddDays(30).ToString("yyyy-MM-dd")
                     }
                 }
@@ -43,14 +42,11 @@ namespace Examples
             var offersResponse = await client.OfferRequests.Create(offersRequest);
             Console.WriteLine($"Created a new offers request, with ID: {offersResponse.Id}");
             
-            //Console.WriteLine("Total offer requests:");
-            //var res = await client.OfferRequests.GetAll();
-            //Console.WriteLine($"\t{res.Count()}");
-            
             Console.WriteLine($"Retrieving data for offer request {offersResponse.Id}...");
             var result = await client.OfferRequests.Get(offersResponse.Id);
             Console.WriteLine($"Offers on that request: {result.Offers.Count()}");
             
+            /*
             Console.WriteLine("Retrieving all offers one by one...");
             foreach (var offer in result.Offers)
             {
@@ -68,17 +64,19 @@ namespace Examples
 
             Console.WriteLine("Retrieving all offers via offer request id...");
             var allOffersInOfferRequest = await client.Offers.Get(offerRequestId: result.Id);
+            */
+
+            var selectedOffer = result.Offers.First();//await client.Offers.Get(result.Offers.First().Id, true);
             
-            
-            var offerForUpdate = await client.Offers.Get(result.Offers.First().Id, true);
+            /*
             var passengerForUpdate = offerForUpdate.Passengers.First();
             
             Console.WriteLine($"Updating passenger details to name, age & include loyalty programme account...");
             
             passengerForUpdate.FamilyName = "Doe";
             passengerForUpdate.GivenName = "Joe";
-            passengerForUpdate.Age = 99;
-            
+            passengerForUpdate.PassengerType = PassengerType.Adult;
+                        
             passengerForUpdate.LoyaltyProgrammeAccounts = new List<LoyaltyProgrammeAccount>
             {
                 new LoyaltyProgrammeAccount
@@ -87,9 +85,12 @@ namespace Examples
                     AirlineIataCode = "aircode_567"
                 }
             };
+            
 
             var updatedPassenger =
-                await client.Offers.UpdatePassenger(allOffersInOfferRequest.Data.First().Id, passengerForUpdate);
+                await client.Offers.UpdatePassenger(offerForUpdate.Id, passengerForUpdate);
+            
+            */
             
             var orderCreateRequest = new OrderRequest
             {
@@ -100,19 +101,20 @@ namespace Examples
                     {
                         BornOn = "2000-01-01",
                         Email = "test@test.com",
-                        FamilyName = updatedPassenger.GivenName,
+                        FamilyName = "John",
                         Gender = Gender.Male,
-                        GivenName = updatedPassenger.GivenName,
-                        Id = updatedPassenger.Id,
+                        GivenName = "Doe",
+                        Id = offersResponse.Passengers.First().Id,
+                        /*
                         IdentityDocuments = new List<IdentityDocument>
                         {
                             new Passport
                             {
-                                ExpiresOn = "2033-03-03",
+                                ExpiresOn = "2028-03-03",
                                 IssuingCountryCode = "GB",
-                                UniqueIdentifier = "12345 678"
+                                UniqueIdentifier = "123456789"
                             }
-                        },
+                        },*/
                         PassengerType = PassengerType.Adult,
                         PhoneNumber = "+44 7654544321",
                         InfantPassengerId = null,
@@ -123,14 +125,14 @@ namespace Examples
                 {
                     new Balance
                     {
-                        Amount = allOffersInOfferRequest.Data.First().TotalAmount,
-                        Currency = allOffersInOfferRequest.Data.First().TotalCurrency
+                        Amount = selectedOffer.TotalAmount,
+                        Currency = selectedOffer.TotalCurrency
                     }
                 },
-                SelectedOffers = new List<string> { allOffersInOfferRequest.Data.First().Id },
+                SelectedOffers = new List<string> { selectedOffer.Id },
             };
             
-            Console.WriteLine($"Data after update: {JsonConvert.SerializeObject(updatedPassenger.LoyaltyProgrammeAccounts)}");
+            //Console.WriteLine($"Data after update: {JsonConvert.SerializeObject(updatedPassenger.LoyaltyProgrammeAccounts)}");
             
             try
             {

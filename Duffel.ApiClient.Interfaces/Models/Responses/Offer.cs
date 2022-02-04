@@ -33,8 +33,14 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses
         /// The total price of the offer for all passengers, including taxes.
         /// It does not include the total price of any service(s) that might be booked with the offer.
         /// </summary>
-        [JsonProperty("tax_amount")]
+        [JsonProperty("total_amount")]
         public string TotalAmount { get; set; }
+        
+        [JsonProperty("tax_currency")]
+        public string TaxCurrency { get; set; }
+        
+        [JsonProperty("tax_amount")]
+        public string TaxAmount { get; set; }
         
         /// <summary>
         /// The slices that make up this offer.

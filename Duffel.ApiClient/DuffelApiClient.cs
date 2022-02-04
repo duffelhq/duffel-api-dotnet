@@ -20,10 +20,10 @@ namespace Duffel.ApiClient
         public Orders Orders { get; }
         
         
-        public DuffelApiClient(string accessToken)
+        public DuffelApiClient(string accessToken, bool production = false)
         {
-            _httpClient.BaseAddress = new Uri("https://api.duffel.com");
-            
+            _httpClient.BaseAddress = production ? new Uri("https://api.duffel.com") : new Uri("https://api.staging.duffel.com");
+
             _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {accessToken}");
             _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
             _httpClient.DefaultRequestHeaders.Add("Duffel-Version", "beta");
