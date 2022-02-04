@@ -12,13 +12,10 @@ namespace Duffel.ApiClient
         public Airlines Airlines { get; }
         public Airports Airports { get; }
         public Aircrafts Aircrafts { get; }
-        
         public OfferRequests OfferRequests { get; }
-        
         public Offers Offers { get; }
-        
         public Orders Orders { get; }
-        
+        public SeatMaps SeatMaps { get; set; }
         
         public DuffelApiClient(string accessToken, bool production = false)
         {
@@ -36,6 +33,7 @@ namespace Duffel.ApiClient
             OfferRequests = new OfferRequests(_httpClient);
             Offers = new Offers(_httpClient);
             Orders = new Orders(_httpClient);
+            SeatMaps = new SeatMaps(_httpClient);
         }
         
         /*

@@ -68,6 +68,11 @@ namespace Examples
 
             var selectedOffer = result.Offers.First();//await client.Offers.Get(result.Offers.First().Id, true);
             
+            Console.WriteLine($"Getting seat maps for offer...");
+            var seatMaps = await client.SeatMaps.Get(selectedOffer.Id);
+            Console.WriteLine($"Retrieved {seatMaps.Count()} maps");
+            Console.WriteLine(JsonConvert.SerializeObject(seatMaps));
+            
             /*
             var passengerForUpdate = offerForUpdate.Passengers.First();
             
