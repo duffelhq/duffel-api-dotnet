@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Duffel.ApiClient.Converters;
 using Duffel.ApiClient.Interfaces.Models.Requests;
 using Duffel.ApiClient.Interfaces.Models.Responses;
+using Newtonsoft.Json;
 
 namespace Duffel.ApiClient.Interfaces.Resources
 {
@@ -23,6 +24,23 @@ namespace Duffel.ApiClient.Interfaces.Resources
         {
             var payload = OrderConverter.Serialize(request);
             var result = await HttpClient.PostAsync($"air/orders",
+                new StringContent(payload, Encoding.UTF8, "application/json"));
+            var content = await result.Content.ReadAsStringAsync();
+            return OrderConverter.Deserialize(content);
+        }
+
+        public async Task<Order> Get(string orderId)
+        {
+            var result = await HttpClient.GetAsync($"air/orders/{orderId}");
+            var content = await result.Content.ReadAsStringAsync();
+            return OrderConverter.Deserialize(content);
+        }
+
+        public async Task<Order> Update(string orderId, OrderMetadata metadata)
+        {
+            var payload = OrderConverter.SerializeMetadata(metadata);
+            
+            var result = await HttpClient.PatchAsync($"air/orders/{orderId}",
                 new StringContent(payload, Encoding.UTF8, "application/json"));
             var content = await result.Content.ReadAsStringAsync();
             return OrderConverter.Deserialize(content);
