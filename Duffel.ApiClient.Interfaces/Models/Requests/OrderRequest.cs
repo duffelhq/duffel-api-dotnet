@@ -32,7 +32,7 @@ namespace Duffel.ApiClient.Interfaces.Models.Requests
          /// <summary>
          /// The payment details to use to pay for the order. This key should be omitted when the order’s type is hold
          /// </summary>
-         [JsonProperty("payments")]
+         [JsonProperty(PropertyName = "payments", NullValueHandling = NullValueHandling.Ignore)]
          [JsonConverter(typeof(PaymentJsonConverter))]
          public IEnumerable<Payment> Payments { get; set; }
 

@@ -68,6 +68,11 @@ namespace Examples
 
             var selectedOffer = result.Offers.First();//await client.Offers.Get(result.Offers.First().Id, true);
             
+            Console.WriteLine($"Getting seat maps for offer...");
+            var seatMaps = await client.SeatMaps.Get(selectedOffer.Id);
+            Console.WriteLine($"Retrieved {seatMaps.Count()} maps");
+            Console.WriteLine(JsonConvert.SerializeObject(seatMaps));
+            
             /*
             var passengerForUpdate = offerForUpdate.Passengers.First();
             
@@ -94,7 +99,7 @@ namespace Examples
             
             var orderCreateRequest = new OrderRequest
             {
-                OrderType = OrderType.Instant,
+                OrderType = OrderType.Hold,
                 Passengers = new List<OrderPassenger>
                 {
                     new OrderPassenger
@@ -121,14 +126,6 @@ namespace Examples
                         Title = "Mr"
                     }
                 },
-                Payments = new List<Payment>
-                {
-                    new Balance
-                    {
-                        Amount = selectedOffer.TotalAmount,
-                        Currency = selectedOffer.TotalCurrency
-                    }
-                },
                 SelectedOffers = new List<string> { selectedOffer.Id },
             };
             
@@ -149,6 +146,23 @@ namespace Examples
                         { "customer_prefs", "window seat" }
                     }
                 });
+                
+                
+                
+                Console.WriteLine("Attempting to create a payment for hold order....");
+                // Make a payment for the hold order
+                var paymentResult = await client.Payments.Create(new PaymentRequest
+                {
+                    Payment = new Balance
+                    {
+                        Amount = selectedOffer.TotalAmount,
+                        Currency = selectedOffer.TotalCurrency
+                    },
+                    OrderId = createdOrder.Id
+                });
+                
+                Console.WriteLine(JsonConvert.SerializeObject(paymentResult, Formatting.Indented));
+                
 
                 Console.WriteLine("Creating order cancellation request...");
                 var cancellationRequest = await client.Orders.CreateOrderCancellation(updatedOrder.Id);

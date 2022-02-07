@@ -26,6 +26,13 @@ namespace Duffel.ApiClient.Interfaces.Converters
                 writer.WriteRaw(payload);
                 writer.WriteEndArray();
             }
+            else if (value is Payment payment)
+            {
+                var paymentType = "balance";
+                if (payment is ArcBspCash) paymentType = "cash";
+                    
+                writer.WriteRawValue($"{{\"type\":\"{paymentType}\",\"amount\":\"{payment.Amount}\",\"currency\":\"{payment.Currency}\"}}");
+            }
             else
             {
                 writer.WriteValue("[]");
