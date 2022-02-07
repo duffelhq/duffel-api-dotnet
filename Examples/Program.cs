@@ -99,7 +99,7 @@ namespace Examples
             
             var orderCreateRequest = new OrderRequest
             {
-                OrderType = OrderType.Instant,
+                OrderType = OrderType.Hold,
                 Passengers = new List<OrderPassenger>
                 {
                     new OrderPassenger
@@ -126,14 +126,6 @@ namespace Examples
                         Title = "Mr"
                     }
                 },
-                Payments = new List<Payment>
-                {
-                    new Balance
-                    {
-                        Amount = selectedOffer.TotalAmount,
-                        Currency = selectedOffer.TotalCurrency
-                    }
-                },
                 SelectedOffers = new List<string> { selectedOffer.Id },
             };
             
@@ -154,6 +146,23 @@ namespace Examples
                         { "customer_prefs", "window seat" }
                     }
                 });
+                
+                
+                
+                Console.WriteLine("Attempting to create a payment for hold order....");
+                // Make a payment for the hold order
+                var paymentResult = await client.Payments.Create(new PaymentRequest
+                {
+                    Payment = new Balance
+                    {
+                        Amount = selectedOffer.TotalAmount,
+                        Currency = selectedOffer.TotalCurrency
+                    },
+                    OrderId = createdOrder.Id
+                });
+                
+                Console.WriteLine(JsonConvert.SerializeObject(paymentResult, Formatting.Indented));
+                
 
                 Console.WriteLine("Creating order cancellation request...");
                 var cancellationRequest = await client.Orders.CreateOrderCancellation(updatedOrder.Id);
