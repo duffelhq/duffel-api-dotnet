@@ -5,9 +5,9 @@ namespace Duffel.ApiClient.Interfaces.Models
     public enum CabinClass
     {
         Any,
-        Economy,
+        [EnumMember(Value = "economy")] Economy,
         [EnumMember(Value = "premium_economy")] PremiumEconomy,
-        First,
-        Business
+        [EnumMember(Value = "first")] First,
+        [EnumMember(Value = "business")] Business
     }
 }
