@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoldAndPayLater", "examples
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookWithSeats", "examples\BookWithSeats\BookWithSeats.csproj", "{F69936AD-B6D1-499A-BC6F-11B052B1312F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookWithExtraBaggage", "examples\BookWithExtraBaggage\BookWithExtraBaggage.csproj", "{640861F8-96D4-430E-83AE-8766D5AAD6E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,10 +40,15 @@ Global
 		{F69936AD-B6D1-499A-BC6F-11B052B1312F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F69936AD-B6D1-499A-BC6F-11B052B1312F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F69936AD-B6D1-499A-BC6F-11B052B1312F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{640861F8-96D4-430E-83AE-8766D5AAD6E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{640861F8-96D4-430E-83AE-8766D5AAD6E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{640861F8-96D4-430E-83AE-8766D5AAD6E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{640861F8-96D4-430E-83AE-8766D5AAD6E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{040C2ABE-6979-4F37-A144-D378CCAD9D04} = {700B7D21-5ACF-40BC-A071-6F99311055B6}
 		{0E8F4AED-DCEB-499E-ADA3-B861BB0B2F28} = {700B7D21-5ACF-40BC-A071-6F99311055B6}
 		{F69936AD-B6D1-499A-BC6F-11B052B1312F} = {700B7D21-5ACF-40BC-A071-6F99311055B6}
+		{640861F8-96D4-430E-83AE-8766D5AAD6E8} = {700B7D21-5ACF-40BC-A071-6F99311055B6}
 	EndGlobalSection
 EndGlobal
