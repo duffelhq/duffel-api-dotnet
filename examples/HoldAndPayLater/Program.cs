@@ -5,6 +5,7 @@ using Duffel.ApiClient;
 using Duffel.ApiClient.Models;
 using Duffel.ApiClient.Models.Payments;
 using Duffel.ApiClient.Models.Requests;
+using Newtonsoft.Json;
 
 var accessToken = Environment.GetEnvironmentVariable("DUFFEL_ACCESS_TOKEN");
 var client = new DuffelApiClient(accessToken: accessToken, production: false);
@@ -13,10 +14,9 @@ var offersRequest = new OffersRequest
 {
     CabinClass = CabinClass.Economy,
     Passengers = new List<Passenger>() { new Passenger { PassengerType = PassengerType.Adult } },
-    //RequestedSources = new List<string> { "lufthansa_group" },
     Slices = new List<Slice>
     {
-        new()
+        new Slice
         {
             // We use a nonsensical route to make sure we get speedy, reliable "Duffel Airways" results
             Origin = "LHR",
@@ -44,24 +44,9 @@ var totalAmount = float.Parse(pricedOffer.TotalAmount) + float.Parse(bagService.
 
 var orderRequest = new OrderRequest
 {
-    SelectedOffers = new[] { pricedOffer.Id }.ToList(),
-    Services = new List<Service>()
-    {
-        new()
-        {
-            Id = bagService.Id,
-            Quantity = 1
-        }
-    },
-    Payments = new[]
-    {
-        new Balance
-        {
-            Amount = totalAmount.ToString(),
-            Currency = pricedOffer.TotalCurrency
-        }
-    }.ToList(),
-    Passengers = new[]
+    OrderType = OrderType.Hold,
+    SelectedOffers = new List<string>{ pricedOffer.Id },
+    Passengers = new List<OrderPassenger>
     {
         new OrderPassenger
         {
@@ -75,15 +60,28 @@ var orderRequest = new OrderRequest
             Email = "john.doe@test.com"
 
         }
-    }.ToList()
+    }
 };
 
 var order = await client.Orders.Create(orderRequest);
-Console.WriteLine($"Created order {order.Id} with booking reference {order.BookingReference}");
+Console.WriteLine($"Created HOLD order {order.Id} with booking reference {order.BookingReference}");
 
-var orderCancellation = await client.Orders.CreateOrderCancellation(order.Id);
-Console.WriteLine($"Requested refund quote for order {order.Id}, cancellation request id: {orderCancellation.Id}");
-Console.WriteLine($" {orderCancellation.RefundCurrency} {orderCancellation.RefundAmount} available");
+var updatedOrder = await client.Orders.Get(order.Id);
+Console.WriteLine($"Retrieved order an up-to-date price: {updatedOrder.TotalCurrency} {updatedOrder.TotalAmount}");
 
-var confirmation = await client.Orders.ConfirmOrderCancellation(orderCancellation.Id);
-Console.WriteLine($"Confirmed refund quote for order {order.Id}");
+var payment = await client.Payments.Create(new PaymentRequest
+{
+    OrderId = order.Id,
+    Payment = new Balance
+    {
+        Amount = updatedOrder.TotalAmount,
+        Currency = updatedOrder.TotalCurrency
+    }
+});
+
+Console.WriteLine($"Paid for order {order.Id} with payment {payment.Id}");
+
+var paidOrder = await client.Orders.Get(order.Id);
+
+Console.WriteLine($"After payment, order has {paidOrder.Documents.Count()} documents");
+Console.WriteLine(JsonConvert.SerializeObject(paidOrder.Documents, Formatting.Indented));

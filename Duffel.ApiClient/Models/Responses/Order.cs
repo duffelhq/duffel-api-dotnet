@@ -48,6 +48,12 @@ namespace Duffel.ApiClient.Models.Responses
         public DateTime CreatedAt { get; set; }
         
         /// <summary>
+        /// The documents issued for this order
+        /// </summary>
+        [JsonProperty("documents")]
+        public IEnumerable<Document> Documents { get; set; }
+
+        /// <summary>
         /// Duffel's unique identifier for the order
         /// </summary>
         /// <example>"ord_00009hthhsUZ8W4LxQgkjo"</example>

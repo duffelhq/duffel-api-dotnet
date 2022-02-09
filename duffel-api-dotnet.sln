@@ -8,6 +8,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{70
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchAndBook", "examples\SearchAndBook\SearchAndBook.csproj", "{040C2ABE-6979-4F37-A144-D378CCAD9D04}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoldAndPayLater", "examples\HoldAndPayLater\HoldAndPayLater.csproj", "{0E8F4AED-DCEB-499E-ADA3-B861BB0B2F28}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,8 +28,13 @@ Global
 		{040C2ABE-6979-4F37-A144-D378CCAD9D04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{040C2ABE-6979-4F37-A144-D378CCAD9D04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{040C2ABE-6979-4F37-A144-D378CCAD9D04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E8F4AED-DCEB-499E-ADA3-B861BB0B2F28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E8F4AED-DCEB-499E-ADA3-B861BB0B2F28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E8F4AED-DCEB-499E-ADA3-B861BB0B2F28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E8F4AED-DCEB-499E-ADA3-B861BB0B2F28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{040C2ABE-6979-4F37-A144-D378CCAD9D04} = {700B7D21-5ACF-40BC-A071-6F99311055B6}
+		{0E8F4AED-DCEB-499E-ADA3-B861BB0B2F28} = {700B7D21-5ACF-40BC-A071-6F99311055B6}
 	EndGlobalSection
 EndGlobal
