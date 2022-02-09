@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Duffel.ApiClient.Interfaces.Models.Responses.OrderChange;
 using Newtonsoft.Json;
 
 namespace Duffel.ApiClient.Interfaces.Models.Responses
@@ -119,8 +121,12 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses
         [JsonProperty("refund_to")]
         public string RefundTo { get; set; }
         
-        // slices
-        
+        /// <summary>
+        /// The slices within an order change that are being added to and/or removed from the order
+        /// </summary>
+        [JsonProperty("slices")]
+        public Slices Slices { get; set; }
+
         /// <summary>
         /// The ISO 8601 datetime at which the offer was last updated
         /// </summary>
