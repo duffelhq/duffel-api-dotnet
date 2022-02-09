@@ -11,19 +11,19 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses
         /// The slices that make up this offer request. One-way journeys can be expressed using one slice, whereas return trips will need two.
         /// </summary>
         [JsonProperty("slices")]
-        public IEnumerable<Slice>? Slices { get; set; }
+        public IEnumerable<Slice> Slices { get; set; }
         
         /// <summary>
         /// The offers returned by the airlines
         /// </summary>
         [JsonProperty("offers")]
-        public IEnumerable<Offer>? Offers { get; set; }
+        public IEnumerable<Offer> Offers { get; set; }
         
         /// <summary>
         /// The passengers who want to travel
         /// </summary>
         [JsonProperty("passengers")]
-        public IEnumerable<Passenger>? Passengers { get; set; }
+        public IEnumerable<Passenger> Passengers { get; set; }
         
         /// <summary>
         /// Whether the offer request was created in live mode.

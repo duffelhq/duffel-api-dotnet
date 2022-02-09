@@ -16,6 +16,6 @@ namespace Duffel.ApiClient.Interfaces.Converters
         }
 
         [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
-        public T? Data { get; set; }
+        public T Data { get; set; }
     }
 }

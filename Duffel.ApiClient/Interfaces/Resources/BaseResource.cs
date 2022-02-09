@@ -20,7 +20,7 @@ namespace Duffel.ApiClient.Interfaces.Resources
             get { return _httpClient; }
         }
         
-        protected async Task<DuffelResponsePage<IEnumerable<T>>> RetrievePaginatedContent(string? url)
+        protected async Task<DuffelResponsePage<IEnumerable<T>>> RetrievePaginatedContent(string url)
         {
             var result = await _httpClient.GetAsync(url);
             var content = await result.Content.ReadAsStringAsync();

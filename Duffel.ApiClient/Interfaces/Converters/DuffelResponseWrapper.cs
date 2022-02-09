@@ -10,9 +10,9 @@ namespace Duffel.ApiClient.Interfaces.Converters
         }
         
         [JsonProperty("meta")]
-        public Metadata? Metadata { get; set; }
+        public Metadata Metadata { get; set; }
         
         [JsonProperty("errors")]
-        public IEnumerable<Error>? Errors { get; set; }
+        public IEnumerable<Error> Errors { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace Duffel.ApiClient.Interfaces.Converters.Json
 {
     internal class CabinClassJsonConverter : StringEnumConverter
     {
-        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             switch (value)
             {
@@ -22,7 +22,7 @@ namespace Duffel.ApiClient.Interfaces.Converters.Json
             }
         }
 
-        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             return reader.Value == null ? CabinClass.Any : base.ReadJson(reader, objectType, existingValue, serializer);
         }

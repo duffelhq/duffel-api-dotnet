@@ -6,6 +6,6 @@ namespace Duffel.ApiClient.Interfaces.Models
     public class City : Place
     {
         [JsonProperty("airports")]
-        public IEnumerable<Airport>? Airports { get; set; }
+        public IEnumerable<Airport> Airports { get; set; }
     }
 }
