@@ -8,6 +8,7 @@ using Duffel.ApiClient.Models.Responses;
 using Newtonsoft.Json;
 using NFluent;
 using NUnit.Framework;
+using Service = Duffel.ApiClient.Models.Service;
 
 namespace Duffel.ApiClient.Tests
 {

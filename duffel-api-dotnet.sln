@@ -4,7 +4,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Duffel.ApiClient", "Duffel.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Duffel.ApiClient.Tests", "Duffel.ApiClient.Tests\Duffel.ApiClient.Tests.csproj", "{8C600E33-8E67-4B36-878C-1D075CDEA3F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{5332EA06-5AE9-46AC-9987-0F97E468E8D7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{700B7D21-5ACF-40BC-A071-6F99311055B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchAndBook", "examples\SearchAndBook\SearchAndBook.csproj", "{040C2ABE-6979-4F37-A144-D378CCAD9D04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,9 +22,12 @@ Global
 		{8C600E33-8E67-4B36-878C-1D075CDEA3F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C600E33-8E67-4B36-878C-1D075CDEA3F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C600E33-8E67-4B36-878C-1D075CDEA3F7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5332EA06-5AE9-46AC-9987-0F97E468E8D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5332EA06-5AE9-46AC-9987-0F97E468E8D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5332EA06-5AE9-46AC-9987-0F97E468E8D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5332EA06-5AE9-46AC-9987-0F97E468E8D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{040C2ABE-6979-4F37-A144-D378CCAD9D04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{040C2ABE-6979-4F37-A144-D378CCAD9D04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{040C2ABE-6979-4F37-A144-D378CCAD9D04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{040C2ABE-6979-4F37-A144-D378CCAD9D04}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{040C2ABE-6979-4F37-A144-D378CCAD9D04} = {700B7D21-5ACF-40BC-A071-6F99311055B6}
 	EndGlobalSection
 EndGlobal

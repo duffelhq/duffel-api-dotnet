@@ -11,7 +11,7 @@ namespace Duffel.ApiClient.Converters.Json
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            if (value is List<Payment> payments)
+            if (value is IEnumerable<Payment> payments)
             {
                 var items = payments.Select(payment =>
                 {

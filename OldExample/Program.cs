@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 using Passenger = Duffel.ApiClient.Models.Requests.Passenger;
 using Slice = Duffel.ApiClient.Models.Requests.Slice;
 
-namespace Examples
+namespace OldExample
 {
     public class Examples
     {

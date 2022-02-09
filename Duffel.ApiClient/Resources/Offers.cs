@@ -17,9 +17,9 @@ namespace Duffel.ApiClient.Resources
         {
         }
 
-        public async Task<Offer> Get(string offerId, bool returnAvailableServices = true)
+        public async Task<Offer> Get(string offerId, bool returnAvailableServices = false)
         {
-            var result = await HttpClient.GetAsync($"air/offers/{offerId}");
+            var result = await HttpClient.GetAsync($"air/offers/{offerId}?return_available_services={returnAvailableServices.ToString().ToLower()}");
             var content = await result.Content.ReadAsStringAsync();
             return SingleItemResponseConverter.Deserialize<Offer>(content);
         }
