@@ -170,15 +170,12 @@ namespace Examples
                 };
 
                 Console.WriteLine("Creating order change request...");
-                var changedOrder = await client.OrderChangeRequests.Create(changeRequest);
+                var orderChange = await client.OrderChangeRequests.Create(changeRequest);
+                Console.WriteLine(JsonConvert.SerializeObject(orderChange, Formatting.Indented));
                 
-                Console.WriteLine(JsonConvert.SerializeObject(changedOrder, Formatting.Indented));
-                
-                
-                    
-                    
-                
-                
+                Console.WriteLine($"Retrieving order change request with ID: {orderChange.Id}");
+                var retrievedOrderChange = await client.OrderChangeRequests.Get(orderChange.Id);
+                Console.WriteLine(JsonConvert.SerializeObject(retrievedOrderChange, Formatting.Indented));
                 
                 Console.WriteLine("Attempting to create a payment for hold order....");
                 // Make a payment for the hold order

@@ -16,7 +16,6 @@ namespace Duffel.ApiClient.Interfaces.Converters
                 throw new ApiException(wrappedResponse.Metadata, wrappedResponse.Errors);
             }
             return (wrappedResponse?.Data ?? null) ?? throw new ApiDeserializationException(null, payload);
-            
         }
     }
 }
