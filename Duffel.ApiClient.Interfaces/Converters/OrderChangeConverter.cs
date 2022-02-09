@@ -1,5 +1,6 @@
 using Duffel.ApiClient.Converters;
 using Duffel.ApiClient.Interfaces.Models.Requests;
+using Duffel.ApiClient.Interfaces.Models.Responses;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
@@ -17,6 +18,10 @@ namespace Duffel.ApiClient.Interfaces.Converters
             
             
         }
-        
+
+        public static OrderChangeResponse Deserialize(string content)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

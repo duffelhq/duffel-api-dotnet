@@ -148,6 +148,37 @@ namespace Examples
                 });
                 
                 
+                // Change order
+                var changeRequest = new OrderChangeRequest
+                {
+                    OrderId = updatedOrder.Id,
+                    Slices = new OrderChangeSlices
+                    {
+                        Remove = new List<string> { updatedOrder.Slices.First().Id },
+                        Add = new List<ChangeSlice>
+                        {
+                            new ChangeSlice
+                            {
+                                Origin = "LHR",
+                                Destination = "FRA",
+                                DepartureDate = DateTime.Now.AddDays(30).ToString("yyyy-MM-dd"),
+                                CabinClass = CabinClass.Economy
+                            }
+                        }
+                    }
+
+                };
+
+                Console.WriteLine("Creating order change request...");
+                var changedOrder = await client.OrderChangeRequests.Create(changeRequest);
+                
+                Console.WriteLine(JsonConvert.SerializeObject(changedOrder, Formatting.Indented));
+                
+                
+                    
+                    
+                
+                
                 
                 Console.WriteLine("Attempting to create a payment for hold order....");
                 // Make a payment for the hold order

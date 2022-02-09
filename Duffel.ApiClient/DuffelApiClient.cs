@@ -18,6 +18,8 @@ namespace Duffel.ApiClient
         public SeatMaps SeatMaps { get; }
         public Payments Payments { get; }
         
+        public OrderChangeRequests OrderChangeRequests { get; }
+        
         
         
         public DuffelApiClient(string accessToken, bool production = false)
@@ -38,6 +40,7 @@ namespace Duffel.ApiClient
             Orders = new Orders(_httpClient);
             SeatMaps = new SeatMaps(_httpClient);
             Payments = new Payments(_httpClient);
+            OrderChangeRequests = new OrderChangeRequests(_httpClient);
         }
         
         /*
