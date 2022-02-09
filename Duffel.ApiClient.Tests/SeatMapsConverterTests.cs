@@ -26,6 +26,26 @@ namespace Duffel.ApiClient.Tests
             Check.That(elements.Any(e => e.ElementType == RowSectionElementType.Stairs));
             Check.That(elements.Any(e => e.ElementType == RowSectionElementType.ExitRow));
         }
+
+        [Test]
+        public void CanDeSerializeDuffelAirwaysSeatMaps()
+        {
+            var seatMaps = SeatMapsJsonConverter.DeserializeSeatsMap(JsonFixture.Load("seat_maps_duffel.json"));
+            Check.That(seatMaps).IsNotNull();
+
+            var mapElements = seatMaps
+                .SelectMany(seatMap => seatMap.Cabins
+                    .SelectMany(c => c.Rows
+                        .SelectMany(r => r.Sections
+                            .SelectMany(s => s.Elements
+                                .Select(element => element)))));
+
+
+            var seats = mapElements.Where(element => 
+                element.ElementType == RowSectionElementType.Seat && element.AvailableServices.Any());
+
+            Check.That(mapElements.Any()).IsTrue();
+        }
     }
     
 }
