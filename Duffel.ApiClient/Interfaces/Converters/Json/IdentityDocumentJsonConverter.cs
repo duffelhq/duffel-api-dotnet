@@ -9,7 +9,7 @@ namespace Duffel.ApiClient.Interfaces.Converters.Json
 {
     public class IdentityDocumentJsonConverter : JsonConverter
     {
-        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             if (value is List<IdentityDocument> identityDocuments)
             {
@@ -32,7 +32,7 @@ namespace Duffel.ApiClient.Interfaces.Converters.Json
             }
         }
 
-        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             JObject jo = JObject.Load(reader);
             var documentType = (string)jo["type"]!;

@@ -2,7 +2,6 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
-        <Nullable>enable</Nullable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Authors>Duffel Technology Ltd.</Authors>
         <Copyright>Duffel Technology Ltd.</Copyright>
@@ -19,9 +18,5 @@
     <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\Duffel.ApiClient.Interfaces\Duffel.ApiClient.Interfaces.csproj" />
-    </ItemGroup>
-
+    
 </Project>

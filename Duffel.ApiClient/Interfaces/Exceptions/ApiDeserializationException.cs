@@ -4,8 +4,8 @@ namespace Duffel.ApiClient.Interfaces.Exceptions
 {
     public class ApiDeserializationException : Exception
     {
-        public ApiDeserializationException(Exception? innerException, string payload = null!) 
-            : base(innerException?.Message ?? "", innerException)
+        public ApiDeserializationException(Exception innerException, string payload = null!) 
+            : base(innerException.Message ?? "", innerException)
         {
             Payload = payload;
         }

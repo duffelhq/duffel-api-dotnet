@@ -7,12 +7,12 @@ namespace Duffel.ApiClient.Interfaces.Converters.Json
 {
     public class CabinRowsSectionsElementJsonConverter : JsonConverter
     {
-        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             throw new NotImplementedException("CabinRowsSectionsElementJsonConverter is read only converter");
         }
 
-        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             JObject jo = JObject.Load(reader);
             var elementType = (string)jo["type"]!;

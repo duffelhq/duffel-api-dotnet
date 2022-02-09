@@ -9,7 +9,7 @@ namespace Duffel.ApiClient.Interfaces.Converters.Json
 {
     public class PaymentJsonConverter : JsonConverter
     {
-        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             if (value is List<Payment> payments)
             {
@@ -39,7 +39,7 @@ namespace Duffel.ApiClient.Interfaces.Converters.Json
             }
         }
 
-        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             JObject jo = JObject.Load(reader);
             var paymentType = (string)jo["type"]!;

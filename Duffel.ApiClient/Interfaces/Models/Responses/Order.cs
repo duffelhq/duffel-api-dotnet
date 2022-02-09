@@ -12,13 +12,13 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses
         /// </summary>
         /// <example>"30.20"</example>
         [JsonProperty("base_amount")]
-        public string? BaseAmount { get; set; }
+        public string BaseAmount { get; set; }
         
         /// <summary>
         /// The currency of the base_amount, as an ISO 4217 currency code. It will match your organisation's billing currency unless you’re using Duffel as an accredited IATA agent, in which case it will be in the currency provided by the airline (which will usually be based on the country where your IATA agency is registered).
         /// </summary>
         [JsonProperty("base_currency")]
-        public string? BaseCurrency { get; set; }
+        public string BaseCurrency { get; set; }
         
         /// <summary>
         /// The airline's reference for the order, sometimes known as a "passenger name record" (PNR) or "record locator". Your customers can use this to check in and manage their booking on the airline's website. Usually, this is made up of six alphanumeric characters, but airlines can have their own formats (for example, easyJet's booking references are 7 alphanumeric characters long and LATAM's references are made up of 13 alphanumeric characters beginning with LA.)
@@ -107,13 +107,13 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses
         /// The amount of tax payable on the order for all the flights booked
         /// </summary>
         [JsonProperty("tax_amount")]
-        public string? TaxAmount { get; set; }
+        public string TaxAmount { get; set; }
         
         /// <summary>
         /// The currency of the tax_amount, as an ISO 4217 currency code. It will match your organisation's billing currency unless you’re using Duffel as an accredited IATA agent, in which case it will be in the currency provided by the airline (which will usually be based on the country where your IATA agency is registered).
         /// </summary>
         [JsonProperty("tax_currency")]
-        public string? TaxCurrency { get; set; }
+        public string TaxCurrency { get; set; }
         
         /// <summary>
         /// The total price of the order for all the flights and services booked, including taxes

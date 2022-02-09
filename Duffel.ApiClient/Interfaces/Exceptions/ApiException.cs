@@ -7,12 +7,12 @@ namespace Duffel.ApiClient.Interfaces.Exceptions
 {
     public class ApiException : Exception
     {
-        public ApiException(Metadata? metadata, IEnumerable<Error> errors)
+        public ApiException(Metadata metadata, IEnumerable<Error> errors)
         {
             Metadata = metadata;
             Errors = errors;
         }
-        public Metadata? Metadata { get; }
+        public Metadata Metadata { get; }
         public IEnumerable<Error> Errors { get; }
     }
 }
