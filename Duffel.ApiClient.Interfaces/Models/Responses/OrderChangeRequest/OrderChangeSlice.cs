@@ -4,7 +4,7 @@ using Duffel.ApiClient.Converters;
 using Duffel.ApiClient.Interfaces.Models.Responses.Offers;
 using Newtonsoft.Json;
 
-namespace Duffel.ApiClient.Interfaces.Models.Responses.OrderChange
+namespace Duffel.ApiClient.Interfaces.Models.Responses.OrderChangeRequest
 {
     public class OrderChangeSlice
     {

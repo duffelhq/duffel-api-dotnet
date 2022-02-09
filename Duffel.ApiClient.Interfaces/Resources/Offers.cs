@@ -48,7 +48,7 @@ namespace Duffel.ApiClient.Interfaces.Resources
             {
                 throw new ApiException(response.Metadata, response.Errors);
             }
-            return response!.Data;
+            return response!.Data!;
         }
     }
 }

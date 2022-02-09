@@ -20,14 +20,6 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses.Orders
         [JsonProperty("conditions")]
         public Conditions Conditions { get; set; }
         
-        [JsonProperty("origin")]
-        [JsonConverter(typeof(PlaceJsonConverter))]
-        public Place Origin { get; set; }
-        
-        [JsonProperty("destination")]
-        [JsonConverter(typeof(PlaceJsonConverter))]
-        public Place Destination { get; set; }
-        
         [JsonProperty("duration")]
         [JsonConverter(typeof(StringDurationToTimeStampJsonConverter))]
         public TimeSpan Duration { get; set; }

@@ -15,7 +15,7 @@ namespace Duffel.ApiClient.Interfaces.Models.Requests
         /// <summary>
         /// The order ID you wish to change
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("order_id")]
         public string OrderId { get; set; }
     }
 

@@ -1,6 +1,5 @@
 using System;
-using System.Collections.Generic;
-using Duffel.ApiClient.Interfaces.Models.Responses.OrderChange;
+using Duffel.ApiClient.Interfaces.Models.Responses.OrderChangeRequest;
 using Newtonsoft.Json;
 
 namespace Duffel.ApiClient.Interfaces.Models.Responses

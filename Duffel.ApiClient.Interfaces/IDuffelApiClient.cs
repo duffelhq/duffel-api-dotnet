@@ -13,6 +13,7 @@ namespace Duffel.ApiClient.Interfaces
          SeatMaps SeatMaps { get; }
          Payments Payments { get; }
          OrderChangeRequests OrderChangeRequests { get; }
+         OrderChanges OrderChanges { get; }
         
     }
 }

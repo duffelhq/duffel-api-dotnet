@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Globalization;
 using System.Net.Http;
 using Duffel.ApiClient.Interfaces;
+using Duffel.ApiClient.Interfaces.Models.Responses;
 using Duffel.ApiClient.Interfaces.Resources;
 
 namespace Duffel.ApiClient
@@ -17,10 +19,8 @@ namespace Duffel.ApiClient
         public Orders Orders { get; }
         public SeatMaps SeatMaps { get; }
         public Payments Payments { get; }
-        
         public OrderChangeRequests OrderChangeRequests { get; }
-        
-        
+        public OrderChanges OrderChanges { get; }
         
         public DuffelApiClient(string accessToken, bool production = false)
         {
@@ -41,6 +41,7 @@ namespace Duffel.ApiClient
             SeatMaps = new SeatMaps(_httpClient);
             Payments = new Payments(_httpClient);
             OrderChangeRequests = new OrderChangeRequests(_httpClient);
+            OrderChanges = new OrderChanges(_httpClient);
         }
         
         /*

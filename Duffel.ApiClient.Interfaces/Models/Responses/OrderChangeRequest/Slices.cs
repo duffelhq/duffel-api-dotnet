@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Duffel.ApiClient.Interfaces.Models.Responses.OrderChange
+namespace Duffel.ApiClient.Interfaces.Models.Responses.OrderChangeRequest
 {
     public class Slices
     {
@@ -17,6 +17,5 @@ namespace Duffel.ApiClient.Interfaces.Models.Responses.OrderChange
         /// </summary>
         [JsonProperty("remove")]
         public IEnumerable<OrderChangeSlice> Remove { get; set; }
-
     }
 }
