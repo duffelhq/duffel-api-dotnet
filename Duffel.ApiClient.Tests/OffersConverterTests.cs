@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Duffel.ApiClient.Interfaces.Converters;
-using Duffel.ApiClient.Interfaces.Models;
-using Duffel.ApiClient.Interfaces.Models.Requests;
-using Duffel.ApiClient.Interfaces.Models.Responses;
-using Duffel.ApiClient.Interfaces.Models.Responses.Offers;
+using Duffel.ApiClient.Converters;
+using Duffel.ApiClient.Models;
+using Duffel.ApiClient.Models.Requests;
+using Duffel.ApiClient.Models.Responses;
+using Duffel.ApiClient.Models.Responses.Offers;
 using NFluent;
 using NUnit.Framework;
+using Passenger = Duffel.ApiClient.Models.Requests.Passenger;
+using Slice = Duffel.ApiClient.Models.Responses.Slice;
 
 namespace Duffel.ApiClient.Tests
 {
@@ -18,14 +20,14 @@ namespace Duffel.ApiClient.Tests
         {
             var request = new OffersRequest
             {
-                Passengers = new List<Interfaces.Models.Requests.Passenger>
+                Passengers = new List<Passenger>
                 {
                     new() { PassengerType = PassengerType.Adult },
                     new() { PassengerType = PassengerType.Child },
                     new() { PassengerType = PassengerType.Infant }
                 },
                 RequestedSources = new List<string> { "united" },
-                Slices = new List<Interfaces.Models.Requests.Slice>
+                Slices = new List<Models.Requests.Slice>
                 {
                     new()
                     {
@@ -46,14 +48,14 @@ namespace Duffel.ApiClient.Tests
         {
             var request = new OffersRequest
             {
-                Passengers = new List<Interfaces.Models.Requests.Passenger>
+                Passengers = new List<Passenger>
                 {
                     new() { PassengerType = PassengerType.Adult },
                     new() { PassengerType = PassengerType.Child },
                     new() { PassengerType = PassengerType.Infant }
                 },
                 RequestedSources = new List<string> { "united" },
-                Slices = new List<Interfaces.Models.Requests.Slice>
+                Slices = new List<Models.Requests.Slice>
                 {
                     new()
                     {
@@ -115,11 +117,11 @@ namespace Duffel.ApiClient.Tests
             // TODO: add more checks for full offer
         }
         
-        private static void AssertOfferLevelPassengerDataCorrect(OffersResponse? offersResponse)
+        private static void AssertOfferLevelPassengerDataCorrect(OffersResponse offersResponse)
         {
             var passengers = offersResponse.Passengers!.ToList();
             Check.That(passengers).HasSize(1);
-            var passenger = passengers.FirstOrDefault();
+            var passenger = passengers.First();
             Check.That(passenger.PassengerType).Equals(PassengerType.Adult);
             Check.That(passenger.Id).Equals("pas_0000AFANuVr4l0DI9G8Fk2");
         }
@@ -145,7 +147,7 @@ namespace Duffel.ApiClient.Tests
             AssertSliceDataOnOfferCorrect(offer);
         }
         
-        private static void AssertSliceDataOnOfferCorrect(Offer? offer)
+        private static void AssertSliceDataOnOfferCorrect(Offer offer)
         {
             Check.That(offer.Slices).HasSize(1);
             var slice = offer.Slices.First();
@@ -170,7 +172,7 @@ namespace Duffel.ApiClient.Tests
             AssertPassengerDataOnSegmentValid(segment);
         }
 
-        private static void AssertPassengerDataOnSegmentValid(Segment? segment)
+        private static void AssertPassengerDataOnSegmentValid(Segment segment)
         {
             Check.That(segment.Passengers).HasSize(1);
             var passengerData = segment.Passengers.First();
@@ -180,7 +182,7 @@ namespace Duffel.ApiClient.Tests
             Check.That(passengerData.PassengerId).Equals("pas_0000AFANuVr4l0DI9G8Fk2");
         }
 
-        private static void AssertPassengerDataCorrect(Offer? offer)
+        private static void AssertPassengerDataCorrect(Offer offer)
         {
             Check.That(offer.Passengers).HasSize(1);
 
@@ -190,7 +192,7 @@ namespace Duffel.ApiClient.Tests
             Check.That(passenger.LoyaltyProgrammeAccounts).HasSize(0);
         }
 
-        private static void AssertOwnerPresentAndCorrect(Offer? offer)
+        private static void AssertOwnerPresentAndCorrect(Offer offer)
         {
             var owner = offer.Owner;
             Check.That(owner).IsNotNull();
@@ -199,7 +201,7 @@ namespace Duffel.ApiClient.Tests
             Check.That(owner.IataCode).IsEqualTo("DL");
         }
 
-        private static void AssertSlicesDataCorrect(List<Interfaces.Models.Responses.Slice> slices)
+        private static void AssertSlicesDataCorrect(List<Slice> slices)
         {
             Check.That(slices).HasSize(1);
 

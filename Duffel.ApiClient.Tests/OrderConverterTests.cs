@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using Duffel.ApiClient.Interfaces.Converters;
-using Duffel.ApiClient.Interfaces.Models;
-using Duffel.ApiClient.Interfaces.Models.IdentityDocuments;
-using Duffel.ApiClient.Interfaces.Models.Payments;
-using Duffel.ApiClient.Interfaces.Models.Requests;
-using Duffel.ApiClient.Interfaces.Models.Responses;
+using Duffel.ApiClient.Converters;
+using Duffel.ApiClient.Models;
+using Duffel.ApiClient.Models.IdentityDocuments;
+using Duffel.ApiClient.Models.Payments;
+using Duffel.ApiClient.Models.Requests;
+using Duffel.ApiClient.Models.Responses;
 using Newtonsoft.Json;
 using NFluent;
 using NUnit.Framework;

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Duffel.ApiClient.Interfaces.Converters;
-using Duffel.ApiClient.Interfaces.Models;
-using Duffel.ApiClient.Interfaces.Models.Requests;
+using Duffel.ApiClient.Converters;
+using Duffel.ApiClient.Models;
+using Duffel.ApiClient.Models.Requests;
 using NFluent;
 using NUnit.Framework;
 

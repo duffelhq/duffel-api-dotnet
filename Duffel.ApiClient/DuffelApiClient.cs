@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Globalization;
 using System.Net.Http;
-using Duffel.ApiClient.Interfaces;
-using Duffel.ApiClient.Interfaces.Models.Responses;
-using Duffel.ApiClient.Interfaces.Resources;
+using Duffel.ApiClient.Resources;
 
 namespace Duffel.ApiClient
 {

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Duffel.ApiClient;
-using Duffel.ApiClient.Interfaces.Exceptions;
-using Duffel.ApiClient.Interfaces.Models;
-using Duffel.ApiClient.Interfaces.Models.Payments;
-using Duffel.ApiClient.Interfaces.Models.Requests;
+using Duffel.ApiClient.Exceptions;
+using Duffel.ApiClient.Models;
+using Duffel.ApiClient.Models.Payments;
+using Duffel.ApiClient.Models.Requests;
 using Newtonsoft.Json;
-using Passenger = Duffel.ApiClient.Interfaces.Models.Requests.Passenger;
-using Slice = Duffel.ApiClient.Interfaces.Models.Requests.Slice;
+using Passenger = Duffel.ApiClient.Models.Requests.Passenger;
+using Slice = Duffel.ApiClient.Models.Requests.Slice;
 
 namespace Examples
 {

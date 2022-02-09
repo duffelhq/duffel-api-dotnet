@@ -1,5 +1,5 @@
-using Duffel.ApiClient.Interfaces.Converters;
-using Duffel.ApiClient.Interfaces.Models.Responses;
+using Duffel.ApiClient.Converters;
+using Duffel.ApiClient.Models.Responses;
 using NFluent;
 using NUnit.Framework;
 
