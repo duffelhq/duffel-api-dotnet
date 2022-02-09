@@ -6,8 +6,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Duffel.ApiClient.Tests", "D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{5332EA06-5AE9-46AC-9987-0F97E468E8D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Duffel.ApiClient.Interfaces", "Duffel.ApiClient.Interfaces\Duffel.ApiClient.Interfaces.csproj", "{7B25EE42-504D-4110-9589-9AA8EE7C3A4F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,9 +24,5 @@ Global
 		{5332EA06-5AE9-46AC-9987-0F97E468E8D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5332EA06-5AE9-46AC-9987-0F97E468E8D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5332EA06-5AE9-46AC-9987-0F97E468E8D7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7B25EE42-504D-4110-9589-9AA8EE7C3A4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B25EE42-504D-4110-9589-9AA8EE7C3A4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B25EE42-504D-4110-9589-9AA8EE7C3A4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B25EE42-504D-4110-9589-9AA8EE7C3A4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

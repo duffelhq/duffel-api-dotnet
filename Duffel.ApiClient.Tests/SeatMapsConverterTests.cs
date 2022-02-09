@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Duffel.ApiClient.Interfaces.Converters;
+using Duffel.ApiClient.Interfaces.Converters.Json;
 using Duffel.ApiClient.Interfaces.Models;
 using Newtonsoft.Json;
 using NFluent;

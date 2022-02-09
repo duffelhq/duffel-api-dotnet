@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Duffel.ApiClient.Converters;
+using Duffel.ApiClient.Interfaces.Converters;
 using Duffel.ApiClient.Interfaces.Models;
 using Duffel.ApiClient.Interfaces.Models.IdentityDocuments;
 using Duffel.ApiClient.Interfaces.Models.Payments;
