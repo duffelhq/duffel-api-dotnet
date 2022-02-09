@@ -2,9 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Duffel.ApiClient.Converters;
-using Duffel.ApiClient.Exceptions;
-using Newtonsoft.Json;
+using Duffel.ApiClient.Converters.Json;
+using Duffel.ApiClient.Models;
 
 namespace Duffel.ApiClient.Resources
 {
@@ -23,20 +22,12 @@ namespace Duffel.ApiClient.Resources
             _httpClient = httpClient;
         }
 
-        public async Task<IEnumerable<SeatMaps>> Get(string offerId)
+        public async Task<IEnumerable<SeatMap>> Get(string offerId)
         {
             var result = await _httpClient.GetAsync($"air/seat_maps?offer_id={offerId}");
             var content = await result.Content.ReadAsStringAsync();
             
-            var wrappedResponse =
-                JsonConvert.DeserializeObject<DuffelResponseWrapper<IEnumerable<SeatMaps>>>(content);
-
-            if (wrappedResponse != null && wrappedResponse.Errors != null && wrappedResponse.Errors.Any())
-            {
-                throw new ApiException(wrappedResponse.Metadata, wrappedResponse.Errors);
-            }
-
-            return (wrappedResponse?.Data ?? null) ?? throw new ApiDeserializationException(null, content);
+            return SeatMapsJsonConverter.DeserializeSeatsMap(content).AsEnumerable();
         }
     }
 }

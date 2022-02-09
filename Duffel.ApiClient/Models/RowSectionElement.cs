@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Duffel.ApiClient.Models.Responses;
 using Newtonsoft.Json;
 using CabinRowsSectionsElementJsonConverter = Duffel.ApiClient.Converters.Json.CabinRowsSectionsElementJsonConverter;
 
@@ -14,7 +15,7 @@ namespace Duffel.ApiClient.Models
         /// Seats are considered a special kind of service. There will be at most one service per seat per passenger. A seat can only be booked for one passenger. If a seat has no available services (which will be represented as an empty list : []) then it's unavailable.
         /// </summary>
         [JsonProperty("available_services")]
-        public IEnumerable<Service> AvailableServices { get; set; }
+        public IEnumerable<SeatService> AvailableServices { get; set; }
         
         /// <summary>
         /// The designator used to uniquely identify the seat, usually made up of a row number and a column letter
