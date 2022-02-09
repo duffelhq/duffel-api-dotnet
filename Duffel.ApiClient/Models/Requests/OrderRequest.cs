@@ -20,14 +20,14 @@ namespace Duffel.ApiClient.Models.Requests
         /// The services you want to book along with the first selected offer. This key should be omitted when the order’s type is hold, as we do not support services for hold orders yet.
         /// </summary>
         [JsonProperty("services")]
-        public IEnumerable<Service> Services { get; set; } = new List<Service>().AsEnumerable();
+        public List<Service> Services { get; set; } = new List<Service>();
 
-         /// <summary>
-         /// The ids of the offers you want to book. You must specify an array containing exactly one selected offer.
-         /// Note that you can only book one offer per offer request.
-         /// </summary>
-         [JsonProperty("selected_offers")]
-         public IEnumerable<string> SelectedOffers { get; set; }
+        /// <summary>
+        /// The ids of the offers you want to book. You must specify an array containing exactly one selected offer.
+        /// Note that you can only book one offer per offer request.
+        /// </summary>
+        [JsonProperty("selected_offers")]
+        public List<string> SelectedOffers { get; set; } = new List<string>();
      
          /// <summary>
          /// The payment details to use to pay for the order. This key should be omitted when the order’s type is hold
@@ -40,7 +40,7 @@ namespace Duffel.ApiClient.Models.Requests
          /// The personal details of the passengers, expanding on the information initially provided when creating the offer request
          /// </summary>
          [JsonProperty("passengers")]
-         public IEnumerable<OrderPassenger> Passengers { get; set; }
+         public List<OrderPassenger> Passengers { get; set; } = new List<OrderPassenger>();
      
          /// <summary>
          /// Metadata contains a set of key-value pairs that you can attach to an object. It can be useful for storing additional information about the object, in a structured format. Duffel does not use this information. You should not store sensitive information in this field.

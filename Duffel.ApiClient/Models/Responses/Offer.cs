@@ -56,8 +56,12 @@ namespace Duffel.ApiClient.Models.Responses
         [JsonProperty("payment_requirements")]
         public PaymentRequirements PaymentRequirements { get; set; }
         
-        // TODO: available services
-        
+        /// <summary>
+        /// The services that can be booked along with the offer but are not included by default, for example an additional checked bag. This field is only returned in the Get single offer endpoint. When there are no services available, or we don't support services for the airline, this list will be empty. If you want to know which airlines we support services for, please get in touch with the Duffel support team at help@duffel.com.
+        /// </summary>
+        [JsonProperty("available_services")]
+        public IEnumerable<Service> AvailableServices { get; set; }
+
         /// <summary>
         /// The passengers included in the offer
         /// </summary>
