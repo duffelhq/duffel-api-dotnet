@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Duffel.ApiClient.Converters;
 using Duffel.ApiClient.Interfaces.Converters;
 using Duffel.ApiClient.Interfaces.Models;
 using Duffel.ApiClient.Interfaces.Models.Requests;
