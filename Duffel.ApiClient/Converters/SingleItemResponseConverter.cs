@@ -18,22 +18,15 @@ namespace Duffel.ApiClient.Converters
 
         public static T Deserialize<T>(string payload, HttpStatusCode statusCode) where T : class
         {
-            try
-            {
-                var wrappedResponse = JsonConvert.DeserializeObject<DuffelResponseWrapper<T>>(payload);
+            var wrappedResponse = JsonConvert.DeserializeObject<DuffelResponseWrapper<T>>(payload);
 
-                if (wrappedResponse != null && wrappedResponse.Errors != null && wrappedResponse.Errors.Any())
-                {
-                    throw new ApiException(wrappedResponse.Metadata, wrappedResponse.Errors, statusCode);
-                }
-
-                return (wrappedResponse?.Data ?? null) ??
-                       throw new ApiDeserializationException(null, payload, statusCode);
-            }
-            catch (Exception e)
+            if (wrappedResponse != null && wrappedResponse.Errors != null && wrappedResponse.Errors.Any())
             {
-                throw new ApiDeserializationException(e);
+                throw new ApiException(wrappedResponse.Metadata, wrappedResponse.Errors, statusCode);
             }
+
+            return (wrappedResponse?.Data ?? null) ??
+                   throw new ApiDeserializationException(null, payload, statusCode);
         }
     }
 }

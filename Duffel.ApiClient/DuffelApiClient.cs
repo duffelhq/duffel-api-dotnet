@@ -18,6 +18,7 @@ namespace Duffel.ApiClient
         public Payments Payments { get; }
         public OrderChangeRequests OrderChangeRequests { get; }
         public OrderChanges OrderChanges { get; }
+        public OrderChangeOffers OrderChangeOffers { get; }
         
         public DuffelApiClient(string accessToken, bool production = false)
         {
@@ -39,6 +40,7 @@ namespace Duffel.ApiClient
             Payments = new Payments(_httpClient);
             OrderChangeRequests = new OrderChangeRequests(_httpClient);
             OrderChanges = new OrderChanges(_httpClient);
+            OrderChangeOffers = new OrderChangeOffers(_httpClient);
         }
         
         /*

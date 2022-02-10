@@ -24,14 +24,14 @@ namespace Duffel.ApiClient.Models.Requests
         /// <summary>
         /// The slices that you wish to remove from your order
         /// </summary>
-        [JsonProperty("remove")]
+        [JsonProperty(PropertyName = "remove", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(SliceListToDictConverter))]
-        public List<string> Remove { get; set; } = new List<string>();
+        public List<string> Remove { get; set; } 
 
         /// <summary>
         /// The search criteria for slices which you wish to add to your order
         /// </summary>
-        [JsonProperty("add")]
-        public List<ChangeSlice> Add { get; set; } = new List<ChangeSlice>();
+        [JsonProperty(PropertyName = "add", NullValueHandling = NullValueHandling.Ignore)]
+        public List<ChangeSlice> Add { get; set; } 
     }
 }

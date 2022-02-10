@@ -14,6 +14,7 @@ namespace Duffel.ApiClient
          Payments Payments { get; }
          OrderChangeRequests OrderChangeRequests { get; }
          OrderChanges OrderChanges { get; }
+         OrderChangeOffers OrderChangeOffers { get; }
         
     }
 }
