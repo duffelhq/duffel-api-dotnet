@@ -34,15 +34,14 @@ namespace Duffel.ApiClient.Resources
             var payload = OffersResponseConverter.Serialize(request);
             var result = await HttpClient.PostAsync($"air/offer_requests", 
                 new StringContent(payload,  Encoding.UTF8, "application/json"));
-            var content = await result.Content.ReadAsStringAsync();
-            return OffersResponseConverter.Deserialize(content);
+
+            return await SingleItemResponseConverter.GetAndDeserialize<OffersResponse>(result);
         }
 
         public async Task<OffersResponse> Get(string offerRequestId)
         {
             var result = await HttpClient.GetAsync($"air/offer_requests/{offerRequestId}");
-            var content = await result.Content.ReadAsStringAsync();
-            return SingleItemResponseConverter.Deserialize<OffersResponse>(content);
+            return await SingleItemResponseConverter.GetAndDeserialize<OffersResponse>(result);
         }
 
         public async Task<DuffelResponsePage<IEnumerable<OffersResponse>>> Get(string before = "", string after = "", int limit = 50)

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Duffel.ApiClient.Converters;
 using Duffel.ApiClient.Models.Requests;
 using Duffel.ApiClient.Models.Responses;
 using OrderCancellationConverter = Duffel.ApiClient.Converters.OrderCancellationConverter;
@@ -27,15 +28,13 @@ namespace Duffel.ApiClient.Resources
             var payload = OrderConverter.Serialize(request);
             var result = await HttpClient.PostAsync($"air/orders",
                 new StringContent(payload, Encoding.UTF8, "application/json"));
-            var content = await result.Content.ReadAsStringAsync();
-            return OrderConverter.Deserialize(content);
+            return await SingleItemResponseConverter.GetAndDeserialize<Order>(result);
         }
 
         public async Task<Order> Get(string orderId)
         {
             var result = await HttpClient.GetAsync($"air/orders/{orderId}");
-            var content = await result.Content.ReadAsStringAsync();
-            return OrderConverter.Deserialize(content);
+            return await SingleItemResponseConverter.GetAndDeserialize<Order>(result);
         }
 
         public async Task<Order> Update(string orderId, OrderMetadata metadata)
@@ -44,8 +43,9 @@ namespace Duffel.ApiClient.Resources
             
             var result = await HttpClient.PatchAsync($"air/orders/{orderId}",
                 new StringContent(payload, Encoding.UTF8, "application/json"));
-            var content = await result.Content.ReadAsStringAsync();
-            return OrderConverter.Deserialize(content);
+            
+            return await SingleItemResponseConverter.GetAndDeserialize<Order>(result);
+            
         }
 
         /// <summary>
@@ -61,9 +61,8 @@ namespace Duffel.ApiClient.Resources
             
             var result = await HttpClient.PostAsync($"air/order_cancellations",
                 new StringContent(payload, Encoding.UTF8, "application/json"));
-            var content = await result.Content.ReadAsStringAsync(); 
             
-            return OrderCancellationConverter.Deserialize(content);
+            return await SingleItemResponseConverter.GetAndDeserialize<OrderCancellation>(result);
         }
 
         /// <summary>
@@ -74,9 +73,8 @@ namespace Duffel.ApiClient.Resources
         {
             var result = await HttpClient.PostAsync($"air/order_cancellations/{cancellationRequestId}/actions/confirm",
                 new StringContent("", Encoding.UTF8, "application/json"));
-            var content = await result.Content.ReadAsStringAsync();
             
-            return OrderCancellationConverter.Deserialize(content);
+            return await SingleItemResponseConverter.GetAndDeserialize<OrderCancellation>(result);
         }
 
         /// <summary>
@@ -85,8 +83,7 @@ namespace Duffel.ApiClient.Resources
         public async Task<OrderCancellation> GetOrderCancellation(string cancellationRequestId)
         {
             var result = await HttpClient.GetAsync($"air/order_cancellations/{cancellationRequestId}");
-            var content = await result.Content.ReadAsStringAsync();
-            return OrderCancellationConverter.Deserialize(content);
+            return await SingleItemResponseConverter.GetAndDeserialize<OrderCancellation>(result);
         }
 
         public async Task<DuffelResponsePage<IEnumerable<OrderCancellation>>> GetOrderCancellations(string before = "", string after = "", int limit = 50, string order_id = "")
@@ -99,7 +96,7 @@ namespace Duffel.ApiClient.Resources
             
             var result = await HttpClient.GetAsync(url);
             var content = await result.Content.ReadAsStringAsync();
-            return PagedResponseConverter.Deserialize<OrderCancellation>(content);
+            return PagedResponseConverter.Deserialize<OrderCancellation>(content, result.StatusCode);
         }
     }
 }

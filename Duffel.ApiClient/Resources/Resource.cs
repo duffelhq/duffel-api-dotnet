@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Duffel.ApiClient.Converters;
+using Duffel.ApiClient.Exceptions;
 
 namespace Duffel.ApiClient.Resources
 {
@@ -16,8 +17,7 @@ namespace Duffel.ApiClient.Resources
         public async Task<T> Get(string id) 
         {
             var result = await HttpClient.GetAsync($"air/{ResourceName}/{id}");
-            var content = await result.Content.ReadAsStringAsync();
-            return SingleItemResponseConverter.Deserialize<T>(content);
+            return await SingleItemResponseConverter.GetAndDeserialize<T>(result);
         }
         
         public async Task<DuffelResponsePage<IEnumerable<T>>> Get(int limit = 50, string before = "", string after = "")

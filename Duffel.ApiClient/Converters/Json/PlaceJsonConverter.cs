@@ -3,7 +3,7 @@ using Duffel.ApiClient.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Duffel.ApiClient.Converters
+namespace Duffel.ApiClient.Converters.Json
 {
     public class PlaceJsonConverter : JsonConverter
     {

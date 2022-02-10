@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using Duffel.ApiClient.Converters;
 using Duffel.ApiClient.Models;
 using Duffel.ApiClient.Models.Requests;
@@ -93,7 +94,7 @@ namespace Duffel.ApiClient.Tests
         [Test]
         public void CanDeserializeSingleOfferResponse()
         {
-            var offerResponse = SingleItemResponseConverter.Deserialize<Offer>(JsonFixture.Load("offer_response_ow_3pass_ber_lhr.json"));
+            var offerResponse = SingleItemResponseConverter.Deserialize<Offer>(JsonFixture.Load("offer_response_ow_3pass_ber_lhr.json"), HttpStatusCode.Accepted);
             Check.That(offerResponse).IsNotNull().And.IsInstanceOf<Offer>();
 
             Check.That(offerResponse.PaymentRequirements).IsNotNull();

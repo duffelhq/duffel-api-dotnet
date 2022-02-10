@@ -1,4 +1,7 @@
+using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using Duffel.ApiClient.Converters;
 using Duffel.ApiClient.Converters.Json;
 using Duffel.ApiClient.Models;
 using NFluent;
@@ -11,7 +14,9 @@ namespace Duffel.ApiClient.Tests
         [Test]
         public void CanDeSerializeSeatMaps()
         {
-            var seatMaps = SeatMapsJsonConverter.DeserializeSeatsMap(JsonFixture.Load("seat_maps.json"));
+            var seatMaps =
+                SingleItemResponseConverter.Deserialize<IEnumerable<SeatMap>>(JsonFixture.Load("seat_maps.json"),
+                    HttpStatusCode.Accepted);
             Check.That(seatMaps).IsNotNull();
 
             var cabin = seatMaps.First().Cabins.First();
@@ -30,7 +35,9 @@ namespace Duffel.ApiClient.Tests
         [Test]
         public void CanDeSerializeDuffelAirwaysSeatMaps()
         {
-            var seatMaps = SeatMapsJsonConverter.DeserializeSeatsMap(JsonFixture.Load("seat_maps_duffel.json"));
+            var seatMaps =
+                SingleItemResponseConverter.Deserialize<IEnumerable<SeatMap>>(
+                    JsonFixture.Load("seat_maps_duffel.json"), HttpStatusCode.Accepted);
             Check.That(seatMaps).IsNotNull();
 
             var mapElements = seatMaps

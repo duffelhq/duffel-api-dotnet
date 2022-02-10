@@ -31,4 +31,29 @@ var selectedOffer = response.Offers.First();
 var pricedOffer = await client.Offers.Get(selectedOffer.Id, returnAvailableServices: true);
 ```
 
-You can find a complete e2e examples in [./Examples](./Examples) folder
+## Error handling
+The call to API can result in an error, which will then throw one out of two exceptions:
+
+```c#
+try
+{
+  var response = await client.OfferRequests.Create(offersRequest, returnOffers: false);
+}
+catch (ApiException apiEx)
+{
+    // apiEx.Errors - list of errors returned by the the API
+    // apiEx.Metadata.RequestId - a Duffel id of the request
+    // apiEx.StatusCode - an Http status code returned by the API    
+}
+catch (ApiDeserializationException desEx)
+{
+    // desEx.Payload - contains payload returned by the API
+    // apiEx.StatusCode - an Http status code returned by the API
+}
+```
+
+For more detailed information about error handling, see: [https://duffel.com/docs/api/overview/errors](https://duffel.com/docs/api/overview/errors)
+
+## Examples
+
+You can find a complete e2e examples in [./Examples](https://github.com/duffelhq/duffel-api-dotnet/tree/main/examples) folder
