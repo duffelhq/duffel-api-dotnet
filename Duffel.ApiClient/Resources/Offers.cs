@@ -28,7 +28,7 @@ namespace Duffel.ApiClient.Resources
             string sortOrder = "total_amount")
         {
             var url =
-                $"air/offers?offer_request_id={offerRequestId}&limit={limit}&sort={sortOrder}&max_connections={maxConnections}";
+                $"air/offers?offer_request_id={offerRequestId}&limit={limit}&sort={sortOrder.ToLower()}&max_connections={maxConnections}";
 
             if (!string.IsNullOrEmpty(before)) url += $"&{before}";
             if (!string.IsNullOrEmpty(after)) url += $"&{after}";

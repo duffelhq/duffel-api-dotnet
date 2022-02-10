@@ -30,7 +30,6 @@ namespace Duffel.ApiClient.Resources
         /// <returns></returns>
         public async Task<OffersResponse> Create(OffersRequest request, bool returnOffers = true)
         {
-            // TODO: returnOffers does not work?
             var payload = OffersResponseConverter.Serialize(request);
             var result = await HttpClient.PostAsync($"air/offer_requests", 
                 new StringContent(payload,  Encoding.UTF8, "application/json"));
