@@ -34,7 +34,6 @@ namespace Duffel.ApiClient.Resources
             {
                 page = await Get(limit: page.Limit, after: page.NextPage, before: page.PreviousPage);
                 result.AddRange(page.Data);
-                Console.Write(".");
             }
 
             return result.AsEnumerable();    
