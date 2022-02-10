@@ -59,7 +59,6 @@ namespace Duffel.ApiClient.Resources
             {
                 page = await Get(limit: 200, after: page.NextPage, before: page.PreviousPage);
                 result.AddRange(page.Data);
-                Console.Write(".");
             }
 
             return result.AsEnumerable();
