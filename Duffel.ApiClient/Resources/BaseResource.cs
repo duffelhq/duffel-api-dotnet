@@ -24,7 +24,7 @@ namespace Duffel.ApiClient.Resources
         {
             var result = await _httpClient.GetAsync(url);
             var content = await result.Content.ReadAsStringAsync();
-            return PagedResponseConverter.Deserialize<T>(content);
+            return PagedResponseConverter.Deserialize<T>(content, result.StatusCode);
         }
     }
 }

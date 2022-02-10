@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Net;
 using Duffel.ApiClient.Exceptions;
 using Duffel.ApiClient.Models.Requests;
 using Duffel.ApiClient.Models.Responses;
@@ -21,7 +22,7 @@ namespace Duffel.ApiClient.Converters
             return JsonConvert.SerializeObject(new DuffelDataWrapper<OffersRequest>(request), Formatting.None, settings);
         }
         
-        public static OffersResponse Deserialize(string payload)
+        public static OffersResponse Deserialize(string payload, HttpStatusCode statusCode = HttpStatusCode.Accepted)
         {
             var wrappedResponse = 
                 JsonConvert.DeserializeObject<DuffelResponseWrapper<OffersResponse>>(
@@ -29,7 +30,7 @@ namespace Duffel.ApiClient.Converters
 
             if (wrappedResponse != null && wrappedResponse.Errors != null && wrappedResponse.Errors.Any())
             {
-                throw new ApiException(wrappedResponse.Metadata, wrappedResponse.Errors);
+                throw new ApiException(wrappedResponse.Metadata, wrappedResponse.Errors, statusCode);
             }
 
             return (wrappedResponse?.Data ?? null) ?? throw new ApiDeserializationException(null ,payload);            

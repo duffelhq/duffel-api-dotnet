@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Duffel.ApiClient.Converters;
 using Duffel.ApiClient.Converters.Json;
 using Duffel.ApiClient.Models;
 
@@ -25,9 +26,7 @@ namespace Duffel.ApiClient.Resources
         public async Task<IEnumerable<SeatMap>> Get(string offerId)
         {
             var result = await _httpClient.GetAsync($"air/seat_maps?offer_id={offerId}");
-            var content = await result.Content.ReadAsStringAsync();
-            
-            return SeatMapsJsonConverter.DeserializeSeatsMap(content).AsEnumerable();
+            return await SingleItemResponseConverter.GetAndDeserialize<IEnumerable<SeatMap>>(result);
         }
     }
 }

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Duffel.ApiClient.Converters.Json;
 using Newtonsoft.Json;
-using PlaceJsonConverter = Duffel.ApiClient.Converters.PlaceJsonConverter;
+using PlaceJsonConverter = Duffel.ApiClient.Converters.Json.PlaceJsonConverter;
 
 namespace Duffel.ApiClient.Models.Responses.Offers
 {

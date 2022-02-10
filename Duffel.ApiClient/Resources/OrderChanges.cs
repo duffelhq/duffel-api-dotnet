@@ -1,9 +1,7 @@
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Duffel.ApiClient.Converters;
-using Duffel.ApiClient.Exceptions;
 using Duffel.ApiClient.Models.Requests;
 using Duffel.ApiClient.Models.Responses;
 using Newtonsoft.Json;
@@ -32,32 +30,13 @@ namespace Duffel.ApiClient.Resources
             var result = await _httpClient.PostAsync("air/order_changes",
                 new StringContent(payload, Encoding.UTF8, "application/json"));
 
-            var content = await result.Content.ReadAsStringAsync();
-
-            var wrappedResponse = 
-                JsonConvert.DeserializeObject<DuffelResponseWrapper<OrderChange>>(
-                    payload);
-
-            if (wrappedResponse != null && wrappedResponse.Errors != null && wrappedResponse.Errors.Any())
-            {
-                throw new ApiException(wrappedResponse.Metadata, wrappedResponse.Errors);
-            }
-
-            return (wrappedResponse?.Data ?? null) ?? throw new ApiDeserializationException(null, payload);
+            return await SingleItemResponseConverter.GetAndDeserialize<OrderChange>(result);
         }
 
         public async Task<OrderChange> Get(string orderChangeId)
         {
             var result = await _httpClient.GetAsync($"air/order_changes/{orderChangeId}");
-            var content = await result.Content.ReadAsStringAsync();
-            
-            var wrappedResponse = JsonConvert.DeserializeObject<DuffelResponseWrapper<OrderChange>>(content);
-            
-            if (wrappedResponse != null && wrappedResponse.Errors != null && wrappedResponse.Errors.Any())
-            {
-                throw new ApiException(wrappedResponse.Metadata, wrappedResponse.Errors);
-            }
-            return (wrappedResponse?.Data ?? null) ?? throw new ApiDeserializationException(null, content);
+            return await SingleItemResponseConverter.GetAndDeserialize<OrderChange>(result);
         }
 
         /*

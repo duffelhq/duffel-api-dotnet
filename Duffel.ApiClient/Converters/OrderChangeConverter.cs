@@ -17,17 +17,5 @@ namespace Duffel.ApiClient.Converters
             var wrapped = new DuffelDataWrapper<OrderChangeRequest>(request);
             return JsonConvert.SerializeObject(wrapped, Formatting.None, settings);
         }
-
-        public static OrderChangeResponse Deserialize(string payload)
-        {
-            var wrappedResponse = JsonConvert.DeserializeObject<DuffelResponseWrapper<OrderChangeResponse>>(payload);
-            
-            if (wrappedResponse != null && wrappedResponse.Errors != null && wrappedResponse.Errors.Any())
-            {
-                throw new ApiException(wrappedResponse.Metadata, wrappedResponse.Errors);
-            }
-            return (wrappedResponse?.Data ?? null) ?? throw new ApiDeserializationException(null, payload);
-
-        }
     }
 }

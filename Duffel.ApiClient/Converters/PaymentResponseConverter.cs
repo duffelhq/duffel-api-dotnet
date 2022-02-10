@@ -1,7 +1,4 @@
-using System.Linq;
-using Duffel.ApiClient.Exceptions;
 using Duffel.ApiClient.Models.Requests;
-using Duffel.ApiClient.Models.Responses;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
@@ -15,20 +12,6 @@ namespace Duffel.ApiClient.Converters
             var settings = new JsonSerializerSettings();
             settings.Converters.Add(new StringEnumConverter {NamingStrategy = new SnakeCaseNamingStrategy()});
             return  JsonConvert.SerializeObject(new DuffelDataWrapper<PaymentRequest>(paymentRequest), Formatting.None, settings);
-        }
-
-        public static PaymentResponse Deserialize(string payload)
-        {
-            var wrappedResponse = 
-                JsonConvert.DeserializeObject<DuffelResponseWrapper<PaymentResponse>>(
-                    payload);
-
-            if (wrappedResponse != null && wrappedResponse.Errors != null && wrappedResponse.Errors.Any())
-            {
-                throw new ApiException(wrappedResponse.Metadata, wrappedResponse.Errors);
-            }
-
-            return (wrappedResponse?.Data ?? null) ?? throw new ApiDeserializationException(null, payload);
         }
     }
 }

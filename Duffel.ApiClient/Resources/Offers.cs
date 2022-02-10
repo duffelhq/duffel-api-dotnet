@@ -20,8 +20,7 @@ namespace Duffel.ApiClient.Resources
         public async Task<Offer> Get(string offerId, bool returnAvailableServices = false)
         {
             var result = await HttpClient.GetAsync($"air/offers/{offerId}?return_available_services={returnAvailableServices.ToString().ToLower()}");
-            var content = await result.Content.ReadAsStringAsync();
-            return SingleItemResponseConverter.Deserialize<Offer>(content);
+            return await SingleItemResponseConverter.GetAndDeserialize<Offer>(result);
         }
 
         public async Task<DuffelResponsePage<IEnumerable<Offer>>> Get(string offerRequestId, string before = "",
@@ -45,7 +44,7 @@ namespace Duffel.ApiClient.Resources
             var response = JsonConvert.DeserializeObject<DuffelResponseWrapper<Passenger>>(content);
             if (response != null && response.Errors != null && response.Errors.Any())
             {
-                throw new ApiException(response.Metadata, response.Errors);
+                throw new ApiException(response.Metadata, response.Errors, result.StatusCode);
             }
             return response!.Data!;
         }

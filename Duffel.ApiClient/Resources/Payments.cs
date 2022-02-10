@@ -22,9 +22,8 @@ namespace Duffel.ApiClient.Resources
             
             var result = await _httpClient.PostAsync($"air/payments",
                 new StringContent(payload, Encoding.UTF8, "application/json"));
-            var content = await result.Content.ReadAsStringAsync();
             
-            return PaymentResponseConverter.Deserialize(content);
+            return await SingleItemResponseConverter.GetAndDeserialize<PaymentResponse>(result);
         }
     }
 }
