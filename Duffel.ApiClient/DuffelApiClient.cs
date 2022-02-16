@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Reflection;
 using Duffel.ApiClient.Resources;
 
 namespace Duffel.ApiClient
@@ -22,8 +23,10 @@ namespace Duffel.ApiClient
         
         public DuffelApiClient(string accessToken, bool production = false)
         {
+            var executingAssemblyName = Assembly.GetExecutingAssembly().GetName();
             _httpClient.BaseAddress = production ? new Uri("https://api.duffel.com") : new Uri("https://api.staging.duffel.com");
-
+            
+            _httpClient.DefaultRequestHeaders.Add("User-Agent", $"Duffel/beta {executingAssemblyName.Name}/{executingAssemblyName.Version}");
             _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {accessToken}");
             _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
             _httpClient.DefaultRequestHeaders.Add("Duffel-Version", "beta");
