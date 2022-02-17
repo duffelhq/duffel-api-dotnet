@@ -6,7 +6,7 @@
         <Authors>Duffel Technology Ltd.</Authors>
         <Copyright>Duffel Technology Ltd.</Copyright>
         <Company>Duffel Technology Ltd.</Company>
-        <PackageVersion>0.0.4</PackageVersion>
+        <PackageVersion>0.1.0</PackageVersion>
         <Title>dotNet client for interacting with the Duffel API</Title>
         <PackageProjectUrl>https://duffel.com/docs/api/overview/welcome</PackageProjectUrl>
         <RepositoryUrl>https://github.com/duffelhq/duffel-api-dotnet</RepositoryUrl>
