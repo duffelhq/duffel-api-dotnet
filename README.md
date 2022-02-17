@@ -5,8 +5,9 @@
 DotNet client library for the Duffel API
 
 ## Getting started
+Installing latest version:
 ```shell
-Install-Package Duffel.ApiClient -Version 0.0.3-alpha
+Install-Package Duffel.ApiClient
 ```
 
 ## Usage
