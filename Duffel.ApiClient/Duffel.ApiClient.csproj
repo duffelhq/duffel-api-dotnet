@@ -11,8 +11,8 @@
         <PackageProjectUrl>https://duffel.com/docs/api/overview/welcome</PackageProjectUrl>
         <RepositoryUrl>https://github.com/duffelhq/duffel-api-dotnet</RepositoryUrl>
         <RepositoryType>Git</RepositoryType>
-        <AssemblyVersion>0.0.4</AssemblyVersion>
-        <FileVersion>0.0.4</FileVersion>
+        <AssemblyVersion>0.1.0</AssemblyVersion>
+        <FileVersion>0.1.0</FileVersion>
         <PackageLicenseUrl>https://raw.githubusercontent.com/duffelhq/duffel-api-dotnet/main/LICENSE</PackageLicenseUrl>
     </PropertyGroup>
 
