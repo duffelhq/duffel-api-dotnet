@@ -20,15 +20,15 @@ namespace Duffel.ApiClient.Resources
             _httpClient = httpClient;
         }
 
-        public async Task<OrderChange> CreatePending(string orderChangeRequestId, string selectedOfferId)
+        public async Task<OrderChange> Create(string orderChangeOfferId)
         {
             var settings = new JsonSerializerSettings();
             settings.Converters.Add(new StringEnumConverter {NamingStrategy = new SnakeCaseNamingStrategy()});
             var payload =  JsonConvert.SerializeObject(
                 new DuffelDataWrapper<SelectedOrderChangeOffer>(
-                    new SelectedOrderChangeOffer { Id = selectedOfferId }), Formatting.None, settings);
+                    new SelectedOrderChangeOffer { Id = orderChangeOfferId }), Formatting.None, settings);
 
-            var result = await _httpClient.PostAsync($"air/order_changes/{orderChangeRequestId}",
+            var result = await _httpClient.PostAsync($"air/order_changes/{orderChangeOfferId}",
                 new StringContent(payload, Encoding.UTF8, "application/json"));
 
             return await SingleItemResponseConverter.GetAndDeserialize<OrderChange>(result);
