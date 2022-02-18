@@ -53,9 +53,9 @@ namespace Duffel.ApiClient.Resources
             List<OffersResponse> result = new List<OffersResponse>();
             var page = await Get(limit: 200);
             result.AddRange(page.Data);
-            while (!string.IsNullOrEmpty(page.NextPage))
+            while (!string.IsNullOrEmpty(page.After))
             {
-                page = await Get(limit: 200, after: page.NextPage, before: page.PreviousPage);
+                page = await Get(limit: 200, after: page.After, before: page.Before);
                 result.AddRange(page.Data);
             }
 

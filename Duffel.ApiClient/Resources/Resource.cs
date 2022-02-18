@@ -30,9 +30,9 @@ namespace Duffel.ApiClient.Resources
             List<T> result = new List<T>();
             var page = await Get(limit: 200);
             result.AddRange(page.Data);
-            while (!string.IsNullOrEmpty(page.NextPage))
+            while (!string.IsNullOrEmpty(page.After))
             {
-                page = await Get(limit: page.Limit, after: page.NextPage, before: page.PreviousPage);
+                page = await Get(limit: page.Limit, after: page.After, before: page.Before);
                 result.AddRange(page.Data);
             }
 
