@@ -22,7 +22,9 @@ namespace Duffel.ApiClient.Resources
         
         public async Task<DuffelResponsePage<IEnumerable<T>>> List(int limit = 50, string before = "", string after = "")
         {
-            return await RetrievePaginatedContent($"air/{ResourceName}?limit={limit}&{after}");
+            var withBefore = string.IsNullOrEmpty(before) ? "" : $"&{before}";
+            var withAfter = string.IsNullOrEmpty(after) ? "" : $"&{after}";
+            return await RetrievePaginatedContent($"air/{ResourceName}?limit={limit}{withBefore}{withAfter}");
         }
 
         public async Task<IEnumerable<T>> GetAll()

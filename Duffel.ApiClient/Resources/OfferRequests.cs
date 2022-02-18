@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -45,7 +44,10 @@ namespace Duffel.ApiClient.Resources
 
         public async Task<DuffelResponsePage<IEnumerable<OffersResponse>>> List(string before = "", string after = "", int limit = 50)
         {
-            return await RetrievePaginatedContent($"air/offer_requests?limit={limit}&{after}");
+            var withBefore = string.IsNullOrEmpty(before) ? "" : $"&{before}";
+            var withAfter = string.IsNullOrEmpty(after) ? "" : $"&{after}";
+            
+            return await RetrievePaginatedContent($"air/offer_requests?limit={limit}{withBefore}{withAfter}");
         }
 
         public async Task<IEnumerable<OffersResponse>> GetAll()
