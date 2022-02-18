@@ -23,7 +23,7 @@ namespace Duffel.ApiClient.Resources
             return await SingleItemResponseConverter.GetAndDeserialize<Offer>(result);
         }
 
-        public async Task<DuffelResponsePage<IEnumerable<Offer>>> Get(string offerRequestId, string before = "",
+        public async Task<DuffelResponsePage<IEnumerable<Offer>>> List(string offerRequestId, string before = "",
             string after = "", int limit = 50, int maxConnections = 2,
             string sortOrder = "total_amount")
         {

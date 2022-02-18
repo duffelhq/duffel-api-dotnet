@@ -20,7 +20,7 @@ namespace Duffel.ApiClient.Resources
             return await SingleItemResponseConverter.GetAndDeserialize<T>(result);
         }
         
-        public async Task<DuffelResponsePage<IEnumerable<T>>> Get(int limit = 50, string before = "", string after = "")
+        public async Task<DuffelResponsePage<IEnumerable<T>>> List(int limit = 50, string before = "", string after = "")
         {
             return await RetrievePaginatedContent($"air/{ResourceName}?limit={limit}&{after}");
         }
@@ -28,11 +28,11 @@ namespace Duffel.ApiClient.Resources
         public async Task<IEnumerable<T>> GetAll()
         {
             List<T> result = new List<T>();
-            var page = await Get(limit: 200);
+            var page = await List(limit: 200);
             result.AddRange(page.Data);
             while (!string.IsNullOrEmpty(page.After))
             {
-                page = await Get(limit: page.Limit, after: page.After, before: page.Before);
+                page = await List(limit: page.Limit, after: page.After, before: page.Before);
                 result.AddRange(page.Data);
             }
 

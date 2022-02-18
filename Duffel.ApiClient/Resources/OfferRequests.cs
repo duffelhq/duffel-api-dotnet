@@ -43,7 +43,7 @@ namespace Duffel.ApiClient.Resources
             return await SingleItemResponseConverter.GetAndDeserialize<OffersResponse>(result);
         }
 
-        public async Task<DuffelResponsePage<IEnumerable<OffersResponse>>> Get(string before = "", string after = "", int limit = 50)
+        public async Task<DuffelResponsePage<IEnumerable<OffersResponse>>> List(string before = "", string after = "", int limit = 50)
         {
             return await RetrievePaginatedContent($"air/offer_requests?limit={limit}&{after}");
         }
@@ -51,11 +51,11 @@ namespace Duffel.ApiClient.Resources
         public async Task<IEnumerable<OffersResponse>> GetAll()
         {
             List<OffersResponse> result = new List<OffersResponse>();
-            var page = await Get(limit: 200);
+            var page = await List(limit: 200);
             result.AddRange(page.Data);
             while (!string.IsNullOrEmpty(page.After))
             {
-                page = await Get(limit: 200, after: page.After, before: page.Before);
+                page = await List(limit: 200, after: page.After, before: page.Before);
                 result.AddRange(page.Data);
             }
 
