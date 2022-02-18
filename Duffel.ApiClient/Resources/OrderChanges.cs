@@ -40,7 +40,7 @@ namespace Duffel.ApiClient.Resources
             return await SingleItemResponseConverter.GetAndDeserialize<OrderChange>(result);
         }
         
-        public async Task<OrderChange> ConfirmPending(string orderChangeId, Payment payment)
+        public async Task<OrderChange> Confirm(string orderChangeId, Payment payment)
         {
             var settings = new JsonSerializerSettings();
             settings.Converters.Add(new StringEnumConverter {NamingStrategy = new SnakeCaseNamingStrategy()});

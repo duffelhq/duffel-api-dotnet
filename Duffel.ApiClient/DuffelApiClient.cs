@@ -20,7 +20,8 @@ namespace Duffel.ApiClient
         public OrderChangeRequests OrderChangeRequests { get; set; }
         public OrderChanges OrderChanges { get; set; }
         public OrderChangeOffers OrderChangeOffers { get; set; }
-
+        public OrderCancellations OrderCancellations { get; set; }
+        
         public DuffelApiClient(string accessToken, bool production = false)
         {
             _httpClient = new HttpClient();
@@ -58,6 +59,7 @@ namespace Duffel.ApiClient
             OrderChangeRequests = new OrderChangeRequests(_httpClient);
             OrderChanges = new OrderChanges(_httpClient);
             OrderChangeOffers = new OrderChangeOffers(_httpClient);
+            OrderCancellations = new OrderCancellations(_httpClient);
         }
     }
 }
