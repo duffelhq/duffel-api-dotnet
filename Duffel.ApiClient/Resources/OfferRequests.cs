@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -43,19 +42,22 @@ namespace Duffel.ApiClient.Resources
             return await SingleItemResponseConverter.GetAndDeserialize<OffersResponse>(result);
         }
 
-        public async Task<DuffelResponsePage<IEnumerable<OffersResponse>>> Get(string before = "", string after = "", int limit = 50)
+        public async Task<DuffelResponsePage<IEnumerable<OffersResponse>>> List(string before = "", string after = "", int limit = 50)
         {
-            return await RetrievePaginatedContent($"air/offer_requests?limit={limit}&{after}");
+            var withBefore = string.IsNullOrEmpty(before) ? "" : $"&{before}";
+            var withAfter = string.IsNullOrEmpty(after) ? "" : $"&{after}";
+            
+            return await RetrievePaginatedContent($"air/offer_requests?limit={limit}{withBefore}{withAfter}");
         }
 
         public async Task<IEnumerable<OffersResponse>> GetAll()
         {
             List<OffersResponse> result = new List<OffersResponse>();
-            var page = await Get(limit: 200);
+            var page = await List(limit: 200);
             result.AddRange(page.Data);
-            while (!string.IsNullOrEmpty(page.NextPage))
+            while (!string.IsNullOrEmpty(page.After))
             {
-                page = await Get(limit: 200, after: page.NextPage, before: page.PreviousPage);
+                page = await List(limit: 200, after: page.After, before: page.Before);
                 result.AddRange(page.Data);
             }
 

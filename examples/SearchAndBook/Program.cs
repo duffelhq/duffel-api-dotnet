@@ -81,9 +81,9 @@ var orderRequest = new OrderRequest
 var order = await client.Orders.Create(orderRequest);
 Console.WriteLine($"Created order {order.Id} with booking reference {order.BookingReference}");
 
-var orderCancellation = await client.Orders.CreateOrderCancellation(order.Id);
+var orderCancellation = await client.OrderCancellations.Create(order.Id);
 Console.WriteLine($"Requested refund quote for order {order.Id}, cancellation request id: {orderCancellation.Id}");
 Console.WriteLine($" {orderCancellation.RefundCurrency} {orderCancellation.RefundAmount} available");
 
-var confirmation = await client.Orders.ConfirmOrderCancellation(orderCancellation.Id);
+var confirmation = await client.OrderCancellations.Confirm(orderCancellation.Id);
 Console.WriteLine($"Confirmed refund quote for order {order.Id}");

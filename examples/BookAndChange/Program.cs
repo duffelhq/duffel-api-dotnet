@@ -105,10 +105,10 @@ try
     var orderChangeOffers = await client.OrderChangeOffers.List(orderChangeRequest.Id);
     Console.WriteLine("Picking first option for changing the order.");
 
-    var orderChange = await client.OrderChanges.CreatePending(orderChangeRequest.Id, orderChangeOffers.Data.First().Id);
+    var orderChange = await client.OrderChanges.Create(orderChangeOffers.Data.First().Id);
     Console.WriteLine($"Created order change with ID: {orderChange.Id}, confirming...");
 
-    var confirmedOrderChange = await client.OrderChanges.ConfirmPending(orderChange.Id, new Balance
+    var confirmedOrderChange = await client.OrderChanges.Confirm(orderChange.Id, new Balance
     {
         Amount = orderChange.ChangeTotalAmount,
         Currency = orderChange.ChangeTotalCurrency
