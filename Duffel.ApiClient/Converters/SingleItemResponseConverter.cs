@@ -12,7 +12,7 @@ namespace Duffel.ApiClient.Converters
     {
         public static async Task<T> GetAndDeserialize<T>(HttpResponseMessage response) where T : class
         {
-            var payload = await response.Content.ReadAsStringAsync();
+            var payload = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             return Deserialize<T>(payload, response.StatusCode);
         }
 

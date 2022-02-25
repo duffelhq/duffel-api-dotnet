@@ -30,15 +30,15 @@ namespace Duffel.ApiClient.Resources
         public async Task<OffersResponse> Create(OffersRequest request, bool returnOffers = true)
         {
             var payload = OffersResponseConverter.Serialize(request);
-            var result = await HttpClient.PostAsync($"air/offer_requests", 
-                new StringContent(payload,  Encoding.UTF8, "application/json"));
+            var result = await HttpClient.PostAsync($"air/offer_requests",
+                new StringContent(payload, Encoding.UTF8, "application/json")).ConfigureAwait(false);
 
             return await SingleItemResponseConverter.GetAndDeserialize<OffersResponse>(result);
         }
 
         public async Task<OffersResponse> Get(string offerRequestId)
         {
-            var result = await HttpClient.GetAsync($"air/offer_requests/{offerRequestId}");
+            var result = await HttpClient.GetAsync($"air/offer_requests/{offerRequestId}").ConfigureAwait(false);
             return await SingleItemResponseConverter.GetAndDeserialize<OffersResponse>(result);
         }
 

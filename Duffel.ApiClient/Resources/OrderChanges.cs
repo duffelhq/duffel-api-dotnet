@@ -29,14 +29,14 @@ namespace Duffel.ApiClient.Resources
                     new SelectedOrderChangeOffer { Id = orderChangeOfferId }), Formatting.None, settings);
 
             var result = await _httpClient.PostAsync($"air/order_changes/{orderChangeOfferId}",
-                new StringContent(payload, Encoding.UTF8, "application/json"));
+                new StringContent(payload, Encoding.UTF8, "application/json")).ConfigureAwait(false);
 
             return await SingleItemResponseConverter.GetAndDeserialize<OrderChange>(result);
         }
 
         public async Task<OrderChange> Get(string orderChangeId)
         {
-            var result = await _httpClient.GetAsync($"air/order_changes/{orderChangeId}");
+            var result = await _httpClient.GetAsync($"air/order_changes/{orderChangeId}").ConfigureAwait(false);
             return await SingleItemResponseConverter.GetAndDeserialize<OrderChange>(result);
         }
         
@@ -46,8 +46,8 @@ namespace Duffel.ApiClient.Resources
             settings.Converters.Add(new StringEnumConverter {NamingStrategy = new SnakeCaseNamingStrategy()});
             var content = JsonConvert.SerializeObject(new DuffelDataWrapper<Payment>(payment), Formatting.None, settings);
             
-            var result = await _httpClient.PostAsync($"air/order_changes/{orderChangeId}/actions/confirm", 
-                new StringContent(content,  Encoding.UTF8, "application/json"));
+            var result = await _httpClient.PostAsync($"air/order_changes/{orderChangeId}/actions/confirm",
+                new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
 
             return await SingleItemResponseConverter.GetAndDeserialize<OrderChange>(result);
         }

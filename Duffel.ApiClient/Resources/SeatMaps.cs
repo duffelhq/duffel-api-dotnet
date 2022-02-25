@@ -25,7 +25,8 @@ namespace Duffel.ApiClient.Resources
 
         public async Task<IEnumerable<SeatMap>> Get(string offerId)
         {
-            var result = await _httpClient.GetAsync($"air/seat_maps?offer_id={offerId}");
+            var result = await _httpClient.GetAsync($"air/seat_maps?offer_id={offerId}")
+                .ConfigureAwait(false);
             return await SingleItemResponseConverter.GetAndDeserialize<IEnumerable<SeatMap>>(result);
         }
     }

@@ -26,7 +26,7 @@ namespace Duffel.ApiClient.Resources
             });
             
             var result = await HttpClient.PostAsync($"air/order_cancellations",
-                new StringContent(payload, Encoding.UTF8, "application/json"));
+                new StringContent(payload, Encoding.UTF8, "application/json")).ConfigureAwait(false);
             
             return await SingleItemResponseConverter.GetAndDeserialize<OrderCancellation>(result);
         }
@@ -38,7 +38,7 @@ namespace Duffel.ApiClient.Resources
         public async Task<OrderCancellation> Confirm(string cancellationRequestId)
         {
             var result = await HttpClient.PostAsync($"air/order_cancellations/{cancellationRequestId}/actions/confirm",
-                new StringContent("", Encoding.UTF8, "application/json"));
+                new StringContent("", Encoding.UTF8, "application/json")).ConfigureAwait(false);
             
             return await SingleItemResponseConverter.GetAndDeserialize<OrderCancellation>(result);
         }
@@ -48,7 +48,7 @@ namespace Duffel.ApiClient.Resources
         /// </summary>
         public async Task<OrderCancellation> Get(string cancellationRequestId)
         {
-            var result = await HttpClient.GetAsync($"air/order_cancellations/{cancellationRequestId}");
+            var result = await HttpClient.GetAsync($"air/order_cancellations/{cancellationRequestId}").ConfigureAwait(false);
             return await SingleItemResponseConverter.GetAndDeserialize<OrderCancellation>(result);
         }
         
@@ -60,7 +60,7 @@ namespace Duffel.ApiClient.Resources
             if (!string.IsNullOrEmpty(after)) url += $"&{after}";
             if (!string.IsNullOrEmpty(order_id)) url += $"&order_id={order_id}";
             
-            var result = await HttpClient.GetAsync(url);
+            var result = await HttpClient.GetAsync(url).ConfigureAwait(false);
             var content = await result.Content.ReadAsStringAsync();
             return PagedResponseConverter.Deserialize<OrderCancellation>(content, result.StatusCode);
         }
