@@ -23,19 +23,13 @@ namespace Duffel.ApiClient
         public IOrderCancellations OrderCancellations { get; set; }
         
         public DuffelApiClient(string accessToken, bool production = false)
+        :this(new HttpClient(), accessToken, production)
         {
-            _httpClient = new HttpClient();
-            Initialize(accessToken, production);
         }
         
         public DuffelApiClient(HttpClient httpClient, string accessToken, bool production = false)
         {
             _httpClient = httpClient;
-            Initialize(accessToken, production);
-        }
-
-        private void Initialize(string accessToken, bool production)
-        {
             var executingAssemblyName = Assembly.GetExecutingAssembly().GetName();
             _httpClient.BaseAddress =
                 production ? new Uri("https://api.duffel.com") : new Uri("https://api.staging.duffel.com");
