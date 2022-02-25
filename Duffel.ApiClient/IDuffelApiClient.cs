@@ -4,7 +4,7 @@ namespace Duffel.ApiClient
 {
     public interface IDuffelApiClient
     {
-         Aircrafts Aircrafts { get; }
+         Aircraft Aircraft { get; }
          Airlines Airlines { get; }
          Airports Airports { get; }
          Offers Offers { get; }

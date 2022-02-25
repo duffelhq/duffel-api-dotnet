@@ -3,9 +3,9 @@ using Duffel.ApiClient.Models;
 
 namespace Duffel.ApiClient.Resources
 {
-    public class Aircrafts : Resource<Aircraft>
+    public class Aircraft : Resource<Models.Aircraft>
     {
-        public Aircrafts(HttpClient httpClient) : base(httpClient)
+        public Aircraft(HttpClient httpClient) : base(httpClient)
         {
         }
 
