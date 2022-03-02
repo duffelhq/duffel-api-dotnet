@@ -21,7 +21,7 @@ namespace Duffel.ApiClient.Resources
         /// <param name="orderChangeOfferId">Duffel's unique identifier for the order change offer</param>
         public async Task<OrderChangeOffer> Get(string orderChangeOfferId)
         {
-            var result = await _httpClient.GetAsync($"/air/order_change_offers/{orderChangeOfferId}");
+            var result = await _httpClient.GetAsync($"/air/order_change_offers/{orderChangeOfferId}").ConfigureAwait(false);
             return await SingleItemResponseConverter.GetAndDeserialize<OrderChangeOffer>(result);
         }
         
@@ -40,7 +40,7 @@ namespace Duffel.ApiClient.Resources
 
         private async Task<DuffelResponsePage<IEnumerable<T>>> RetrievePaginatedContent<T>(string url) where T: class
         {
-            var result = await _httpClient.GetAsync(url);
+            var result = await _httpClient.GetAsync(url).ConfigureAwait(false);
             var content = await result.Content.ReadAsStringAsync();
             return PagedResponseConverter.Deserialize<T>(content, result.StatusCode);
         }

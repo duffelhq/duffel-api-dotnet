@@ -19,7 +19,9 @@ namespace Duffel.ApiClient.Resources
 
         public async Task<Offer> Get(string offerId, bool returnAvailableServices = false)
         {
-            var result = await HttpClient.GetAsync($"air/offers/{offerId}?return_available_services={returnAvailableServices.ToString().ToLower()}");
+            var result = await HttpClient.GetAsync(
+                    $"air/offers/{offerId}?return_available_services={returnAvailableServices.ToString().ToLower()}")
+                .ConfigureAwait(false);
             return await SingleItemResponseConverter.GetAndDeserialize<Offer>(result);
         }
 
@@ -39,7 +41,7 @@ namespace Duffel.ApiClient.Resources
         public async Task<Passenger> UpdatePassenger(string offerId, Passenger passengerData)
         {
             var payload = JsonConvert.SerializeObject(new DuffelDataWrapper<Passenger>(passengerData), Formatting.None, new StringEnumConverter());
-            var result = await HttpClient.PatchAsync($"air/offers/{offerId}/passengers/{passengerData.Id}", new StringContent(payload, Encoding.UTF8, "application/json"));
+            var result = await HttpClient.PatchAsync($"air/offers/{offerId}/passengers/{passengerData.Id}", new StringContent(payload, Encoding.UTF8, "application/json")).ConfigureAwait(false);
             var content = await result.Content.ReadAsStringAsync();
             var response = JsonConvert.DeserializeObject<DuffelResponseWrapper<Passenger>>(content);
             if (response != null && response.Errors != null && response.Errors.Any())

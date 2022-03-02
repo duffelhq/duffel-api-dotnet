@@ -16,7 +16,8 @@ namespace Duffel.ApiClient.Resources
 
         public async Task<T> Get(string id) 
         {
-            var result = await HttpClient.GetAsync($"air/{ResourceName}/{id}");
+            var result = await HttpClient.GetAsync($"air/{ResourceName}/{id}")
+                .ConfigureAwait(false);
             return await SingleItemResponseConverter.GetAndDeserialize<T>(result);
         }
         

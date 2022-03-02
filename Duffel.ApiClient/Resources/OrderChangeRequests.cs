@@ -21,14 +21,14 @@ namespace Duffel.ApiClient.Resources
             var payload = OrderChangeConverter.Serialize(request);
             
             var result = await _httpClient.PostAsync($"air/order_change_requests",
-                new StringContent(payload, Encoding.UTF8, "application/json"));
+                new StringContent(payload, Encoding.UTF8, "application/json")).ConfigureAwait(false);
             
             return await SingleItemResponseConverter.GetAndDeserialize<OrderChangeResponse>(result);
         }
 
         public async Task<OrderChangeResponse> Get(string orderChangeRequestId)
         {
-            var result = await _httpClient.GetAsync($"/air/order_change_requests/{orderChangeRequestId}");
+            var result = await _httpClient.GetAsync($"/air/order_change_requests/{orderChangeRequestId}").ConfigureAwait(false);
             return await SingleItemResponseConverter.GetAndDeserialize<OrderChangeResponse>(result);
         }
     }

@@ -27,13 +27,13 @@ namespace Duffel.ApiClient.Resources
         {
             var payload = OrderConverter.Serialize(request);
             var result = await HttpClient.PostAsync($"air/orders",
-                new StringContent(payload, Encoding.UTF8, "application/json"));
+                new StringContent(payload, Encoding.UTF8, "application/json")).ConfigureAwait(false);
             return await SingleItemResponseConverter.GetAndDeserialize<Order>(result);
         }
 
         public async Task<Order> Get(string orderId)
         {
-            var result = await HttpClient.GetAsync($"air/orders/{orderId}");
+            var result = await HttpClient.GetAsync($"air/orders/{orderId}").ConfigureAwait(false);
             return await SingleItemResponseConverter.GetAndDeserialize<Order>(result);
         }
 
@@ -42,7 +42,7 @@ namespace Duffel.ApiClient.Resources
             var payload = OrderConverter.SerializeMetadata(metadata);
             
             var result = await HttpClient.PatchAsync($"air/orders/{orderId}",
-                new StringContent(payload, Encoding.UTF8, "application/json"));
+                new StringContent(payload, Encoding.UTF8, "application/json")).ConfigureAwait(false);
             
             return await SingleItemResponseConverter.GetAndDeserialize<Order>(result);
         }
