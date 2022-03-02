@@ -21,10 +21,10 @@ Console.WriteLine($"Airport is located at geolocation: {airport.Latitude}, {airp
 Console.WriteLine($"Airport is located in or near {airport.CityName}");
 
 Console.WriteLine("Loading aircrafts...");
-var aircrafts = await client.Aircrafts.GetAll();
+var aircrafts = await client.Aircraft.GetAll();
 Console.WriteLine($"Retrieved {aircrafts.Count()} aircrafts");
 Console.WriteLine($"Loading single aircraft {aircrafts.First().AircraftName}");
-var aircraft = await client.Aircrafts.Get(aircrafts.First().Id);
+var aircraft = await client.Aircraft.Get(aircrafts.First().Id);
 Console.WriteLine($"Aircraft IATA: {aircraft.IataCode}");
 
 Console.WriteLine("Loading airlines...");

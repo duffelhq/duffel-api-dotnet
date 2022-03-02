@@ -11,7 +11,7 @@ namespace Duffel.ApiClient
         
         public Airlines Airlines { get; set; }
         public Airports Airports { get; set; }
-        public Aircrafts Aircrafts { get; set; }
+        public Aircraft Aircraft { get; set; }
         public OfferRequests OfferRequests { get; set; }
         public Offers Offers { get; set; }
         public Orders Orders { get; set; }
@@ -50,7 +50,7 @@ namespace Duffel.ApiClient
 
             Airlines = new Airlines(_httpClient);
             Airports = new Airports(_httpClient);
-            Aircrafts = new Aircrafts(_httpClient);
+            Aircraft = new Aircraft(_httpClient);
             OfferRequests = new OfferRequests(_httpClient);
             Offers = new Offers(_httpClient);
             Orders = new Orders(_httpClient);
