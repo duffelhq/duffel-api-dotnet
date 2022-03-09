@@ -10,7 +10,28 @@ using OffersResponseConverter = Duffel.ApiClient.Converters.OffersResponseConver
 
 namespace Duffel.ApiClient.Resources
 {
-    public class OfferRequests : BaseResource<OffersResponse>
+    public interface IOfferRequests
+    {
+        /// <summary>
+        /// To search for flights, you'll need to create an offer request.
+        /// An offer request describes the passengers and where and when they want to travel (in the form of a list of slices).
+        /// It may also include additional filters (e.g. a particular cabin to travel in). 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="returnOffers">
+        /// When set to true, the offer request resource returned will include all the offers returned by the airlines.
+        /// If set to false, the offer request resource won't include any offers.
+        /// To retrieve the associated offers later, use the List Offers endpoint, specifying the offer_request_id.
+        /// You should use this option if you want to take advantage of the pagination, sorting and filtering that the List Offers endpoint provides.
+        /// </param>
+        Task<OffersResponse> Create(OffersRequest request, bool returnOffers = true);
+
+        Task<OffersResponse> Get(string offerRequestId);
+        Task<DuffelResponsePage<IEnumerable<OffersResponse>>> List(string before = "", string after = "", int limit = 50);
+        Task<IEnumerable<OffersResponse>> GetAll();
+    }
+
+    public class OfferRequests : BaseResource<OffersResponse>, IOfferRequests
     {
         public OfferRequests(HttpClient httpClient) : base(httpClient)
         {

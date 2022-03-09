@@ -9,18 +9,18 @@ namespace Duffel.ApiClient
     {
         private readonly HttpClient _httpClient;
         
-        public Airlines Airlines { get; set; }
-        public Airports Airports { get; set; }
-        public Aircraft Aircraft { get; set; }
-        public OfferRequests OfferRequests { get; set; }
-        public Offers Offers { get; set; }
-        public Orders Orders { get; set; }
-        public SeatMaps SeatMaps { get; set; }
-        public Payments Payments { get; set; }
-        public OrderChangeRequests OrderChangeRequests { get; set; }
-        public OrderChanges OrderChanges { get; set; }
-        public OrderChangeOffers OrderChangeOffers { get; set; }
-        public OrderCancellations OrderCancellations { get; set; }
+        public IAirlines Airlines { get; set; }
+        public IAirports Airports { get; set; }
+        public IAircraft Aircraft { get; set; }
+        public IOfferRequests OfferRequests { get; set; }
+        public IOffers Offers { get; set; }
+        public IOrders Orders { get; set; }
+        public ISeatMaps SeatMaps { get; set; }
+        public IPayments Payments { get; set; }
+        public IOrderChangeRequests OrderChangeRequests { get; set; }
+        public IOrderChanges OrderChanges { get; set; }
+        public IOrderChangeOffers OrderChangeOffers { get; set; }
+        public IOrderCancellations OrderCancellations { get; set; }
         
         public DuffelApiClient(string accessToken, bool production = false)
         {

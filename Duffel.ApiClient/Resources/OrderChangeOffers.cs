@@ -6,7 +6,20 @@ using Duffel.ApiClient.Models.Responses.OrderChanges;
 
 namespace Duffel.ApiClient.Resources
 {
-    public class OrderChangeOffers
+    public interface IOrderChangeOffers
+    {
+        /// <summary>
+        /// Retrieves an order change offer by its ID
+        /// </summary>
+        /// <param name="orderChangeOfferId">Duffel's unique identifier for the order change offer</param>
+        Task<OrderChangeOffer> Get(string orderChangeOfferId);
+
+        Task<DuffelResponsePage<IEnumerable<OrderChangeOffer>>> List(string orderChangeRequestId, string before = "",
+            string after = "", int limit = 50, int maxConnections = 2,
+            string sortOrder = "total_amount");
+    }
+
+    public class OrderChangeOffers : IOrderChangeOffers
     {
         private readonly HttpClient _httpClient;
 

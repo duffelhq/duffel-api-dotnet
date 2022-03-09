@@ -7,7 +7,13 @@ using Duffel.ApiClient.Models.Responses;
 
 namespace Duffel.ApiClient.Resources
 {
-    public class OrderChangeRequests
+    public interface IOrderChangeRequests
+    {
+        Task<OrderChangeResponse> Create(OrderChangeRequest request);
+        Task<OrderChangeResponse> Get(string orderChangeRequestId);
+    }
+
+    public class OrderChangeRequests : IOrderChangeRequests
     {
         private readonly HttpClient _httpClient;
 

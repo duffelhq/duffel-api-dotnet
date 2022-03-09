@@ -8,7 +8,29 @@ using Duffel.ApiClient.Models.Responses;
 
 namespace Duffel.ApiClient.Resources
 {
-    public class OrderCancellations : BaseResource<OrderCancellation>
+    public interface IOrderCancellations
+    {
+        /// <summary>
+        /// To cancel an order, you'll need to create an order cancellation, check the refund_amount returned, and, if you're happy to go ahead and cancel the order.
+        /// The refund specified by refund_amount, if any, will be returned to your original payment method (i.e. your Duffel balance). You'll then need to refund your customer (e.g. back to their credit/debit card).
+        /// </summary>
+        Task<OrderCancellation> Create(string orderId);
+
+        /// <summary>
+        /// Once you've created a pending order cancellation, you'll know the refund_amount you're due to get back.
+        /// To actually cancel the order, you'll need to confirm the cancellation. The booking with the airline will be cancelled, and the refund_amount will be returned to the original payment method (i.e. your Duffel balance). You'll then need to refund your customer (e.g. back to their credit/debit card).
+        /// </summary>
+        Task<OrderCancellation> Confirm(string cancellationRequestId);
+
+        /// <summary>
+        /// Retrieves an order cancellation by its ID.
+        /// </summary>
+        Task<OrderCancellation> Get(string cancellationRequestId);
+
+        Task<DuffelResponsePage<IEnumerable<OrderCancellation>>> List(string before = "", string after = "", int limit = 50, string order_id = "");
+    }
+
+    public class OrderCancellations : BaseResource<OrderCancellation>, IOrderCancellations
     {
         public OrderCancellations(HttpClient httpClient) : base(httpClient)
         {

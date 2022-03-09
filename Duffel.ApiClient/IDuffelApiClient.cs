@@ -4,18 +4,17 @@ namespace Duffel.ApiClient
 {
     public interface IDuffelApiClient
     {
-         Aircraft Aircraft { get; }
-         Airlines Airlines { get; }
-         Airports Airports { get; }
-         Offers Offers { get; }
-         OfferRequests OfferRequests { get; }
-         Orders Orders { get; }
-         SeatMaps SeatMaps { get; }
-         Payments Payments { get; }
-         OrderChangeRequests OrderChangeRequests { get; }
-         OrderChanges OrderChanges { get; }
-         OrderChangeOffers OrderChangeOffers { get; }
-         OrderCancellations OrderCancellations { get; }
-        
+         IAircraft Aircraft { get; }
+         IAirlines Airlines { get; }
+         IAirports Airports { get; }
+         IOffers Offers { get; }
+         IOfferRequests OfferRequests { get; }
+         IOrders Orders { get; }
+         ISeatMaps SeatMaps { get; }
+         IPayments Payments { get; }
+         IOrderChangeRequests OrderChangeRequests { get; }
+         IOrderChanges OrderChanges { get; }
+         IOrderChangeOffers OrderChangeOffers { get; }
+         IOrderCancellations OrderCancellations { get; }
     }
 }
