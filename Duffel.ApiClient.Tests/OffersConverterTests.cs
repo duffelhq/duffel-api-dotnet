@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -14,6 +15,7 @@ using Slice = Duffel.ApiClient.Models.Responses.Slice;
 
 namespace Duffel.ApiClient.Tests
 {
+
     public class OffersConverterTests
     {
         [Test]
@@ -42,7 +44,7 @@ namespace Duffel.ApiClient.Tests
             var result = OffersResponseConverter.Serialize(request);
             Check.That(result).Equals("{\"data\":{\"passengers\":[{\"type\":\"adult\"},{\"type\":\"child\"},{\"type\":\"infant_without_seat\"}],\"slices\":[{\"origin\":\"SFO\",\"destination\":\"LAX\",\"departure_date\":\"2020-01-01\"}],\"requested_sources\":[\"united\"]}}");
         }
-        
+
         [TestCase(CabinClass.Any, "")]
         [TestCase(CabinClass.PremiumEconomy, ",\"cabin_class\":\"premium_economy\"")]
         public void CanSerializeOffersRequestWithSetCabinClass(CabinClass cabinClass, string cabinClassPayload)
@@ -68,14 +70,14 @@ namespace Duffel.ApiClient.Tests
                 CabinClass = cabinClass
             };
 
-            
+
             var result = OffersResponseConverter.Serialize(request);
 
             var expectedPayload = "{\"data\":{\"passengers\":[{\"type\":\"adult\"},{\"type\":\"child\"},{\"type\":\"infant_without_seat\"}],\"slices\":[{\"origin\":\"SFO\",\"destination\":\"LAX\",\"departure_date\":\"2020-01-01\"}],\"requested_sources\":[\"united\"]" + cabinClassPayload + "}}";
             Check.That(result).Equals(expectedPayload);
         }
 
-        
+
         [Test]
         public void CanDeserializeOffersResponse()
         {
@@ -84,8 +86,8 @@ namespace Duffel.ApiClient.Tests
 
             Check.That(offersResponse.Id).Equals("orq_0000AFANuVr4l0DI9G8Fk0");
             Check.That(offersResponse.IsLiveMode).IsFalse();
-            Check.That(offersResponse.CreatedAt).Equals(DateTime.Parse("2022-01-06T14:39:20.094701Z"));
-            
+            Check.That(offersResponse.CreatedAt).Equals(DateTime.Parse("2022-01-06T14:39:20.094701Z", CultureInfo.InvariantCulture));
+
             AssertSlicesDataCorrect(offersResponse.Slices!.ToList());
             AssertOffersDataCorrect(offersResponse.Offers!.ToList());
             AssertOfferLevelPassengerDataCorrect(offersResponse);
@@ -117,7 +119,7 @@ namespace Duffel.ApiClient.Tests
 
             // TODO: add more checks for full offer
         }
-        
+
         private static void AssertOfferLevelPassengerDataCorrect(OffersResponse offersResponse)
         {
             var passengers = offersResponse.Passengers!.ToList();
@@ -130,7 +132,7 @@ namespace Duffel.ApiClient.Tests
         private static void AssertOffersDataCorrect(List<Offer> offers)
         {
             Check.That(offers).HasSize(4);
-            
+
             var offer = offers.First();
             Check.That(offer.Id).IsEqualTo("off_0000AFANuyPmZYc2j0aMj7");
             Check.That(offer.LiveMode).IsFalse();
@@ -147,14 +149,14 @@ namespace Duffel.ApiClient.Tests
 
             AssertSliceDataOnOfferCorrect(offer);
         }
-        
+
         private static void AssertSliceDataOnOfferCorrect(Offer offer)
         {
             Check.That(offer.Slices).HasSize(1);
             var slice = offer.Slices.First();
 
             Check.That(slice.FareBrandName).IsEqualTo("Refundable Main Cabin");
-            Check.That(slice.Duration).IsEqualTo(TimeSpan.Parse("09:26:00"));
+            Check.That(slice.Duration).IsEqualTo(TimeSpan.Parse("09:26:00", CultureInfo.InvariantCulture));
             Check.That(slice.Id).IsEqualTo("sli_0000AFANuyQ8YEtck6keHI");
             Check.That(slice.Origin).IsInstanceOf<Airport>().And.IsNotNull();
             Check.That(slice.Destination).IsInstanceOf<Airport>().And.IsNotNull();
@@ -162,7 +164,7 @@ namespace Duffel.ApiClient.Tests
             Check.That(slice.Segments).HasSize(2);
             var segment = slice.Segments.First();
             Check.That(segment.Destination.IataCode).Equals("DTW");
-            Check.That(segment.Duration).Equals(TimeSpan.Parse("04:33"));
+            Check.That(segment.Duration).Equals(TimeSpan.Parse("04:33", CultureInfo.InvariantCulture));
             Check.That(segment.MarketingCarrier.AirlineName).Equals("Delta Air Lines");
             Check.That(segment.MarketingCarrier.IataCode).Equals("DL");
             Check.That(segment.MarketingCarrierFlightNumber).Equals("2282");

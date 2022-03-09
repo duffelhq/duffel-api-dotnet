@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Duffel.ApiClient;
 using Duffel.ApiClient.Models;
@@ -21,7 +22,7 @@ var offersRequest = new OffersRequest
             // We use a nonsensical route to make sure we get speedy, reliable "Duffel Airways" results
             Origin = "LHR",
             Destination = "STN",
-            DepartureDate = DateTime.Now.AddMonths(12).ToString("yyyy-MM-dd")
+            DepartureDate = DateTime.Now.AddMonths(12).ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
         }
     }
 };
@@ -39,13 +40,13 @@ Console.WriteLine($"The final price for selected offer is {pricedOffer.TotalCurr
 var availableBaggage = pricedOffer.AvailableServices.First(s => s.ServiceType == "baggage");
 Console.WriteLine($"Adding {availableBaggage.Metadata.MaximumWeightKg}kg extra baggage for {availableBaggage.TotalCurrency} {availableBaggage.TotalAmount}");
 
-var totalAmount = float.Parse(pricedOffer.TotalAmount) + float.Parse(availableBaggage.TotalAmount);
+var totalAmount = float.Parse(pricedOffer.TotalAmount, CultureInfo.InvariantCulture) + float.Parse(availableBaggage.TotalAmount, CultureInfo.InvariantCulture);
 
 var orderRequest = new OrderRequest
 {
     SelectedOffers = new List<string> { pricedOffer.Id },
     Services = new List<Service> { new() { Id = availableBaggage.Id, Quantity = 1 } },
-    Payments = new List<Payment> {new Balance { Amount = totalAmount.ToString(), Currency = pricedOffer.TotalCurrency}},
+    Payments = new List<Payment> {new Balance { Amount = totalAmount.ToString(CultureInfo.InvariantCulture), Currency = pricedOffer.TotalCurrency}},
     Passengers = new List<OrderPassenger> { new()
     {
         Id = pricedOffer.Passengers.First().Id,
