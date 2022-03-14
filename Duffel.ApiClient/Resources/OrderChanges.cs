@@ -11,7 +11,14 @@ using Newtonsoft.Json.Serialization;
 
 namespace Duffel.ApiClient.Resources
 {
-    public class OrderChanges
+    public interface IOrderChanges
+    {
+        Task<OrderChange> Create(string orderChangeOfferId);
+        Task<OrderChange> Get(string orderChangeId);
+        Task<OrderChange> Confirm(string orderChangeId, Payment payment);
+    }
+
+    public class OrderChanges : IOrderChanges
     {
         private readonly HttpClient _httpClient;
 

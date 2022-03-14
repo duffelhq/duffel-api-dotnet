@@ -8,13 +8,18 @@ using Duffel.ApiClient.Models;
 
 namespace Duffel.ApiClient.Resources
 {
+    public interface ISeatMaps
+    {
+        Task<IEnumerable<SeatMap>> Get(string offerId);
+    }
+
     /// <summary>
     /// Seat maps are used to build a rich experience for your customers so they can select a seat as part of an order.
     /// A seat map includes the data for rendering seats in the relevant cabins, along with their total cost and other information such as disclosures.
     /// A seat is a special kind of service in that they're not shown when getting an individual offer with return_available_services set to true. They're only available through this endpoint.
     /// So far we support selecting seats when you create an order. This means we do not support selecting a seat after an order has already been created or cancelling a booked seat.
     /// </summary>
-    public class SeatMaps
+    public class SeatMaps : ISeatMaps
     {
         private readonly HttpClient _httpClient;
 

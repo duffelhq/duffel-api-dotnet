@@ -11,7 +11,18 @@ using Newtonsoft.Json.Converters;
 
 namespace Duffel.ApiClient.Resources
 {
-    public class Offers : BaseResource<Offer>
+    public interface IOffers
+    {
+        Task<Offer> Get(string offerId, bool returnAvailableServices = false);
+
+        Task<DuffelResponsePage<IEnumerable<Offer>>> List(string offerRequestId, string before = "",
+            string after = "", int limit = 50, int maxConnections = 2,
+            string sortOrder = "total_amount");
+
+        Task<Passenger> UpdatePassenger(string offerId, Passenger passengerData);
+    }
+
+    public class Offers : BaseResource<Offer>, IOffers
     {
         public Offers(HttpClient httpClient) : base(httpClient)
         {

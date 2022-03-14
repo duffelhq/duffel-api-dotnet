@@ -7,7 +7,12 @@ using Duffel.ApiClient.Models.Responses;
 
 namespace Duffel.ApiClient.Resources
 {
-    public class Payments
+    public interface IPayments
+    {
+        Task<PaymentResponse> Create(PaymentRequest paymentRequest);
+    }
+
+    public class Payments : IPayments
     {
         private readonly HttpClient _httpClient;
 
