@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Duffel.ApiClient;
 using Duffel.ApiClient.Exceptions;
@@ -24,7 +25,7 @@ try
                 // We use a nonsensical route to make sure we get speedy, reliable "Duffel Airways" results
                 Origin = "LHR",
                 Destination = "STN",
-                DepartureDate = DateTime.Now.AddMonths(12).ToString("yyyy-MM-dd")
+                DepartureDate = DateTime.Now.AddMonths(12).ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
             }
         }
     };
@@ -43,7 +44,7 @@ try
     Console.WriteLine($"Adding an extra bag with service {bagService.Id}");
     Console.WriteLine($"Costing {bagService.TotalCurrency} {bagService.TotalAmount}");
 
-    var totalAmount = float.Parse(pricedOffer.TotalAmount) + float.Parse(bagService.TotalAmount);
+    var totalAmount = float.Parse(pricedOffer.TotalAmount, CultureInfo.InvariantCulture) + float.Parse(bagService.TotalAmount, CultureInfo.InvariantCulture);
 
     var orderRequest = new OrderRequest
     {
@@ -60,7 +61,7 @@ try
         {
             new Balance
             {
-                Amount = totalAmount.ToString(),
+                Amount = totalAmount.ToString(CultureInfo.InvariantCulture),
                 Currency = pricedOffer.TotalCurrency
             }
         }.ToList(),
@@ -94,7 +95,7 @@ try
                 new ChangeSlice
                 {
                     CabinClass = CabinClass.Economy,
-                    DepartureDate = DateTime.Now.AddMonths(11).ToString("yyyy-MM-dd"),
+                    DepartureDate = DateTime.Now.AddMonths(11).ToString("yyyy-MM-dd", CultureInfo.InvariantCulture),
                     Origin = "LHR",
                     Destination = "STN"
                 }
@@ -120,6 +121,6 @@ catch (ApiException apiException)
     Console.WriteLine($"Failed with status: {apiException.Metadata.Status}, request Id: {apiException.Metadata.RequestId}");
     foreach (var apiExceptionError in apiException.Errors)
     {
-        Console.WriteLine(JsonConvert.SerializeObject(apiException));
+        Console.WriteLine(JsonConvert.SerializeObject(apiExceptionError));
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Duffel.ApiClient;
 using Duffel.ApiClient.Models;
@@ -21,7 +22,7 @@ var offersRequest = new OffersRequest
             // We use a nonsensical route to make sure we get speedy, reliable "Duffel Airways" results
             Origin = "LHR",
             Destination = "STN",
-            DepartureDate = DateTime.Now.AddMonths(12).ToString("yyyy-MM-dd")
+            DepartureDate = DateTime.Now.AddMonths(12).ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
         }
     }
 };
@@ -40,7 +41,7 @@ var bagService = pricedOffer.AvailableServices.First();
 Console.WriteLine($"Adding an extra bag with service {bagService.Id}");
 Console.WriteLine($"Costing {bagService.TotalCurrency} {bagService.TotalAmount}");
 
-var totalAmount = float.Parse(pricedOffer.TotalAmount) + float.Parse(bagService.TotalAmount);
+var totalAmount = float.Parse(pricedOffer.TotalAmount, CultureInfo.InvariantCulture) + float.Parse(bagService.TotalAmount, CultureInfo.InvariantCulture);
 
 var orderRequest = new OrderRequest
 {
@@ -57,7 +58,7 @@ var orderRequest = new OrderRequest
     {
         new Balance
         {
-            Amount = totalAmount.ToString(),
+            Amount = totalAmount.ToString(CultureInfo.InvariantCulture),
             Currency = pricedOffer.TotalCurrency
         }
     }.ToList(),
