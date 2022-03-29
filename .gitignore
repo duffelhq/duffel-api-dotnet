@@ -350,3 +350,6 @@ MigrationBackup/
 .ionide/
 
 .idea/
+
+# output directory used in Github Actions CI builds
+output/
