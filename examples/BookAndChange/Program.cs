@@ -17,7 +17,7 @@ try
     var offersRequest = new OffersRequest
     {
         CabinClass = CabinClass.Economy,
-        Passengers = new List<Passenger>() { new Passenger { PassengerType = PassengerType.Adult } },
+        Passengers = new List<Passenger>() {new Passenger {PassengerType = PassengerType.Adult}},
         Slices = new List<Slice>
         {
             new()
@@ -44,27 +44,22 @@ try
     Console.WriteLine($"Adding an extra bag with service {bagService.Id}");
     Console.WriteLine($"Costing {bagService.TotalCurrency} {bagService.TotalAmount}");
 
-    var totalAmount = float.Parse(pricedOffer.TotalAmount, CultureInfo.InvariantCulture) + float.Parse(bagService.TotalAmount, CultureInfo.InvariantCulture);
+    var totalAmount = float.Parse(pricedOffer.TotalAmount, CultureInfo.InvariantCulture) +
+                      float.Parse(bagService.TotalAmount, CultureInfo.InvariantCulture);
 
     var orderRequest = new OrderRequest
     {
-        SelectedOffers = new[] { pricedOffer.Id }.ToList(),
-        Services = new List<Service>()
-        {
-            new()
+        SelectedOffers = new[] {pricedOffer.Id}.ToList(),
+        Services = new List<Service>() {new() {Id = bagService.Id, Quantity = 1}},
+        Payments =
+            new[]
             {
-                Id = bagService.Id,
-                Quantity = 1
-            }
-        },
-        Payments = new[]
-        {
-            new Balance
-            {
-                Amount = totalAmount.ToString(CultureInfo.InvariantCulture),
-                Currency = pricedOffer.TotalCurrency
-            }
-        }.ToList(),
+                new Balance
+                {
+                    Amount = totalAmount.ToString(CultureInfo.InvariantCulture),
+                    Currency = pricedOffer.TotalCurrency
+                }
+            }.ToList(),
         Passengers = new[]
         {
             new OrderPassenger
@@ -77,7 +72,6 @@ try
                 BornOn = "1990-01-01",
                 PhoneNumber = "+441290211999",
                 Email = "john.doe@test.com"
-
             }
         }.ToList()
     };
@@ -95,7 +89,8 @@ try
                 new ChangeSlice
                 {
                     CabinClass = CabinClass.Economy,
-                    DepartureDate = DateTime.Now.AddMonths(11).ToString("yyyy-MM-dd", CultureInfo.InvariantCulture),
+                    DepartureDate =
+                        DateTime.Now.AddMonths(11).ToString("yyyy-MM-dd", CultureInfo.InvariantCulture),
                     Origin = "LHR",
                     Destination = "STN"
                 }
@@ -109,18 +104,20 @@ try
     var orderChange = await client.OrderChanges.Create(orderChangeOffers.Data.First().Id);
     Console.WriteLine($"Created order change with ID: {orderChange.Id}, confirming...");
 
-    var confirmedOrderChange = await client.OrderChanges.Confirm(orderChange.Id, new Balance
-    {
-        Amount = orderChange.ChangeTotalAmount,
-        Currency = orderChange.ChangeTotalCurrency
-    });
+    var confirmedOrderChange = await client.OrderChanges.Confirm(orderChange.Id,
+        new Balance {Amount = orderChange.ChangeTotalAmount, Currency = orderChange.ChangeTotalCurrency});
 
 }
 catch (ApiException apiException)
 {
-    Console.WriteLine($"Failed with status: {apiException.Metadata.Status}, request Id: {apiException.Metadata.RequestId}");
+    Console.WriteLine(
+        $"Failed with status: {apiException.Metadata.Status}, request Id: {apiException.Metadata.RequestId}");
     foreach (var apiExceptionError in apiException.Errors)
     {
-        Console.WriteLine(JsonConvert.SerializeObject(apiExceptionError));
+        Console.WriteLine(apiExceptionError.Message);
     }
+}
+catch (Exception exception)
+{
+    Console.WriteLine(exception.Message);
 }
