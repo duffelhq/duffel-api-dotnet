@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using Duffel.ApiClient.Resources;
@@ -23,7 +24,7 @@ namespace Duffel.ApiClient
         public IOrderCancellations OrderCancellations { get; set; }
 
         public DuffelApiClient(string accessToken, bool production = false)
-        :this(new HttpClient(), accessToken, production)
+        :this(new HttpClient(new HttpClientHandler {AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate}), accessToken, production)
         {
         }
 
@@ -46,8 +47,6 @@ namespace Duffel.ApiClient
             _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {accessToken}");
             _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
             _httpClient.DefaultRequestHeaders.Add("Duffel-Version", "beta");
-
-            //httpClient.DefaultRequestHeaders.Add("Accept-Encoding", "gzip");
 
             Airlines = new Airlines(_httpClient);
             Airports = new Airports(_httpClient);
