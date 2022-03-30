@@ -8,7 +8,7 @@ namespace Duffel.ApiClient
     public class DuffelApiClient : IDuffelApiClient
     {
         private readonly HttpClient _httpClient;
-        
+
         public IAirlines Airlines { get; set; }
         public IAirports Airports { get; set; }
         public IAircraft Aircraft { get; set; }
@@ -21,21 +21,22 @@ namespace Duffel.ApiClient
         public IOrderChanges OrderChanges { get; set; }
         public IOrderChangeOffers OrderChangeOffers { get; set; }
         public IOrderCancellations OrderCancellations { get; set; }
-        
+
         public DuffelApiClient(string accessToken, bool production = false)
+        :this(new HttpClient(), accessToken, production)
         {
-            _httpClient = new HttpClient();
-            Initialize(accessToken, production);
-        }
-        
-        public DuffelApiClient(HttpClient httpClient, string accessToken, bool production = false)
-        {
-            _httpClient = httpClient;
-            Initialize(accessToken, production);
         }
 
-        private void Initialize(string accessToken, bool production)
+        public DuffelApiClient(HttpClient httpClient, string accessToken, bool production = false)
         {
+            if (string.IsNullOrWhiteSpace(accessToken))
+            {
+                var dashboardBaseAddress = production ? new Uri("https://app.duffel.com") : new Uri("https://app.staging.duffel.com");
+                var tokensAddress = new Uri(dashboardBaseAddress, "/duffel/tokens");
+                throw new ArgumentException( $@"No access token provided. To create an access token, head to your dashboard at {tokensAddress} and generate a token.", nameof(accessToken));
+            }
+
+            _httpClient = httpClient;
             var executingAssemblyName = Assembly.GetExecutingAssembly().GetName();
             _httpClient.BaseAddress =
                 production ? new Uri("https://api.duffel.com") : new Uri("https://api.staging.duffel.com");
