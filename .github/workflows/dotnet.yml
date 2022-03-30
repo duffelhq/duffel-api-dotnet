@@ -18,7 +18,7 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore packages, build and test
-      run: dotnet test --verbosity normal
+      run: dotnet test
 
   publish:
     runs-on: ubuntu-latest
@@ -30,7 +30,7 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Build package
-      run: dotnet pack --verbosity normal -c Release -o ./output
+      run: dotnet pack -c Release -o ./output
     - name: Publish
       if: ${{ startsWith(github.ref, 'refs/tags/v') }}
       run: dotnet nuget push ./output/Duffel.ApiClient.*.nupkg -k${{secrets.NUGET_API_KEY}}
