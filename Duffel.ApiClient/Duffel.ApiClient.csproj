@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
         <Authors>Duffel</Authors>
         <Copyright>Copyright 2022 Duffel Technology Ltd.</Copyright>
         <Company>Duffel Technology Ltd.</Company>
