@@ -23,24 +23,23 @@ namespace Duffel.ApiClient
         public IOrderChangeOffers OrderChangeOffers { get; set; }
         public IOrderCancellations OrderCancellations { get; set; }
 
-        public DuffelApiClient(string accessToken, bool production = false)
-        :this(new HttpClient(new HttpClientHandler {AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate}), accessToken, production)
+        public DuffelApiClient(string accessToken)
+        :this(new HttpClient(new HttpClientHandler {AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate}), accessToken)
         {
         }
 
-        public DuffelApiClient(HttpClient httpClient, string accessToken, bool production = false)
+        public DuffelApiClient(HttpClient httpClient, string accessToken)
         {
             if (string.IsNullOrWhiteSpace(accessToken))
             {
-                var dashboardBaseAddress = production ? new Uri("https://app.duffel.com") : new Uri("https://app.staging.duffel.com");
+                var dashboardBaseAddress = new Uri("https://app.duffel.com");
                 var tokensAddress = new Uri(dashboardBaseAddress, "/duffel/tokens");
                 throw new ArgumentException( $@"No access token provided. To create an access token, head to your dashboard at {tokensAddress} and generate a token.", nameof(accessToken));
             }
 
             _httpClient = httpClient;
             var executingAssemblyName = Assembly.GetExecutingAssembly().GetName();
-            _httpClient.BaseAddress =
-                production ? new Uri("https://api.duffel.com") : new Uri("https://api.staging.duffel.com");
+            _httpClient.BaseAddress = new Uri("https://api.duffel.com");
 
             _httpClient.DefaultRequestHeaders.Add("User-Agent",
                 $"Duffel/beta {executingAssemblyName.Name}/{executingAssemblyName.Version}");
