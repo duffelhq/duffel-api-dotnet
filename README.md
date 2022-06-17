@@ -19,7 +19,7 @@ Developers > Access Tokens.
 using Duffel.ApiClient;
 
 var accessToken = Environment.GetEnvironmentVariable("DUFFEL_ACCESS_TOKEN");
-var client = new DuffelApiClient(accessToken: accessToken, production: false);
+var client = new DuffelApiClient(accessToken: accessToken);
 ```
 
 After you have a client you can interact with, you can make calls to the Duffel API:

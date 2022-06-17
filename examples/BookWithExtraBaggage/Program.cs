@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 try
 {
     var accessToken = Environment.GetEnvironmentVariable("DUFFEL_ACCESS_TOKEN");
-    var client = new DuffelApiClient(accessToken: accessToken, production: false);
+    var client = new DuffelApiClient(accessToken: accessToken);
 
     var offersRequest = new OffersRequest
     {
