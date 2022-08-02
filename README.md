@@ -58,3 +58,7 @@ For more detailed information about error handling, see: [https://duffel.com/doc
 ## Examples
 
 You can find a complete e2e examples in [./Examples](https://github.com/duffelhq/duffel-api-dotnet/tree/main/examples) folder
+
+## Releasing a new package version
+
+To publish a new version to Nuget, update the version in the [csproj file](https://github.com/duffelhq/duffel-api-dotnet/blob/d1bee3fc720d8de773cd999261acee79561b49be/Duffel.ApiClient/Duffel.ApiClient.csproj#L8-L9) and commit the change. Head over to [releases page](https://github.com/duffelhq/duffel-api-dotnet/releases) and create a new release with a new tag following SemVer e.g. 1.0.0-RC3.
