@@ -21,6 +21,13 @@ namespace Duffel.ApiClient.Models
         /// </summary>
         [JsonProperty("iata_code")]
         public string IataCode { get; set; }
+        
+        /// <summary>
+        /// URL to the airline's conditions of carriage.
+        /// Can be null.
+        /// </summary>
+        [JsonProperty("conditions_of_carriage_url")]
+        public string ConditionsOfCarriageUrl { get; set; }
 
         /// <summary>
         /// Path to a svg of the airline lockup logo. A lockup logo is also called a combination logo, in which it combines the logotype and logomark.
