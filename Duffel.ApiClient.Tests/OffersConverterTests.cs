@@ -42,7 +42,7 @@ namespace Duffel.ApiClient.Tests
             };
 
             var result = OffersResponseConverter.Serialize(request);
-            Check.That(result).Equals("{\"data\":{\"passengers\":[{\"type\":\"adult\"},{\"type\":\"child\"},{\"type\":\"infant_without_seat\"}],\"slices\":[{\"origin\":\"SFO\",\"destination\":\"LAX\",\"departure_date\":\"2020-01-01\"}],\"requested_sources\":[\"united\"]}}");
+            Check.That(result).Equals("{\"data\":{\"passengers\":[{\"type\":\"adult\"},{\"type\":\"child\"},{\"type\":\"infant_without_seat\"}],\"slices\":[{\"origin\":\"SFO\",\"destination\":\"LAX\",\"departure_date\":\"2020-01-01\"}],\"requested_sources\":[\"united\"],\"max_connections\":1}}");
         }
 
         [TestCase(CabinClass.Any, "")]
@@ -73,7 +73,7 @@ namespace Duffel.ApiClient.Tests
 
             var result = OffersResponseConverter.Serialize(request);
 
-            var expectedPayload = "{\"data\":{\"passengers\":[{\"type\":\"adult\"},{\"type\":\"child\"},{\"type\":\"infant_without_seat\"}],\"slices\":[{\"origin\":\"SFO\",\"destination\":\"LAX\",\"departure_date\":\"2020-01-01\"}],\"requested_sources\":[\"united\"]" + cabinClassPayload + "}}";
+            var expectedPayload = "{\"data\":{\"passengers\":[{\"type\":\"adult\"},{\"type\":\"child\"},{\"type\":\"infant_without_seat\"}],\"slices\":[{\"origin\":\"SFO\",\"destination\":\"LAX\",\"departure_date\":\"2020-01-01\"}],\"requested_sources\":[\"united\"]" + cabinClassPayload + ",\"max_connections\":1}}";
             Check.That(result).Equals(expectedPayload);
         }
 
