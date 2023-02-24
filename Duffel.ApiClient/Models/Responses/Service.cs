@@ -87,5 +87,23 @@ namespace Duffel.ApiClient.Models.Responses
         /// </summary>
         [JsonProperty("type")]
         public string BaggageType { get; set; }
+        
+        /// <summary>
+        /// The amount the customer will receive back if the service is used, in total_currency
+        /// </summary>
+        [JsonProperty("refund_amount")]
+        public string RefundAmount { get; set; }
+
+        /// <summary>
+        /// Information to display to customers
+        /// </summary>
+        [JsonProperty("merchant_copy")]
+        public string MerchantCopy { get; set; }
+
+        /// <summary>
+        /// URL with the terms and conditions for customers.
+        /// </summary>
+        [JsonProperty("terms_and_conditions_link")]
+        public string TermsAndConditionsLink { get; set; }
     }
 }
