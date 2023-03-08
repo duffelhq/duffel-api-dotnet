@@ -22,7 +22,7 @@ namespace Duffel.ApiClient.Models.Responses
         /// An object containing metadata about the service, like the maximum weight and dimensions of the baggage.
         /// </summary>
         [JsonProperty("metadata")]
-        public BaggageMetadata Metadata { get; set; }
+        public ServiceMetadata Metadata { get; set; }
         
         /// <summary>
         /// The list of passenger ids the service applies to. If you add this service to an order it will apply to all the passengers in this list. For services where the type is baggage, this list will include only a single passenger.
@@ -55,8 +55,10 @@ namespace Duffel.ApiClient.Models.Responses
         public string ServiceType { get; set; }
     }
     
-    public class BaggageMetadata
+    public class ServiceMetadata
     {
+        #region Baggage
+
         /// <summary>
         /// The maximum depth that the baggage can have in centimetres
         /// </summary>
@@ -87,6 +89,10 @@ namespace Duffel.ApiClient.Models.Responses
         /// </summary>
         [JsonProperty("type")]
         public string BaggageType { get; set; }
+
+        #endregion
+
+        #region CFAR
         
         /// <summary>
         /// The amount the customer will receive back if the service is used, in total_currency
@@ -105,5 +111,7 @@ namespace Duffel.ApiClient.Models.Responses
         /// </summary>
         [JsonProperty("terms_and_conditions_link")]
         public string TermsAndConditionsLink { get; set; }
+
+        #endregion
     }
 }
