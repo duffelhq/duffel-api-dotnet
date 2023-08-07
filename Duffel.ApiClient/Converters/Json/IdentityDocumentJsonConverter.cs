@@ -15,11 +15,19 @@ namespace Duffel.ApiClient.Converters.Json
             {
                 var items = identityDocuments.Select(document =>
                 {
-                    if (document is Passport passport)
+                    switch (document)
                     {
-                        return $"{{\"type\":\"passport\",\"expires_on\":\"{passport.ExpiresOn}\",\"issuing_country_code\":\"{passport.IssuingCountryCode}\",\"unique_identifier\":\"{passport.UniqueIdentifier}\"}}";
+                        case Passport passport:
+                            return $"{{\"type\":\"passport\",\"expires_on\":\"{passport.ExpiresOn}\",\"issuing_country_code\":\"{passport.IssuingCountryCode}\",\"unique_identifier\":\"{passport.UniqueIdentifier}\"}}";
+                        case KnownTravelerNumber knownTravelerNumber:
+                            return $"{{\"type\":\"known_traveler_number\",\"issuing_country_code\":\"{knownTravelerNumber.IssuingCountryCode}\",\"unique_identifier\":\"{knownTravelerNumber.UniqueIdentifier}\"}}";
+                        case PassengerRedressNumber passengerRedressNumber:
+                            return $"{{\"type\":\"passenger_redress_number\",\"issuing_country_code\":\"{passengerRedressNumber.IssuingCountryCode}\",\"unique_identifier\":\"{passengerRedressNumber.UniqueIdentifier}\"}}";
+                        case TaxId taxId:
+                            return $"{{\"type\":\"tax_id\",\"unique_identifier\":\"{taxId.UniqueIdentifier}\"}}";
+                        default:
+                            throw new NotImplementedException($"Identity document of type: {document.GetType().ToString()} is not supported,");
                     }
-                    throw new NotImplementedException($"Identity document of type: {document.GetType().ToString()} is not supported,");
                 });
                 var payload = $"{string.Join(",", items)}";
                 writer.WriteStartArray();
@@ -37,18 +45,25 @@ namespace Duffel.ApiClient.Converters.Json
             JObject jo = JObject.Load(reader);
             var documentType = (string)jo["type"]!;
             IdentityDocument result;
-            
+
             switch(documentType?.ToLower())
             {
                 case "passport":
                     result = new Passport();
                     break;
-                
-                
+                case "known_traveler_number":
+                    result = new KnownTravelerNumber();
+                    break;
+                case "passenger_redress_number":
+                    result = new PassengerRedressNumber();
+                    break;
+                case "tax_id":
+                    result = new TaxId();
+                    break;
                 default:
                     throw new NotImplementedException($"{documentType} is not a recognised identity document type.");
             };
-            
+
             serializer.Populate(jo.CreateReader(), result);
             return result;
         }

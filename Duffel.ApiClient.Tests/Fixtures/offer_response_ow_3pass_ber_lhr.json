@@ -350,6 +350,12 @@
     "base_currency": "GBP",
     "base_amount": "4272.00",
     "available_services": [],
+    "supported_passenger_identity_document_types": [
+      "passport",
+      "tax_id",
+      "known_traveler_number",
+      "passenger_redress_number"
+    ],
     "allowed_passenger_identity_document_types": [
       "passport"
     ]
