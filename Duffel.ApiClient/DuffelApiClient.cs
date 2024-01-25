@@ -13,6 +13,7 @@ namespace Duffel.ApiClient
         public IAirlines Airlines { get; set; }
         public IAirports Airports { get; set; }
         public IAircraft Aircraft { get; set; }
+        public ILoyaltyProgrammes LoyaltyProgrammes { get; set; }
         public IOfferRequests OfferRequests { get; set; }
         public IOffers Offers { get; set; }
         public IOrders Orders { get; set; }
@@ -50,6 +51,7 @@ namespace Duffel.ApiClient
             Airlines = new Airlines(_httpClient);
             Airports = new Airports(_httpClient);
             Aircraft = new Aircraft(_httpClient);
+            LoyaltyProgrammes = new LoyaltyProgrammes(_httpClient);
             OfferRequests = new OfferRequests(_httpClient);
             Offers = new Offers(_httpClient);
             Orders = new Orders(_httpClient);
