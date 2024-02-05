@@ -7,6 +7,7 @@ namespace Duffel.ApiClient
          IAircraft Aircraft { get; }
          IAirlines Airlines { get; }
          IAirports Airports { get; }
+         ILoyaltyProgrammes LoyaltyProgrammes { get; }
          IOffers Offers { get; }
          IOfferRequests OfferRequests { get; }
          IOrders Orders { get; }
