@@ -138,8 +138,8 @@ namespace Duffel.ApiClient.Models.Responses
         /// <remarks>
         /// If this is an empty list ([]), no loyalty programmes are accepted for the offer and shall be ignored if provided.
         /// </remarks>
-        [JsonProperty("accepted_loyalty_programmes")]
-        public IEnumerable<string> AcceptedLoyaltyProgrammes { get; set; }
+        [JsonProperty("supported_loyalty_programmes")]
+        public IEnumerable<string> SupportedLoyaltyProgrammes { get; set; }
 
         /// <summary>
         /// The types of identity documents that may be provided for the passengers when creating an order based on this offer.
