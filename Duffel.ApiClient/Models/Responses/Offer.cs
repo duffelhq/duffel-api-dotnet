@@ -132,6 +132,16 @@ namespace Duffel.ApiClient.Models.Responses
         public IEnumerable<string> SupportedPassengerIdentityDocumentTypes { get; set; }
 
         /// <summary>
+        /// A list of airline IATA codes whose loyalty programmes will be accepted when booking the offer.
+        /// Loyalty programmes present within the offer passengers that are not present in this field shall be ignored at booking.
+        /// </summary>
+        /// <remarks>
+        /// If this is an empty list ([]), no loyalty programmes are accepted for the offer and shall be ignored if provided.
+        /// </remarks>
+        [JsonProperty("supported_loyalty_programmes")]
+        public IEnumerable<string> SupportedLoyaltyProgrammes { get; set; }
+
+        /// <summary>
         /// The types of identity documents that may be provided for the passengers when creating an order based on this offer.
         /// Currently, possible types are passport, tax_id, known_traveler_number, and passenger_redress_number.
         /// If this is empty, then you must not provide identity documents.
