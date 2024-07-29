@@ -6,7 +6,7 @@
         <Copyright>Copyright 2022 Duffel Technology Ltd.</Copyright>
         <Company>Duffel Technology Ltd.</Company>
         <VersionPrefix>1.0.0</VersionPrefix>
-        <VersionSuffix>RC9</VersionSuffix>
+        <VersionSuffix>RC10</VersionSuffix>
         <Title>Duffel.ApiClient</Title>
         <Description>.NET client for interacting with the Duffel API https://docs.duffel.com/</Description>
         <PackageId>Duffel.ApiClient</PackageId>
