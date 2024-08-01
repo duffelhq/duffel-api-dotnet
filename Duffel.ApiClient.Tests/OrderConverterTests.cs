@@ -45,7 +45,6 @@ namespace Duffel.ApiClient.Tests
                                 UniqueIdentifier = "passport123"
                             }
                         },
-                        PassengerType = PassengerType.Adult,
                         PhoneNumber = "+4407856033333"
                     }
                 },

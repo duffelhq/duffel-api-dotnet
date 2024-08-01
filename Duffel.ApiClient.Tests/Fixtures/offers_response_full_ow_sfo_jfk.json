@@ -314,7 +314,6 @@
         "base_currency": "GBP",
         "base_amount": "431.66",
         "supported_passenger_identity_document_types": [],
-        "allowed_passenger_identity_document_types": []
       },
       {
         "updated_at": "2022-01-06T14:39:25.090088Z",
@@ -569,7 +568,6 @@
         "base_currency": "GBP",
         "base_amount": "431.66",
         "supported_passenger_identity_document_types": [],
-        "allowed_passenger_identity_document_types": []
       },
       {
         "updated_at": "2022-01-06T14:39:25.090088Z",
@@ -800,7 +798,6 @@
         "base_currency": "GBP",
         "base_amount": "397.29",
         "supported_passenger_identity_document_types": [],
-        "allowed_passenger_identity_document_types": []
       },
       {
         "updated_at": "2022-01-06T14:39:25.090088Z",
@@ -1055,7 +1052,6 @@
         "base_currency": "GBP",
         "base_amount": "369.11",
         "supported_passenger_identity_document_types": [],
-        "allowed_passenger_identity_document_types": []
       }],
     "live_mode": false,
     "id": "orq_0000AFANuVr4l0DI9G8Fk0",
