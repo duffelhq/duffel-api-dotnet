@@ -355,9 +355,6 @@
       "tax_id",
       "known_traveler_number",
       "passenger_redress_number"
-    ],
-    "allowed_passenger_identity_document_types": [
-      "passport"
     ]
   }
 }

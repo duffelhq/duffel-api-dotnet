@@ -43,10 +43,10 @@ namespace Duffel.ApiClient
             _httpClient.BaseAddress = new Uri("https://api.duffel.com");
 
             _httpClient.DefaultRequestHeaders.Add("User-Agent",
-                $"Duffel/v1 {executingAssemblyName.Name}/{executingAssemblyName.Version}");
+                $"Duffel/v2 {executingAssemblyName.Name}/{executingAssemblyName.Version}");
             _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {accessToken}");
             _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
-            _httpClient.DefaultRequestHeaders.Add("Duffel-Version", "v1");
+            _httpClient.DefaultRequestHeaders.Add("Duffel-Version", "v2");
 
             Airlines = new Airlines(_httpClient);
             Airports = new Airports(_httpClient);

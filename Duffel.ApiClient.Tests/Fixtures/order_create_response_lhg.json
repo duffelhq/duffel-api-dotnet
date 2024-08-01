@@ -95,12 +95,10 @@
                                 "city_name": null
                             }
                         },
-                        "departure_terminal": "2",
-                        "departure_datetime": "2022-03-06T06:30:00",
+                        "origin_terminal": "2",
                         "departing_at": "2022-03-06T06:30:00",
                         "arriving_at": "2022-03-06T09:05:00",
-                        "arrival_terminal": "1",
-                        "arrival_datetime": "2022-03-06T09:05:00",
+                        "destination_terminal": "1",
                         "aircraft": {
                             "name": "Airbus A320neo",
                             "id": "arc_00009lcSPZuSbgKG1u4Pkn",
