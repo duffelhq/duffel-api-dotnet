@@ -8,12 +8,6 @@ namespace Duffel.ApiClient.Models.Requests
     public class OrderPassenger
     {
         /// <summary>
-        /// The type of the passenger, See: <see cref="PassengerType"/>
-        /// </summary>
-        [JsonProperty("type")]
-        public PassengerType PassengerType { get; set; }
-
-        /// <summary>
         /// The passenger's title
         /// </summary>
         [JsonProperty("title")]

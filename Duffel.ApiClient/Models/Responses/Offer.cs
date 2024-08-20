@@ -140,19 +140,5 @@ namespace Duffel.ApiClient.Models.Responses
         /// </remarks>
         [JsonProperty("supported_loyalty_programmes")]
         public IEnumerable<string> SupportedLoyaltyProgrammes { get; set; }
-
-        /// <summary>
-        /// The types of identity documents that may be provided for the passengers when creating an order based on this offer.
-        /// Currently, possible types are passport, tax_id, known_traveler_number, and passenger_redress_number.
-        /// If this is empty, then you must not provide identity documents.
-        /// </summary>
-        /// <remarks>
-        /// This field has been deprecated and the supported_passenger_identity_document_types field provides equivalent behaviour.
-        /// See https://duffel.com/docs/api/v1/offers/schema#offers-schema-allowed-passenger-identity-document-types for more details.
-        /// </remarks>
-        [Obsolete("This field has been deprecated and the supported_passenger_identity_document_types field provides equivalent behaviour. See https://duffel.com/docs/api/v1/offers/schema#offers-schema-allowed-passenger-identity-document-types for more details.")]
-        [JsonProperty("allowed_passenger_identity_document_types")]
-        public IEnumerable<string> AllowedPassengerIdentityDocumentTypes { get; set; }
-
     }
 }
