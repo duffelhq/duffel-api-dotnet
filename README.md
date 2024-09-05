@@ -1,3 +1,12 @@
+> [!WARNING] 
+> This client library is not currently being supported by Duffel due to a lack of adoption.
+> 
+> You're welcome to fork the repositories and continue maintaining them for your own use.
+>
+> If, in the future, there's sufficient demand for a particular client library, we'll reconsider our decision to officially support it.
+
+---
+
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/duffelhq/duffel-api-dotnet/main/LICENSE)
 [![Nuget](https://img.shields.io/nuget/dt/Duffel.ApiClient?label=Nuget.org%20Downloads&style=flat-square&color=blue)](https://www.nuget.org/packages/Duffel.ApiClient)
 
